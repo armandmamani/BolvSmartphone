@@ -171,11 +171,11 @@ body {
 
 .tipologjiaA {
     display: grid;
-
-    grid-template-columns: 70px 70px 70px 70px 70px 70px;
+    grid-template-columns: 70px 50px 50px 50px 50px 50px;
     gap: 3px;
+    grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
     background-color: var(--desert-sand);
-    font-size: 10px;
+    font-size: 12px;
     padding: 1px;
     max-width: 600px;
     z-index: 100;
