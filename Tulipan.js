@@ -200,8 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 displayImage.src = imageSrc;
                 displayImage.style.display = "block";
                 planContainer.style.display = "block";
-                project.style.display = "block"
-                project.style.animation = "fadeIn 1s ease - out forwards";
                 printBtn.classList.remove("hidden")
                 selectApartment();
 
