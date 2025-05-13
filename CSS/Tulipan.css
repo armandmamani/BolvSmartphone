@@ -258,7 +258,6 @@ display: block;
 
 #plan-container {
     position: absolute;
-    display: none;
     top: 10px;
     width: 100%;
     height: auto;
@@ -280,10 +279,42 @@ display: block;
     animation: fadeIn 1s ease-out forwards;
     z-index: 10;
 }
+.aparttId {
+  width: 60%;
+}
+
+
 .vleraSip {
     font-weight: 700;
 }
 #aptId {
     font-size: 20px;
     font-weight: 700;
+}
+
+#shiturShkrimi, #rezervuarShkrimi {
+    position: absolute;
+    top: 40vh;
+    width: 100%;
+    display: block;
+    z-index: 110;
+    color: darkred;
+    opacity: 0.8;
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#fullscreenContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
 }

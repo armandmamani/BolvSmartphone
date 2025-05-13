@@ -1,4 +1,4 @@
-const apartmentDetails = [
+﻿const apartmentDetails = [
     { id: "A1HA1", Tipology: "A", building: "A1", floor: 0, netArea: 72.48, comonArea: 14.33, TotalArea: 86.81, greenArea: 50.7, terraceArea: 0 , parkingNumber: "BLLOKUAR", statusi: "Shitur" },
     { id: "A1HA2", Tipology: "A", building: "A1", floor: 0, netArea: 100.92, comonArea: 19.95, TotalArea: 120.87, greenArea: 81.4, terraceArea: 25.9, parkingNumber: "BLLOKUAR", statusi: "Shitur" },
     { id: "A1HA3", Tipology: "A", building: "A1", floor: 1, netArea: 76, comonArea: 15.03, TotalArea: 91.03, greenArea: 0, terraceArea: 0 , parkingNumber: "BLLOKUAR", statusi: "Shitur" },
@@ -200,7 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const apartmentId = button.id; // Extract apartment ID from button ID
             if (apartmentId) {
                 showApartmentDetails(apartmentId);
-                selectApartment(apartmentId); 
             }
         });
     });
@@ -234,7 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     shiturText.classList.add("hidden");
                     rezervuarText.classList.add("hidden");
                 }
-                console.log(apartment.statusi)
             });
         }
     });
@@ -246,82 +244,49 @@ document.addEventListener("DOMContentLoaded", function () {
         { btn: "tipBtnB", table: "tableB", hero: "hero-B" },
         { btn: "tipBtnC", table: "tableC", hero: "hero-C" }
     ];
-
-    
-    // Image display functionality
-    const planContainer = document.getElementById("plan-container");
     const displayImage = document.getElementById("display-image");
+const fullscreenContainer = document.getElementById("fullscreenContainer");
+const fullscreenImage = document.getElementById("fullscreenImage");
+const planContainer = document.getElementById("plan-container");
 
-    if (planContainer && displayImage) {
-        const imageButtons = document.querySelectorAll(".planBtn");
+// 📌 Buttons that trigger the image
+document.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", () => {
+        // Extract photo name from button.id
+        const match = button.id.match(/H[A-Z0-9]+$/);
+        if (!match) return;
 
+        const planName = match[0];
+        const imageSrc = `Planet_tulipan/${planName}.webp`;
 
-        imageButtons.forEach(button => {
-            button.addEventListener("click", function () {
-const match = button.id.match(/H[A-Z0-9]+$/); // Match from the first 'H' to the end
+        // Display the image in main view
+        displayImage.src = imageSrc;
 
-let planName;
+        // Show the container if it was hidden
+        planContainer.classList.remove("hidden");
+    });
+});
 
-if (match) {
-    planName = match[0]; // "HA1"
-    const imageSrc = `Planet_tulipan/${planName}.webp`;
+// 🖼 Click on display image → open fullscreen
+displayImage.addEventListener("click", () => {
+    fullscreenImage.src = displayImage.src;
+    fullscreenContainer.classList.remove("hidden");
+});
 
-                const printBtn = document.getElementById("printBtnContainer")
-                displayImage.src = imageSrc;
-                displayImage.style.display = "block";
-                planContainer.style.display = "block";
-                printBtn.classList.remove("hidden")
-                selectApartment();
-}
-            });
-        });
+// 🔙 Click on fullscreen image → close fullscreen
+fullscreenImage.addEventListener("click", () => {
+    fullscreenContainer.classList.add("hidden");
+});
 
-        // Hide plan-container when no image is shown
-        displayImage.addEventListener("error", function () {
-            displayImage.style.display = "none";
-            planContainer.style.display = "none";
-        });
+// ✖️ Click outside image in plan-container → hide container
+planContainer.addEventListener("click", (event) => {
+    if (!event.target.closest("#display-image")) {
+        planContainer.classList.add("hidden");
+        document.getElementById("shiturShkrimi").classList.add("hidden");
+        document.getElementById("rezervuarShkrimi").classList.add("hidden");
     }
 });
 
-
-function selectApartment(apartmentId) {
-
-    const shiturShkrimi = document.getElementById("shiturShkrimi");
-    const rezervuarShkrimi = document.getElementById("rezervuarShkrimi");
-    const apartment = apartmentDetails.find(apartment => apartment.id === apartmentId);
-    if (apartment && apartment.statusi === "Shitur") {
-        shiturShkrimi.classList.remove("hidden");
-    }
-    else if (apartment && apartment.statusi === "Rezervuar") {
-        rezervuarShkrimi.classList.remove("hidden");
-    }
-
-    else {
-        shiturShkrimi.classList.add("hidden");
-    }
-}
+});
 
 
-
-function showTable(tableId) {
-    const tables = ["tableA", "tableB", "tableC"];
-    const buttons = ["tipBtnA", "tipBtnB", "tipBtnC"];
-    tables.forEach(id => {
-        document.getElementById(id).style.display = id === tableId ? "grid" : "none";
-    });
-    buttons.forEach(id => {
-        document.getElementById(id).classList.toggle("active", id === tableId);
-    });
-}
-
-function showTableA() {
-    showTable(tableA)
-}
-function showTableB() {
-    tableId = "";
-} 
-
-function showTableC() {
-    showTable(tableC)
-}
