@@ -271,11 +271,36 @@ document.querySelectorAll("button").forEach(button => {
 displayImage.addEventListener("click", () => {
     fullscreenImage.src = displayImage.src;
     fullscreenContainer.classList.remove("hidden");
+
+    // Request full screen (works best on mobile)
+    if (fullscreenContainer.requestFullscreen) {
+        fullscreenContainer.requestFullscreen();
+    } else if (fullscreenContainer.webkitRequestFullscreen) {
+        fullscreenContainer.webkitRequestFullscreen(); // Safari
+    } else if (fullscreenContainer.msRequestFullscreen) {
+        fullscreenContainer.msRequestFullscreen(); // IE
+    }
 });
 
 // 🔙 Click on fullscreen image → close fullscreen
 fullscreenImage.addEventListener("click", () => {
     fullscreenContainer.classList.add("hidden");
+
+    // Exit full screen
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    } else if (document.webkitFullscreenElement) {
+        document.webkitExitFullscreen();
+    } else if (document.msFullscreenElement) {
+        document.msExitFullscreen();
+    }
+});
+window.addEventListener("orientationchange", () => {
+    // Force redraw/resizing (if needed)
+    if (document.fullscreenElement) {
+        fullscreenImage.style.maxWidth = window.innerWidth + "px";
+        fullscreenImage.style.maxHeight = window.innerHeight + "px";
+    }
 });
 
 // ✖️ Click outside image in plan-container → hide container
