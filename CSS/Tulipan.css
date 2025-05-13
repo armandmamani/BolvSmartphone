@@ -269,3 +269,21 @@ display: block;
 #display-image {
     width: 100%;
 }
+
+#plan-table {
+    top: 10px;
+    width: 100%;
+    font-size: 15px;
+    height: auto;
+    padding: 20px;
+    background-color: var(--seaside-villa);
+    animation: fadeIn 1s ease-out forwards;
+    z-index: 10;
+}
+.vleraSip {
+    font-weight: 700;
+}
+#aptId {
+    font-size: 20px;
+    font-weight: 700;
+}

@@ -174,7 +174,71 @@ const apartmentDetails = [
     { id: "C8HC8", Tipology: "C", building: "C8", floor: 3, netArea: 247.4, comonArea: 26, TotalArea: 273,greenArea: 0 , terraceArea: 89.1, parkingNumber: "", statusi: "Per shitje" },
 ]
 
+function showApartmentDetails(apartmentId) {
+    
+     const   details = apartmentDetails.find(apartment => apartment.id === apartmentId);
+    // Find the apartment details by ID
+    if (details) {
+        // Populate the details table
+        document.getElementById('aptId').textContent = details.id;
+        document.getElementById('aptTypology').textContent = details.Tipology;
+        document.getElementById('aptFloor').textContent = details.floor;
+        document.getElementById('aptBuilding').textContent = details.building;
+        document.getElementById('aptNetArea').textContent = details.netArea;
+        document.getElementById('aptCommonArea').textContent = details.comonArea;
+        document.getElementById('aptTotalArea').textContent = details.TotalArea;
+        document.getElementById('aptTerraceArea').textContent = details.terraceArea;
+        document.getElementById('aptplotArea').textContent = details.greenArea;
+        document.getElementById('parkingNumber').textContent = details.parkingNumber;
+    }
+}
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Add event listeners to buttons with class 'ApBtn'
+    document.querySelectorAll(".planBtn").forEach(button => {
+        button.addEventListener("click", function () {
+            const apartmentId = button.id; // Extract apartment ID from button ID
+            if (apartmentId) {
+                showApartmentDetails(apartmentId);
+                selectApartment(apartmentId); 
+            }
+        });
+    });
+
+
+
+    const shiturText = document.getElementById("shiturShkrimi");
+    const rezervuarText = document.getElementById("rezervuarShkrimi");
+
+    apartmentDetails.forEach(apartment => {
+        const button = document.getElementById(apartment.id); // Get the button by ID
+        if (button) {
+            // Apply initial colors
+            if (apartment.statusi === "Shitur") {
+                button.style.backgroundColor = "red";
+                button.style.color = "white";
+            } else if (apartment.statusi === "Rezervuar") {
+                button.style.backgroundColor = "orange";
+                button.style.color = "red";
+            }
+
+            // Add click event listener
+            button.addEventListener("click", function () {
+                if (apartment.statusi === "Shitur") {
+                    shiturText.classList.remove("hidden");
+                    rezervuarText.classList.add("hidden");
+                } else if (apartment.statusi === "Rezervuar") {
+                    rezervuarText.classList.remove("hidden");
+                    shiturText.classList.add("hidden");
+                } else {
+                    shiturText.classList.add("hidden");
+                    rezervuarText.classList.add("hidden");
+                }
+                console.log(apartment.statusi)
+            });
+        }
+    });
+})
 
 document.addEventListener("DOMContentLoaded", function () {
     const buttons = [
@@ -194,15 +258,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         imageButtons.forEach(button => {
             button.addEventListener("click", function () {
-                const imageSrc = `Planet_tulipan/${button.id}.webp`;
-                const project = document.getElementById('ProjectBackground')
+const match = button.id.match(/H[A-Z0-9]+$/); // Match from the first 'H' to the end
+
+let planName;
+
+if (match) {
+    planName = match[0]; // "HA1"
+    const imageSrc = `Planet_tulipan/${planName}.webp`;
+
                 const printBtn = document.getElementById("printBtnContainer")
                 displayImage.src = imageSrc;
                 displayImage.style.display = "block";
                 planContainer.style.display = "block";
                 printBtn.classList.remove("hidden")
                 selectApartment();
-
+}
             });
         });
 
@@ -232,41 +302,7 @@ function selectApartment(apartmentId) {
     }
 }
 
-// Function to update styles of labels and buttons
-document.addEventListener("DOMContentLoaded", function () {
 
-    const shiturText = document.getElementById("shiturShkrimi");
-    const rezervuarText = document.getElementById("rezervuarShkrimi");
-
-    apartmentDetails.forEach(apartment => {
-        const button = document.querySelector(`.${apartment.id}`);
-        if (button) {
-            // Apply initial colors
-            if (apartment.statusi === "Shitur") {
-                button.style.backgroundColor = "red";
-                button.style.color = "white";
-            } else if (apartment.statusi === "Rezervuar") {
-                button.style.backgroundColor = "orange";
-                button.style.color = "red";
-            }
-
-            // Add click event listener
-            button.addEventListener("click", function () {
-                if (apartment.statusi === "Shitur") {
-                    shiturText.classList.remove("hidden");
-                    rezervuarText.classList.add("hidden");
-                } else if (apartment.statusi === "Rezervuar") {
-                    rezervuarText.classList.remove("hidden");
-                    shiturText.classList.add("hidden");
-                } else {
-                    shiturText.classList.add("hidden");
-                    rezervuarText.classList.add("hidden");
-                }
-                console.log(apartment.statusi)
-            });
-        }
-    });
-});
 
 function showTable(tableId) {
     const tables = ["tableA", "tableB", "tableC"];
@@ -284,6 +320,8 @@ function showTableA() {
 }
 function showTableB() {
     tableId = "";
-} function showTableC() {
+} 
+
+function showTableC() {
     showTable(tableC)
 }
