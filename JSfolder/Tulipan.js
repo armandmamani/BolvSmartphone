@@ -185,12 +185,14 @@ function showApartmentDetails(apartmentId) {
         document.getElementById('aptTypology').textContent = details.Tipology;
         document.getElementById('aptFloor').textContent = details.floor;
         document.getElementById('aptBuilding').textContent = details.building;
-        document.getElementById('aptNetArea').textContent = details.netArea;
-        document.getElementById('aptCommonArea').textContent = details.comonArea;
+        document.getElementById('aptNetArea').textContent = details.NetArea;
+        document.getElementById('aptCommonArea').textContent = details.ComonArea;
         document.getElementById('aptTotalArea').textContent = details.TotalArea;
-        document.getElementById('aptTerraceArea').textContent = details.terraceArea;
-        document.getElementById('aptplotArea').textContent = details.greenArea;
-        document.getElementById('parkingNumber').textContent = details.parkingNumber;
+        document.getElementById('aptTerraceArea').textContent = details.TerraceArea;
+        document.getElementById('aptplotArea').textContent = details.GreenArea;
+        document.getElementById('parkingNumber').textContent = details.ParkingNumber;
+        document.getElementById('status').textContent = details.statusi;
+
     }
 }
 
