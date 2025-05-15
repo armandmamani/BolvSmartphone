@@ -218,12 +218,11 @@ body {
         width: 100%;
         transition: 800ms ease all;
     }
-
-.tipologjiaA {
+.tipologjiaA_Tul {
     display: grid;
-    grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-columns: 80px 50px 50px 50px 50px 50px;
     gap: 3px;
-    grid-template-rows: 40px 40px 40px 40px 40px 20px;
+    grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 20px;
     background-color: var(--desert-sand);
     font-size: 15px;
     font-weight: 600;
@@ -237,10 +236,103 @@ body {
     padding: 5px;
     display: block;
 }
+#KatiA0 {
+    grid-column: 2 / span 2;
+}
+
+#KatiA1 {
+    grid-column: 4 / span 2;
+}
+
+.tipologjiaB_Tul {
+    display: grid;
+    grid-template-columns: 80px 33px 33px 33px 33px 33px 33px 33px 33px;
+    gap: 3px;
+    grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 20px;
+    background-color: var(--desert-sand);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 1px;
+    max-width: 600px;
+    z-index: 2;
+}
+
+#containerB {
+    grid-column: 1 / span 712;
+    padding: 5px;
+    display: block;
+}
+
+#KatiB0 {
+    grid-column: 2 / span 3;
+}
+
+#KatiB1 {
+    grid-column: 5 / span 3;
+}
+
+#KatiB2 {
+    grid-column: 8 / span 2;
+}
+
+.tipologjiaC_Tul {
+    display: grid;
+    grid-template-columns: 80px 33px 33px 33px 33px 33px 33px 33px 33px;
+    gap: 3px;
+    grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 20px;
+    background-color: var(--desert-sand);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 1px;
+    max-width: 600px;
+    z-index: 2;
+}
+
+#containerC {
+    grid-column: 1 / span 712;
+    padding: 5px;
+    display: block;
+}
+
+#KatiC0 {
+    grid-column: 2 / span 1;
+}
+
+#KatiC1 {
+    grid-column: 3 / span 3;
+}
+
+#KatiC2 {
+    grid-column: 6 / span 3;
+}
 
 
 
-.tipologjiaB {
+
+
+
+.tipologjiaA_JA {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
+    gap: 3px;
+    grid-template-rows: 40px 40px 40px 40px 40px 20px;
+    background-color: var(--desert-sand);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 1px;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.containerJA {
+    grid-column: 1 / span 7;
+    padding: 5px;
+    display: block;
+}
+
+
+
+.tipologjiaB_JA {
     display: grid;
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
@@ -260,7 +352,7 @@ body {
 }
 
 
-.tipologjiaC {
+.tipologjiaC_JA {
     display: grid;
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
@@ -279,7 +371,7 @@ body {
     display: block;
 }
 
-.tipologjiaD {
+.tipologjiaD_JA {
     display: grid;
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
@@ -291,13 +383,7 @@ body {
     z-index: 100;
 }
 
-
-#containerD {
-    grid-column: 1 / span 7;
-    padding: 5px;
-    display: block;
-}
-.tipologjiaE {
+.tipologjiaE_JA {
     display: grid;
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
@@ -310,13 +396,8 @@ body {
 }
 
 
-#containerE {
-    grid-column: 1 / span 7;
-    padding: 5px;
-    display: block;
-}
 
-.tipologjiaV {
+.tipologjiaV_JA {
     display: grid;
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
@@ -328,12 +409,6 @@ body {
     z-index: 100;
 }
 
-
-#containerV {
-    grid-column: 1 / span 7;
-    padding: 5px;
-    display: block;
-}
 
     /*Pjesa e imazheve*/
 
