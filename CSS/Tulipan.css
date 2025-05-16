@@ -338,7 +338,7 @@ h1 {
 
 .tipologjiaB_Tul {
     display: grid;
-    grid-template-columns: 80px 33px 33px 33px 33px 33px 33px 33px 33px;
+    grid-template-columns: 60px 33px 33px 33px 33px 33px 33px 33px 33px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 20px;
     background-color: #faeaea;
@@ -369,7 +369,7 @@ h1 {
 
 .tipologjiaC_Tul {
     display: grid;
-    grid-template-columns: 80px 33px 33px 33px 33px 33px 33px 33px 33px;
+    grid-template-columns: 60px 33px 33px 33px 33px 33px 33px 33px 33px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 20px;
     background-color: #faeaea;
