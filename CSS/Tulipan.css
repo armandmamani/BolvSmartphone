@@ -223,6 +223,11 @@ h1 {
         width: 100%;
         transition: 800ms ease all;
     }
+
+
+/*   - Tulipan - */
+
+
 .tipologjiaA_Tul {
     display: grid;
     grid-template-columns: 80px 50px 50px 50px 50px 50px;
@@ -311,10 +316,49 @@ h1 {
     grid-column: 6 / span 3;
 }
 
+/*   - G7B - */
+
+
+.tipologjiaA_G7B {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
+    gap: 3px;
+    grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 20px;
+    background-color: var(--desert-sand);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 1px;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.containerG7B {
+    grid-column: 1 / span 7;
+    padding: 5px;
+    display: block;
+}
+
+#shkallaA {
+    grid-column: 2 / span 3;
+    display: block;
+    padding: 10px;
+}
+#shkallaB {
+    grid-column: 5 / span 3;
+    display: block;
+    padding: 10px;
+}
+#shkallaC {
+    grid-column: 2 / span 6;
+    display: block;
+    padding: 10px;
+}
 
 
 
 
+
+/*   - JA - */
 
 .tipologjiaA_JA {
     display: grid;
