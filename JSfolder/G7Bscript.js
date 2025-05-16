@@ -100,33 +100,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         }
-    });
-})
 
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = [
-        { btn: "tipBtnA", table: "tableA", hero: "hero-A" },
-        { btn: "tipBtnB", table: "tableB", hero: "hero-B" },
-        { btn: "tipBtnC", table: "tableC", hero: "hero-C" }
-    ];
+
     const displayImage = document.getElementById("display-image");
     const fullscreenContainer = document.getElementById("fullscreenContainer");
     const fullscreenImage = document.getElementById("fullscreenImage");
     const planContainer = document.getElementById("plan-container");
 
     // 📌 Buttons that trigger the image
-    document.querySelectorAll("button").forEach(button => {
+    document.querySelectorAll(".planBtn").forEach(button => {
         button.addEventListener("click", () => {
-            // Extract photo name from button.id
-            const match = button.id.match(/H[A-Z0-9]+$/);
-            if (!match) return;
 
-            const planName = match[0];
-            const imageSrc = `PlanetG7B/${planName}.webp`;
+            const imageSrc = `PlanetG7B/${button.id}.webp`;
 
             // Display the image in main view
             displayImage.src = imageSrc;
-
+            console.log(imageSrc);
             // Show the container if it was hidden
             planContainer.classList.remove("hidden");
         });
@@ -178,3 +167,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+})
