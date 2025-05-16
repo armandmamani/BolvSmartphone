@@ -18,6 +18,22 @@
     </h1>
 
     <div class="sidenav">
+        <div id="filter-container">
+            <!-- Typology Filter -->
+            <!-- Typology Dropdown -->
+            <select id="typologyFilter">
+                <option value="">Te gjitha tipologjite</option>
+                <option value="1+1">Apartamente 1+1</option>
+                <option value="2+1">Apartamente 2+1</option>
+                <option value="3+1">Apartamente 3+1</option>
+            </select>
+
+            <!-- Area Filter -->
+            <input type="number" id="areaFilter" placeholder="Siperfaqe maksimale (m²)">
+            <button id="filtAreaBtn" onclick="filterByArea()">Filter</button>
+
+        </div>
+
         <div class="tipolBlock">
             <div id="containerA">
                 <button class="tipBtn" id="tipBtnA" onclick="showTableA">TIPOLOGJIA A</button>
@@ -301,13 +317,13 @@
                 </div>
                 <div id="godB4">B-04</div>
                 <div class="divB4">
-                    <button class="planBtn" id="B4HB1">B4-01</button>
+                    <button class="planBtn" id="B4HB1">X</button>
                 </div>
                 <div class="divB4">
-                    <button class="planBtn" id="B4HB2">B4-02</button>
+                    <button class="planBtn" id="B4HB2">X</button>
                 </div>
                 <div class="divB4">
-                    <button class="planBtn" id="B4HB3">B4-03</button>
+                    <button class="planBtn" id="B4HB3">X</button>
                 </div>
                 <div class="divB4">
                     <button class="planBtn" id="B4HB4">B4-04</button>
@@ -357,7 +373,7 @@
                     <button class="planBtn" id="B6HB2">B6-02</button>
                 </div>
                 <div class="divB6">
-                    <button class="planBtn" id="B6HB3">B6-03</button>
+                    <button class="planBtn" id="B6HB3">X</button>
                 </div>
                 <div class="divB6">
                     <button class="planBtn" id="B6HB4">B6-04</button>
@@ -382,7 +398,7 @@
                     <button class="planBtn" id="B7HB2">B7-02</button>
                 </div>
                 <div class="divB7">
-                    <button class="planBtn" id="B7HB3">B7-03</button>
+                    <button class="planBtn" id="B7HB3">X</button>
                 </div>
                 <div class="divB7">
                     <button class="planBtn" id="B7HB4">B7-04</button>
@@ -418,13 +434,13 @@
                     <button class="planBtn" id="C1HC1">C1-01</button>
                 </div>
                 <div class="divC1">
-                    <button class="planBtn" id="C1HC2">C1-02</button>
+                    <button class="planBtn" id="C1HC2">X</button>
                 </div>
                 <div class="divC1">
-                    <button class="planBtn" id="C1HC3">C1-03</button>
+                    <button class="planBtn" id="C1HC3">X</button>
                 </div>
                 <div class="divC1">
-                    <button class="planBtn" id="C1HC4">C1-04</button>
+                    <button class="planBtn" id="C1HC4">X</button>
                 </div>
                 <div class="divC1">
                     <button class="planBtn" id="C1HC5">C1-05</button>

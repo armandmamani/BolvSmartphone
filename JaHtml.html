@@ -16,9 +16,23 @@
     <h1>
         PALASË - JA
     </h1>
-
+  
 
     <div class="sidenav">
+        <div id="filter-container">
+            <!-- Typology Filter -->
+            <!-- Typology Dropdown -->
+            <select id="typologyFilter">
+                <option value="">Te gjitha tipologjite</option>
+                <option value="1+1">Apartamente 1+1</option>
+                <option value="2+1">Apartamente 2+1</option>
+            </select>
+
+            <!-- Area Filter -->
+            <input type="number" id="areaFilter" placeholder="Siperfaqe maksimale (m²)">
+            <button id="filtAreaBtn" onclick="filterByArea()">Filter</button>
+
+        </div>
         <div class="tipolBlock">
             <div class="containerJA">
                 <button class="tipBtn" id="tipBtnA" onclick="showTableA">SEKTORI A</button>

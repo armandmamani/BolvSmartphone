@@ -20,6 +20,23 @@
     </h1>
 
     <div class="sidenav">
+        <div id="filter-container">
+            <!-- Typology Filter -->
+            <!-- Typology Dropdown -->
+            <select id="typologyFilter">
+                <option value="">Te gjitha tipologjite</option>
+                <option value="1+1">Apartamente 1+1</option>
+                <option value="2+1">Apartamente 2+1</option>
+                <option value="Studio">Studio</option>
+
+            </select>
+
+            <!-- Area Filter -->
+            <input type="number" id="areaFilter" placeholder="Siperfaqe maksimale (m²)">
+            <button id="filtAreaBtn" onclick="filterByArea()">Filter</button>
+
+        </div>
+
         <div class="tipolBlock">
             <div class="containerG7B">
                 <button class="tipBtn" id="tipBtnA" onclick="showTableA">SEASIDE IV</button>
@@ -83,7 +100,7 @@
                     <button class="planBtn" id="B33">B33</button>
                 </div>
                 <div class="divA6">
-                    <button class="planBtn" id="A34">A34</button>
+                    <button class="planBtn" id="B34">B34</button>
                 </div>
                 <div class="divA6">
                     <button class="planBtn" id="B36">B36</button>

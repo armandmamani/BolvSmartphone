@@ -59,6 +59,41 @@ function showApartmentDetails(apartmentId) {
 
 
 
+// --- Filter by Typology on dropdown change
+document.getElementById('typologyFilter').addEventListener('change', () => {
+  const selectedTypology = document.getElementById('typologyFilter').value;
+
+  apartmentDetails.forEach(apartment => {
+    const btn = document.getElementById(apartment.id);
+    if (!btn) return;
+
+    if (!selectedTypology || apartment.typology === selectedTypology) {
+       btn.style.display = 'inline-block';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+});
+
+// --- Filter by Area on button click
+function filterByArea() {
+  const maxArea = parseFloat(document.getElementById('areaFilter').value);
+      const input = document.getElementById('areaFilter');
+    const value = input.value.trim();
+    if (value==='') return; // Do nothing if no value
+
+
+  apartmentDetails.forEach(apartment => {
+    const btn = document.getElementById(apartment.id);
+    if (!btn) return;
+
+    if (!isNaN(maxArea) && apartment.totalArea <= maxArea) {
+      btn.style.display = 'inline-block';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
 
 
 document.addEventListener("DOMContentLoaded", function () {
