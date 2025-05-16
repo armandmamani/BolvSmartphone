@@ -155,8 +155,8 @@ h1 {
     transition: all .2s ease;
     font-family: "Source Sans Pro", sans-serif;
     font-size: 15px;
-    font-weight: 400;
-    color: var(--button-text);
+    font-weight: 600;
+    color: #3b0303;
     text-shadow: 0 1px #fff
 }
 
