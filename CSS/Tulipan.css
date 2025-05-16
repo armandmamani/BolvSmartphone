@@ -608,7 +608,9 @@ h1 {
 
 #shiturShkrimi, #rezervuarShkrimi {
     position: absolute;
-    top: 40vh;
+    top: 20vh;
+    left: -10vw;
+    transform: rotate(45deg);
     width: 100%;
     display: block;
     z-index: 110;
