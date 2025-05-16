@@ -103,7 +103,7 @@ h1 {
 
 .sidenav {
     height: 100%;
-    max-width: 90vw;
+    width: 100vw;
     text-align: center;
     position: fixed;
     top: 14vh;
