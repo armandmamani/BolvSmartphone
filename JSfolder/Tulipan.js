@@ -217,15 +217,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (button) {
             // Apply initial colors
             if (apartment.statusi === "Shitur") {
-                button.style.backgroundImage = "linear-gradient(to top, #ff9999)";
+                button.style.backgroundImage = "linear-gradient(to top, #FFB9B9 0%, #ff9999 80%, #FDFDFD 100%)";
                 button.style.color = "#A80000";
                 button.style.fontWeight = "bold";
-
             } else if (apartment.statusi === "Rezervuar") {
-                button.style.backgroundImage = "linear-gradient(to top, #FFC17D)";
+                button.style.backgroundImage = "linear-gradient(to top, #FFEBD1 0%, #ffC170 80%, #FDFDFD 100%)";
                 button.style.color = "red";
                 button.style.fontWeight = "bold";
-
             }
 
             // Add click event listener

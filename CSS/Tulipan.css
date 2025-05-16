@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #384637;
+    background-color: #7C0E0E;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position-x: 200px;
@@ -44,7 +44,7 @@ body {
     --button-border: #8F9092;
     --button-text: #606060;
     --highlight-bottom: 0 4px 3px 1px #FCFCFC;
-    --shadow-bottom: 0 6px 8px #D6D7D9;
+    --shadow-bottom: 0 6px 8px #b6b6b6;
     --shadow-top: 0 -4px 4px #CECFD1;
     --highlight-top: 0 -6px 4px #FEFEFE;
     --shadow-inset: inset 0 0 3px 0 #CECFD1;
@@ -75,26 +75,18 @@ body {
         box-sizing: border-box
 }
 
-.grid {
-max-width: 400px;
-margin: 0 auto;
-display: grid;
-grid-template-columns: 150px 150px 50px;
-align-items: center;
-justify-content: center;
-grid-gap: 40px 25px;
-    }
-
 
 /*Presentation page*/
 /* Global Styles */
 
 h1 {
-    display: inline-flex;
-    font-size: 1.5rem;
+    display: inline-block;
+    width:50%;
+    font-size: 2rem;
     color: var(--text-color);
-    text-align: right;
-    margin-top: 10px;
+    text-align: center;
+    margin-top: 3vh;
+    padding:10px;
 }
 
 @keyframes slideDown {
@@ -116,12 +108,11 @@ h1 {
     position: fixed;
     top: 14vh;
     left: 5vw;
-    background-color: rgba(220,220,220,0.6);
+    background-color: #f9a9a9;
     z-index: 4;
     overflow-x: hidden;
     overflow-y: auto;
     display: grid;
-
 }
 
 .tipolBlock {
@@ -129,7 +120,7 @@ h1 {
     max-width: 600px;
     height: min-content;
     color: rgba(56,70,55,1);
-    background-color: rgba(226,215,207,1);
+    background-color: #f9c9c9;
     margin-top: 0.5rem;
 }
 
@@ -215,7 +206,7 @@ h1 {
 }
 .dropdown {
     display: inline-flex;
-    width: 160px;
+    width: 140px;
     height: 40px;
     border-radius: 5px;
     background: transparent;
@@ -324,7 +315,7 @@ h1 {
     grid-template-columns: 80px 50px 50px 50px 50px 50px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -350,7 +341,7 @@ h1 {
     grid-template-columns: 80px 33px 33px 33px 33px 33px 33px 33px 33px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -381,7 +372,7 @@ h1 {
     grid-template-columns: 80px 33px 33px 33px 33px 33px 33px 33px 33px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -415,7 +406,7 @@ h1 {
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -456,7 +447,7 @@ h1 {
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -477,7 +468,7 @@ h1 {
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -497,7 +488,7 @@ h1 {
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -516,7 +507,7 @@ h1 {
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -528,7 +519,7 @@ h1 {
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
     grid-template-rows: 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
@@ -542,7 +533,7 @@ h1 {
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
     grid-template-rows: 40px 40px 40px 40px 20px;
-    background-color: var(--desert-sand);
+    background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
     padding: 1px;
