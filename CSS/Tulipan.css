@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #7C0E0E;
+    background-color: #e9a095;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position-x: 200px;
@@ -92,7 +92,7 @@ h1 {
     left: 3vw;
     display: inline-block;
     font-size: 3.5vh;
-    color: var(--text-color);
+    color: #4d0404;
     text-align: center;
     padding: 10px;
 }
@@ -283,7 +283,7 @@ h1 {
     padding: 0;
     border: none;
     background: rgb(255,27,0);
-    background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+    background: linear-gradient(0deg, rgba(215,27,40,1) 0%, rgba(201,75,52,1) 100%);
 }
 
     .tipBtn:hover {
@@ -319,9 +319,13 @@ h1 {
     }
 
 
+#tipBtnV {
+    background: linear-gradient(to top, var(--butter-cup) 10%, var(--secondary-gold) 100%);
+    color: black;
+}
+
+  
 /*   - Tulipan - */
-
-
 .tipologjiaA_Tul {
     display: grid;
     grid-template-columns: 80px 50px 50px 50px 50px 50px;

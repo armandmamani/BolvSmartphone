@@ -12,10 +12,6 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #fff;
-        color: #000;
-    }
 
     img, button, div, section {
         filter: none !important;
