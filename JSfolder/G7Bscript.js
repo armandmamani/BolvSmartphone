@@ -79,11 +79,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (button) {
             // Apply initial colors
             if (apartment.statusi === "Shitur") {
-                button.style.backgroundColor = "red";
-                button.style.color = "white";
+                button.style.backgroundImage = "linear-gradient(to top, #ff9999)";
+                button.style.color = "#A80000";
+                button.style.fontWeight = "bold";
             } else if (apartment.statusi === "Rezervuar") {
-                button.style.backgroundColor = "orange";
+                button.style.backgroundImage = "linear-gradient(to top, #FFC17D)";
                 button.style.color = "red";
+                button.style.fontWeight = "bold";
+
             }
 
             // Add click event listener
