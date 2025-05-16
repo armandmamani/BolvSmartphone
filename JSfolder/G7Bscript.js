@@ -163,6 +163,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // ✖️ Click outside image in plan-container → hide container
     planContainer.addEventListener("click", (event) => {
         if (!event.target.closest("#display-image")) {
+            document.body.style.transform = 'scale(1)';
+            document.body.style.transformOrigin = 'top left';
             planContainer.classList.add("hidden");
             document.getElementById("shiturShkrimi").classList.add("hidden");
             document.getElementById("rezervuarShkrimi").classList.add("hidden");
@@ -170,4 +172,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
 })
