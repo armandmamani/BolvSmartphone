@@ -317,7 +317,7 @@ document.querySelectorAll("button").forEach(button => {
         displayImage.src = imageSrc;
 
         // Show the container if it was hidden
-        planContainer.classList.remove("hidden");
+        planContainer.style.display = "block";
     });
 });
 
@@ -359,8 +359,8 @@ window.addEventListener("orientationchange", () => {
 
 // ✖️ Click outside image in plan-container → hide container
 planContainer.addEventListener("click", (event) => {
-    if (!event.target.closest("#display-image")) {
-        planContainer.classList.add("hidden");
+    if (!event.target.closest("#display-image")) 
+        planContainer.style.display = "none";
         document.getElementById("shiturShkrimi").classList.add("hidden");
         document.getElementById("rezervuarShkrimi").classList.add("hidden");
     }

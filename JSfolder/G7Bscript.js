@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Display the image in main vie"
             displayImage.src = imageSrc;
             // Sho" the container if it "as hidden
-            planContainer.classList.remove("hidden");
+                planContainer.style.display = "block";
         });
     });
 
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //  Click outside image in plan-container → hide container
     planContainer.addEventListener("click", (event) => {
         if (!event.target.closest("#display-image")) {
-            planContainer.classList.add("hidden");
+            planContainer.style.display = "none";
             document.getElementById("shiturShkrimi").classList.add("hidden");
             document.getElementById("rezervuarShkrimi").classList.add("hidden");
         }

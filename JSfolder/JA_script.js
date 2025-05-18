@@ -206,7 +206,10 @@ function showApartmentDetails(apartmentId) {
       //  document.getElementById('areaFloor1').textContent = details.Kati1Area;
     }
 }
+
+
 // --- Filter by Typology on dropdown change
+
 document.getElementById('typologyFilter').addEventListener('change', () => {
   const selectedTypology = document.getElementById('typologyFilter').value;
 
@@ -315,12 +318,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Extract photo name from button.id
 
                 const imageSrc = `Planet_JA/${button.id}_FULL-3.webp`;
-                console.log("Image source:", imageSrc); // Log the image source
                 // Display the image in main view
                 displayImage.src = imageSrc;
 
                 // Show the container if it was hidden
-                planContainer.classList.remove("hidden");
+                planContainer.style.display = "block";
             });
         });
 
@@ -363,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Click outside image in plan-container → hide container
         planContainer.addEventListener("click", (event) => {
             if (!event.target.closest("#display-image")) {
-                planContainer.classList.add("hidden");
+                planContainer.style.display = "none";
                 document.getElementById("shiturShkrimi").classList.add("hidden");
                 document.getElementById("rezervuarShkrimi").classList.add("hidden");
             }
