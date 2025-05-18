@@ -655,22 +655,38 @@ option {
     animation: fadeIn 1s ease-out forwards;
     z-index: 10;
 }
+
+    #plan-table tr:nth-child(odd) {
+        background-color: var(--accent-white);
+    }
 .aparttId {
-  width: 70%;
+    width: 70%;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 3px;
 }
 
 
 .vleraSip {
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 16px;
     text-align: right;
     width: 30%;
+    padding: 3px;
 }
 
-#aptId {
-    font-size: 25px;
-    font-weight: 700;
-    width: 60%;
+th {
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    height: auto;
+    padding: 10px;
+    color: var(--accent-white);
+    background-color: var(--drab-dark-brown);
+    animation: fadeIn 1s ease-out forwards;
+    z-index: 10;
 }
+
 
 #shiturShkrimi, #rezervuarShkrimi {
     position: absolute;

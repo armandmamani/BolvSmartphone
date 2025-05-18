@@ -363,9 +363,8 @@ planContainer.addEventListener("click", (event) => {
         planContainer.style.display = "none";
         document.getElementById("shiturShkrimi").classList.add("hidden");
         document.getElementById("rezervuarShkrimi").classList.add("hidden");
-    }
+    })
 });
 
-});
 
 
