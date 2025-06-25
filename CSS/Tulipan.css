@@ -547,7 +547,7 @@ option {
     display: grid;
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
     gap: 3px;
-    grid-template-rows: 40px 40px 40px 20px;
+    grid-template-rows: 40px 40px 40px 40px 20px;
     background-color: #faeaea;
     font-size: 15px;
     font-weight: 600;
