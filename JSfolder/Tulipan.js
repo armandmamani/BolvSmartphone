@@ -1,7 +1,5 @@
 ﻿
 
-
-
 const apartmentDetails = [ 
     { id: "A1HA1", Tipology: "1 + 1", building: "A1", floor: 0, NetArea: 72.48, ComonArea: 14.33, TotalArea: 86.81, GreenArea: 50.7, TerraceArea: 0, ParkingNumber: "BLLOKUAR", statusi: "Shitur", shenime: "TEKNOFIRE" },
     { id: "A1HA2", Tipology: "2 + 1", building: "A1", floor: 0, NetArea: 100.92, ComonArea: 19.95, TotalArea: 120.87, GreenArea: 81.4, TerraceArea: 25.9, ParkingNumber: "BLLOKUAR", statusi: "Shitur", shenime: "TEKNOFIRE" },
@@ -174,7 +172,6 @@ const apartmentDetails = [
     { id: "C8HC8", Tipology: "3 + 1", building: "C8", floor: 3, NetArea: 247.4, ComonArea: 26, TotalArea: 273, GreenArea: 0, TerraceArea: 89.1, ParkingNumber: "", statusi: "Per shitje", shenime: "" },
 
 ]
-
 
 function showApartmentDetails(apartmentId) {
     
