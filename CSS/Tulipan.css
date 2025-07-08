@@ -733,6 +733,7 @@ th {
     padding: 20px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
+    max-width: 600px;
     width: 90%;
     z-index: 1000;
 }
@@ -745,11 +746,14 @@ label {
     width: 50%;
     display: block;
     margin-top: 10px;
+    font: 300 18px arial, verdana;
 }
 
 input[type="number"], input[type="text"] {
     width: 30%;
     padding: 8px;
+    text-align: right;
+    font:500 18px arial, verdana;
     margin-top: 5px;
     box-sizing: border-box;
 }
@@ -764,6 +768,8 @@ input[type="number"], input[type="text"] {
     padding: 20px;
     overflow-y: auto;
     font-family: monospace;
+    max-width: 600px;
+    width: 100%;
     white-space: pre-wrap;
     z-index: 1001;
     display: none;

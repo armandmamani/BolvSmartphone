@@ -17,7 +17,7 @@
     <div id="priceForm">
         <div class="form-section">
             <label for="sector_select">Select Sector:</label>
-            <select id="sector_select" onchange="populateApartments()">
+            <select id="sector_select" style="font:400 18px arial; padding: 5px; background-color: #ddd"  onchange="populateApartments()">
                 <option value="">-- Select Sector --</option>
                 <option value="A">Sector A</option>
                 <option value="B">Sector B</option>
@@ -27,30 +27,30 @@
             </select>
 
             <label for="apartment_select">Select Apartment:</label>
-            <select id="apartment_select">
+            <select id="apartment_select" style="font: 400 18px arial; padding: 5px; background-color: #ddd" >
                 <option value="">-- Select Apartment --</option>
             </select>
 
-            <label>Price per m² - Net Area:</label>
-            <input type="number" id="price_net" placeholder="e.g. 1200" />
+            <label>Siperfaqe neto (€/m²):</label>
+            <input type="number" id="price_net" value="2800" />
 
-            <label>Price per m² - Common Area:</label>
-            <input type="number" id="price_common" placeholder="e.g. 800" />
+            <label>Siperfaqe e perbashket (€/m²):</label>
+            <input type="number" id="price_common" value="2800" />
 
-            <label>Price per m² - Veranda:</label>
-            <input type="number" id="price_terrace" placeholder="e.g. 600" />
+            <label>Veranda (€/m²):</label>
+            <input type="number" id="price_terrace" value="1400" />
 
-            <label>Price per m² - Plot (Oborri):</label>
-            <input type="number" id="price_plot" placeholder="e.g. 300" />
+            <label>Oborri (€/m²):</label>
+            <input type="number" id="price_plot" value="200" />
 
-            <label>Parking (fixed price):</label>
-            <input type="number" id="price_parking" placeholder="e.g. 5000" />
+            <label>Parking:</label>
+            <input type="number" id="price_parking" value="25000" />
 
-            <label>Pool (fixed price):</label>
-            <input type="number" id="price_pool" placeholder="e.g. 10000" />
+            <label>Pishina:</label>
+            <input type="number" id="price_pool" value="35000" />
 
             <label>Depo (€/m²):</label>
-            <input type="number" id="price_depo" placeholder="e.g. 400" />
+            <input type="number" id="price_depo" value="1200" />
 
             <button id="calculatorBtn" class="dropdown" onclick="calculateTotal()">Calculate</button>
         </div>
@@ -60,12 +60,12 @@
         <button class="close-result" onclick="closeResult()">Close</button>
         <h2 id="result_title"></h2>
         <table id="result_table" style="width: 100%; border-collapse: collapse; font-size: 16px;">
-            <thead>
-                <tr style="background-color: #c0c0c0;">
-                    <th style="text-align: left; padding: 10px; border: 1px solid #ccc;">Përshkrimi</th>
-                    <th style="text-align: right; padding: 10px; border: 1px solid #ccc;">Sipërfaqe / Njësi</th>
-                    <th style="text-align: right; padding: 10px; border: 1px solid #ccc;">Çmimi</th>
-                    <th style="text-align: right; padding: 10px; border: 1px solid #ccc;">Totali</th>
+            <thead style="font-size: 10px; background-color: red;">
+                <tr style="color: #000;">
+                    <th style="text-align: left; padding: 10px; border: 1px solid #888; font-size: 20px; color: #555; background-color: #ccc;">Përshkrimi</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 20px; color: #555; background-color: #ccc; ">Sipërfaqe</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 20px; color: #555; background-color: #ccc; ">Çmimi</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 20px; color: #555; background-color: #ccc; ">Totali</th>
                 </tr>
             </thead>
             <tbody id="result_body"> </tbody>
