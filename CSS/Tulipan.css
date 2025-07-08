@@ -726,3 +726,107 @@ th {
     height: auto;
     object-fit: contain;
 }
+#priceForm {
+    display: none;
+    position: absolute;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    width: 90%;
+    z-index: 1000;
+}
+
+.form-section {
+    margin-bottom: 15px;
+}
+
+label {
+    width: 50%;
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="number"], input[type="text"] {
+    width: 30%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.result {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    padding: 20px;
+    overflow-y: auto;
+    font-family: monospace;
+    white-space: pre-wrap;
+    z-index: 1001;
+    display: none;
+}
+
+.close-result {
+    background-color: #d32f2f;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+    width: 100%;
+}
+#result_title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    font-family: 'Apple Garamond', 'Arial Rounded MT';
+    color: #4d0404;
+    margin-bottom: 10px;
+}
+#result_content {
+    font-size: 20px;
+    line-height: 1.5;
+}
+#calculation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    background-color: #707070;
+    color: #fce9e9;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+    #calculation:hover {
+        background-color: transparent;
+        color: #4f0606;
+        box-shadow: none;
+    }
+
+#calculatorBtn {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    background-color: #f39c12;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
