@@ -459,9 +459,12 @@ function updateFormattedAll() {
         { input: 'price_common', display: 'formatted_price_common' },
         { input: 'price_terrace', display: 'formatted_price_terrace' },
         { input: 'price_plot', display: 'formatted_price_plot' },
+        { input: 'price_depo', display: 'formatted_price_depo' },
+    ];
+
+    const field = [
         { input: 'price_parking', display: 'formatted_price_parking' },
         { input: 'price_pool', display: 'formatted_price_pool' },
-        { input: 'price_depo', display: 'formatted_price_depo' },
     ];
 
     fields.forEach(field => {
@@ -470,6 +473,13 @@ function updateFormattedAll() {
         const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " €/m²" : '';
         document.getElementById(field.display).textContent = formatted;
     });
+    field.forEach(field => {
+        const inputEl = document.getElementById(field.input);
+        const value = parseFloat(inputEl.value);
+        const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " €" : '';
+        document.getElementById(field.display).textContent = formatted;
+    });
+
 }
 
 // Call once on page load to initialize
