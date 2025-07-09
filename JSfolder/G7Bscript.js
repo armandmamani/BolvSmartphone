@@ -209,3 +209,111 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 })
+document.getElementById("calculationG7B").addEventListener("click", function () {
+    document.getElementById("priceForm").style.display = "block";
+});
+
+function populateApartments() {
+    const sector = document.getElementById("sector_select").value;
+    const apartmentSelect = document.getElementById("apartment_select");
+    apartmentSelect.innerHTML = '<option value="">-- Zgjidh --</option>';
+
+    const filtered = apartmentDetails.filter(a => a.id.startsWith(sector));
+    filtered.forEach(a => {
+        const option = document.createElement("option");
+        option.value = a.id;
+        option.textContent = a.id;
+        apartmentSelect.appendChild(option);
+    });
+}
+
+function closeResult() {
+    document.getElementById("detailed_result").style.display = "none";
+    document.getElementById("priceForm").style.display = "none";
+
+}
+
+
+function calculateTotal() {
+    const apartmentID = document.getElementById("apartment_select").value;
+    const apt = apartmentDetails.find(a => a.id === apartmentID);
+
+    if (!apt) {
+        alert("Please select a valid apartment.");
+        return;
+    }
+
+    const priceNet = parseFloat(document.getElementById("price_net").value) || 0;
+    const priceCommon = parseFloat(document.getElementById("price_common").value) || 0;
+    const priceTerrace = parseFloat(document.getElementById("price_terrace").value) || 0;
+    const pricePlot = parseFloat(document.getElementById("price_plot").value) || 0;
+    const priceParking = parseFloat(document.getElementById("price_parking").value) || 0;
+    const pricePool = parseFloat(document.getElementById("price_pool").value) || 0;
+    const priceDepo = parseFloat(document.getElementById("price_depo").value) || 0;
+
+    const verandaTotal = apt.verandaArea + apt.greenTerraceArea + apt.usableTerrace;
+    const hasPool = apt.poolArea !== 0 ? 1 : 0;
+
+    const items = [
+        { label: "Sipërfaqe Neto", qty: apt.totalNetArea, unit: priceNet },
+        { label: "Sipër.e përbashkët", qty: apt.commonArea, unit: priceCommon },
+        { label: "Veranda", qty: verandaTotal, unit: priceTerrace },
+        { label: "Oborri", qty: apt.plotArea, unit: pricePlot },
+        { label: "Depo", qty: apt.storeArea, unit: priceDepo },
+        { label: "Parkim", qty: 1, unit: priceParking },
+        { label: "Pishine", qty: hasPool, unit: pricePool }
+    ];
+
+    const tbody = document.getElementById("result_body");
+    tbody.innerHTML = "";
+
+    let total = 0;
+    items.forEach(item => {
+        const subtotal = item.qty * item.unit;
+        total += subtotal;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+      <td style="padding: 5px; border: 1px solid #ccc;">${item.label}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">${item.qty.toFixed(2)}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">€${item.unit.toLocaleString(undefined, { minimumFractionDigits: 0 })}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">€${subtotal.toLocaleString(undefined, { minimumFractionDigits: 0 })}</td>
+    `;
+        tbody.appendChild(row);
+    });
+
+    document.getElementById("total_cell").textContent = `€${total.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
+    document.getElementById("result_title").textContent = `Apartamenti ${apt.id}`;
+    document.getElementById("detailed_result").style.display = "block";
+}
+function updateFormattedAll() {
+    const fields = [
+        { input: 'price_net', display: 'formatted_price_net' },
+        { input: 'price_common', display: 'formatted_price_common' },
+        { input: 'price_terrace', display: 'formatted_price_terrace' },
+        { input: 'price_plot', display: 'formatted_price_plot' },
+        { input: 'price_depo', display: 'formatted_price_depo' },
+    ];
+
+    const field = [
+        { input: 'price_parking', display: 'formatted_price_parking' },
+        { input: 'price_pool', display: 'formatted_price_pool' },
+    ];
+
+    fields.forEach(field => {
+        const inputEl = document.getElementById(field.input);
+        const value = parseFloat(inputEl.value);
+        const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " €/m²" : '';
+        document.getElementById(field.display).textContent = formatted;
+    });
+    field.forEach(field => {
+        const inputEl = document.getElementById(field.input);
+        const value = parseFloat(inputEl.value);
+        const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " €" : '';
+        document.getElementById(field.display).textContent = formatted;
+    });
+
+}
+
+// Call once on page load to initialize
+window.addEventListener("DOMContentLoaded", updateFormattedAll);

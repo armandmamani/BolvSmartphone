@@ -16,6 +16,7 @@ body {
     color: #384637;
     max-width: 600px;
     align-content: center;
+    text-align: center;
     margin: 0;
     padding: 0;
     overflow-y: hidden; /* Prevents horizontal scroll if content overflows slightly */
@@ -89,9 +90,9 @@ body {
 h1 {
     position: fixed;
     top: 4vh;
-    left: 3vw;
+    left: 35vw;
     display: inline-block;
-    font-size: 3.5vh;
+    font-size: 5vh;
     color: #4d0404;
     text-align: center;
     padding: 10px;
@@ -869,3 +870,55 @@ input[type="number"], input[type="text"] {
     color: #4f0606;
     box-shadow: none;
 }
+
+#calculatorBtnG7B {
+    float: right;
+    margin-top: 2vh;
+    background-color: #cc370e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: #000 2px 5px 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+    #calculatorBtnG7B:hover {
+        background-color: #facbcb;
+        color: #4f0606;
+        box-shadow: none;
+    }
+
+#calculationG7B {
+    display: flex;
+    position: fixed;
+    z-index: 1002;
+    top: 10px;
+    left: 2vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    background-color: #707070;
+    color: #fce9e9;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    border-radius: 5px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: #000 2px 5px 10px;
+}
+    #calculationG7B:hover {
+        background-color: #ddd;
+        color: #4f0606;
+        box-shadow: none;
+    }

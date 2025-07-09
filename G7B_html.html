@@ -11,13 +11,89 @@
 </head>
 <body>
 
+    <div class="dropdown">
+        <button id="calculationG7B" class="dropbtn">Calculator</button>
+    </div>
+    <div id="priceForm">
+        <div class="form-section">
+            <label for="sector_select">Sektori:</label>
+            <select id="sector_select" style="font:400 18px arial; padding: 5px; background-color: #eee" onchange="populateApartments()">
+                <option value="">-- Zgjidh --</option>
+                <option value="A">Sector A</option>
+                <option value="B">Sector B</option>
+                <option value="C">Sector C</option>
+            </select>
+
+            <label for="apartment_select">Apartamenti:</label>
+            <select id="apartment_select" style="font: 400 18px arial; padding: 5px; background-color: #eee">
+                <option value="">-- Zgjidh --</option>
+            </select>
+
+            <label>Sip. Neto (€/m²):</label>
+            <input type="number" id="price_net" value="2800" oninput="updateFormattedAll()" />
+            <div id="formatted_price_net" class="formatted-display"></div>
+
+            <label>Sip. Perb (€/m²):</label>
+            <input type="number" id="price_common" value="2800" oninput="updateFormattedAll()" />
+            <div id="formatted_price_common" class="formatted-display"></div>
+
+            <label>Veranda (€/m²):</label>
+            <input type="number" id="price_terrace" value="1500" oninput="updateFormattedAll()" />
+            <div id="formatted_price_terrace" class="formatted-display"></div>
+
+            <label>Oborri (€/m²):</label>
+            <input type="number" id="price_plot" value="600" oninput="updateFormattedAll()" />
+            <div id="formatted_price_plot" class="formatted-display"></div>
+
+            <label>Parking (€):</label>
+            <input type="number" id="price_parking" value="35000" oninput="updateFormattedAll()" />
+            <div id="formatted_price_parking" class="formatted-display"></div>
+
+            <label>Pishina (€):</label>
+            <input type="number" id="price_pool" value="0" oninput="updateFormattedAll()" />
+            <div id="formatted_price_pool" class="formatted-display"></div>
+
+            <label>Depo (€/m²):</label>
+            <input type="number" id="price_depo" value="2000" oninput="updateFormattedAll()" />
+            <div id="formatted_price_depo" class="formatted-display"></div>
+
+            <button id="calculatorBtnG7B" onclick="calculateTotal()">Calculate</button>
+        </div>
+    </div>
+
+    <div class="result" id="detailed_result">
+        <h2 id="result_title"></h2>
+        <table id="result_table">
+            <colgroup>
+                <col style="width: 30%;">
+                <col style="width: 20%;">
+                <col style="width: 20%;">
+                <col style="width: 30%;">
+            </colgroup>
+            <thead>
+                <tr style="width: 100vw">
+                    <th style="text-align: left; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd;">Përshkr</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Sip</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Çmimi</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Totali</th>
+                </tr>
+            </thead>
+            <tbody id="result_body"> </tbody>
+            <tfoot>
+                <tr style="font-weight: bold; font-size: 20px; background-color: #e9ffe9;">
+                    <td colspan="3" style="text-align: right; padding: 10px; border: 1px solid #ccc;">TOTALI</td>
+                    <td id="total_cell" style="text-align: right; padding: 10px; border: 1px solid #ccc;font-size: 20px"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <button class="close-result" onclick="closeResult()">Close</button>
+
+    </div>
 
     <div class="dropdown">
         <a class="dropbtn" href="index.html">&larr; Projekti</a>
     </div>
-    <h1>
-        SEASIDE IV - G7B  <br /> PERSONAL USE
-    </h1>
+    <h1>G7B</h1>
 
     <div class="sidenav">
         <div id="filter-container">
@@ -199,51 +275,51 @@
                 </thead>
                 <tbody>
 
-                <tr>
-                    <td class="aparttId">Shkalla</td>
-                    <td class="vleraSip" id="aptScale"></td>
-                </tr>
-                <tr>
-                    <td class="aparttId">Kati</td>
-                    <td class="vleraSip" id="aptFloor"></td>
-                </tr>
-                <tr>
-                    <td class="aparttId">Tipologjia</td>
-                    <td class="vleraSip" id="aptTypology"></td>
-                </tr>
+                    <tr>
+                        <td class="aparttId">Shkalla</td>
+                        <td class="vleraSip" id="aptScale"></td>
+                    </tr>
+                    <tr>
+                        <td class="aparttId">Kati</td>
+                        <td class="vleraSip" id="aptFloor"></td>
+                    </tr>
+                    <tr>
+                        <td class="aparttId">Tipologjia</td>
+                        <td class="vleraSip" id="aptTypology"></td>
+                    </tr>
 
-                <tr>
-                    <td class="aparttId">Siperfaqe Neto</td>
-                    <td class="vleraSip" id="aptNetArea"></td>
-                </tr>
-                <tr>
-                    <td class="aparttId">Siperfaqe e perbashket</td>
-                    <td class="vleraSip" id="aptComonArea"></td>
-                </tr>
-                <tr>
-                    <td class="aparttId">Siperfaqe totale</td>
-                    <td class="vleraSip" id="aptTotalArea"></td>
-                </tr>
-                <tr>
-                    <td class="aparttId">Siperfaqe verande</td>
-                    <td class="vleraSip" id="aptVerandaArea"></td>
-                </tr>
-                <tr>
-                    <td class="aparttId">Oborr i gjebert</td>
-                    <td class="vleraSip" id="aptgreenArea"></td>
-                </tr>
-                <tr>
-                    <td class="aparttId">Siperfaqe Depo</td>
-                    <td class="vleraSip" id="aptstoreArea"></td>
+                    <tr>
+                        <td class="aparttId">Siperfaqe Neto</td>
+                        <td class="vleraSip" id="aptNetArea"></td>
+                    </tr>
+                    <tr>
+                        <td class="aparttId">Siperfaqe e perbashket</td>
+                        <td class="vleraSip" id="aptComonArea"></td>
+                    </tr>
+                    <tr>
+                        <td class="aparttId">Siperfaqe totale</td>
+                        <td class="vleraSip" id="aptTotalArea"></td>
+                    </tr>
+                    <tr>
+                        <td class="aparttId">Siperfaqe verande</td>
+                        <td class="vleraSip" id="aptVerandaArea"></td>
+                    </tr>
+                    <tr>
+                        <td class="aparttId">Oborr i gjebert</td>
+                        <td class="vleraSip" id="aptgreenArea"></td>
+                    </tr>
+                    <tr>
+                        <td class="aparttId">Siperfaqe Depo</td>
+                        <td class="vleraSip" id="aptstoreArea"></td>
 
-                <tr>
-                    <td class="aparttId">Parking</td>
-                    <td class="vleraSip" id="aptParking"></td>
-                </tr>
-                <tr>
-                    <td class="aparttId">Statusi</td>
-                    <td class="vleraSip" id="status"></td>
-                </tr>
+                    <tr>
+                        <td class="aparttId">Parking</td>
+                        <td class="vleraSip" id="aptParking"></td>
+                    </tr>
+                    <tr>
+                        <td class="aparttId">Statusi</td>
+                        <td class="vleraSip" id="status"></td>
+                    </tr>
 
                 </tbody>
 
