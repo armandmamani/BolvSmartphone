@@ -743,10 +743,10 @@ th {
 }
 
 label {
-    width: 45%;
+    width: 40%;
     display: inline-block;
     margin-top: 10px;
-    font: 700 18px arial, verdana;
+    font: 700 16px arial, verdana;
 }
 
 input[type="number"], input[type="text"] {
@@ -763,7 +763,7 @@ input[type="number"], input[type="text"] {
     display: inline-block;
     padding: 2px;
     text-align: right;
-    font: 500 16px arial, verdana;
+    font: 500 15px arial, verdana;
     margin-top: 10px;
     box-sizing: border-box;
 }
