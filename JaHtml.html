@@ -16,9 +16,9 @@
     </div>
     <div id="priceForm">
         <div class="form-section">
-            <label for="sector_select">Select Sector:</label>
-            <select id="sector_select" style="font:400 18px arial; padding: 5px; background-color: #ddd"  onchange="populateApartments()">
-                <option value="">-- Select Sector --</option>
+            <label for="sector_select">Sektori:</label>
+            <select id="sector_select" style="font:400 18px arial; padding: 5px; background-color: #eee"  onchange="populateApartments()">
+                <option value="">-- Zgjidh --</option>
                 <option value="A">Sector A</option>
                 <option value="B">Sector B</option>
                 <option value="C">Sector C</option>
@@ -26,15 +26,15 @@
                 <option value="E">Sector E</option>
             </select>
 
-            <label for="apartment_select">Select Apartment:</label>
-            <select id="apartment_select" style="font: 400 18px arial; padding: 5px; background-color: #ddd" >
-                <option value="">-- Select Apartment --</option>
+            <label for="apartment_select">Apartamenti:</label>
+            <select id="apartment_select" style="font: 400 18px arial; padding: 5px; background-color: #eee" >
+                <option value="">-- Zgjidh --</option>
             </select>
 
-            <label>Siperfaqe neto (€/m²):</label>
+            <label>Siperfaqe Neto (€/m²):</label>
             <input type="number" id="price_net" value="2800" />
 
-            <label>Siperfaqe e perbashket (€/m²):</label>
+            <label>Sip. e perbash. (€/m²):</label>
             <input type="number" id="price_common" value="2800" />
 
             <label>Veranda (€/m²):</label>
@@ -51,9 +51,8 @@
 
             <label>Depo (€/m²):</label>
             <input type="number" id="price_depo" value="1200" />
-            <input type="number" id="price_depo" value="1200" />
 
-            <button id="calculatorBtn" class="dropdown" onclick="calculateTotal()">Calculate</button>
+            <button id="calculatorBtn"  onclick="calculateTotal()">Calculate</button>
         </div>
     </div>
 
@@ -67,16 +66,16 @@
                 <col style="width: 30%;">
             </colgroup>
             <thead>
-                <tr style="width: 100%">
-                    <th style="text-align: left; width: 30%; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd;">Përshkr</th>
-                    <th style="text-align: right; width: 20%; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Sip</th>
-                    <th style="text-align: right; width: 20%; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Çmimi</th>
-                    <th style="text-align: right; width: 30%; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Totali</th>
+                <tr style="width: 100vw">
+                    <th style="text-align: left; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd;">Përshkr</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Sip</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Çmimi</th>
+                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Totali</th>
                 </tr>
             </thead>
             <tbody id="result_body"> </tbody>
             <tfoot>
-                <tr style="font-weight: bold; font-size: 16px; background-color: #e9ffe9;">
+                <tr style="font-weight: bold; font-size: 20px; background-color: #e9ffe9;">
                     <td colspan="3" style="text-align: right; padding: 10px; border: 1px solid #ccc;">TOTALI</td>
                     <td id="total_cell" style="text-align: right; padding: 10px; border: 1px solid #ccc;font-size: 20px"></td>
                 </tr>

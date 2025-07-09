@@ -383,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function populateApartments() {
       const sector = document.getElementById("sector_select").value;
       const apartmentSelect = document.getElementById("apartment_select");
-      apartmentSelect.innerHTML = '<option value="">-- Select Apartment --</option>';
+      apartmentSelect.innerHTML = '<option value="">-- Zgjidh --</option>';
 
       const filtered = apartmentDetails.filter(a => a.id.startsWith("C" + sector));
       filtered.forEach(a => {
@@ -422,13 +422,13 @@ function calculateTotal() {
   const hasPool = apt.poolArea !== 0 ? 1 : 0;
 
   const items = [
-    { label: "Sipërfaqja Neto", qty: apt.totalNetArea, unit: priceNet },
-    { label: "Sipërfaqe e përbashkët", qty: apt.commonArea, unit: priceCommon },
-    { label: "Veranda (total)", qty: verandaTotal, unit: priceTerrace },
+    { label: "Sipërfaqe Neto", qty: apt.totalNetArea, unit: priceNet },
+    { label: "Sipër.e përbashkët", qty: apt.commonArea, unit: priceCommon },
+    { label: "Veranda", qty: verandaTotal, unit: priceTerrace },
     { label: "Oborri", qty: apt.plotArea, unit: pricePlot },
     { label: "Depo", qty: apt.storeArea, unit: priceDepo },
     { label: "Parkim", qty: 1, unit: priceParking },
-    { label: "Pishina", qty: hasPool, unit: pricePool }
+    { label: "Pishine", qty: hasPool, unit: pricePool }
   ];
 
   const tbody = document.getElementById("result_body");
@@ -441,15 +441,15 @@ function calculateTotal() {
 
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td style="padding: 8px; border: 1px solid #ccc;">${item.label}</td>
-      <td style="text-align: right; padding: 8px; border: 1px solid #ccc;">${item.qty.toFixed(2)}</td>
-      <td style="text-align: right; padding: 8px; border: 1px solid #ccc;">€${item.unit.toFixed(2)}</td>
-      <td style="text-align: right; padding: 8px; border: 1px solid #ccc;">€${subtotal.toFixed(2)}</td>
+      <td style="padding: 5px; border: 1px solid #ccc;">${item.label}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">${item.qty.toFixed(2)}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">€${item.unit.toFixed(0)}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">€${subtotal.toFixed(0)}</td>
     `;
     tbody.appendChild(row);
   });
 
-  document.getElementById("total_cell").textContent = `€${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+  document.getElementById("total_cell").textContent = `€${total.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
   document.getElementById("result_title").textContent = `Apartamenti ${apt.id}`;
   document.getElementById("detailed_result").style.display = "block";
 }
