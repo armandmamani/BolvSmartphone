@@ -17,7 +17,7 @@
     <div id="priceForm">
         <div class="form-section">
             <label for="sector_select">Sektori:</label>
-            <select id="sector_select" style="font:400 18px arial; padding: 5px; background-color: #eee"  onchange="populateApartments()">
+            <select id="sector_select" style="font:400 18px arial; padding: 5px; background-color: #eee" onchange="populateApartments()">
                 <option value="">-- Zgjidh --</option>
                 <option value="A">Sector A</option>
                 <option value="B">Sector B</option>
@@ -27,32 +27,39 @@
             </select>
 
             <label for="apartment_select">Apartamenti:</label>
-            <select id="apartment_select" style="font: 400 18px arial; padding: 5px; background-color: #eee" >
+            <select id="apartment_select" style="font: 400 18px arial; padding: 5px; background-color: #eee">
                 <option value="">-- Zgjidh --</option>
             </select>
 
             <label>Sip. Neto (€/m²):</label>
-            <input type="number" id="price_net" value="2800" />
+            <input type="number" id="price_net" value="2800" oninput="updateFormattedAll()" />
+            <div id="formatted_price_net" class="formatted-display"></div>
 
             <label>Sip. Perb. (€/m²):</label>
-            <input type="number" id="price_common" value="2800" />
+            <input type="number" id="price_common" value="2800" oninput="updateFormattedAll()" />
+            <div id="formatted_price_common" class="formatted-display"></div>
 
             <label>Veranda (€/m²):</label>
-            <input type="number" id="price_terrace" value="1400" />
+            <input type="number" id="price_terrace" value="1400" oninput="updateFormattedAll()" />
+            <div id="formatted_price_terrace" class="formatted-display"></div>
 
             <label>Oborri (€/m²):</label>
-            <input type="number" id="price_plot" value="200" />
+            <input type="number" id="price_plot" value="200" oninput="updateFormattedAll()" />
+            <div id="formatted_price_plot" class="formatted-display"></div>
 
             <label>Parking (€):</label>
-            <input type="number" id="price_parking" value="25000" />
+            <input type="number" id="price_parking" value="25000" oninput="updateFormattedAll()" />
+            <div id="formatted_price_parking" class="formatted-display"></div>
 
             <label>Pishina (€):</label>
-            <input type="number" id="price_pool" value="35000" />
+            <input type="number" id="price_pool" value="35000" oninput="updateFormattedAll()" />
+            <div id="formatted_price_pool" class="formatted-display"></div>
 
             <label>Depo (€/m²):</label>
-            <input type="number" id="price_depo" value="1200" />
+            <input type="number" id="price_depo" value="1200" oninput="updateFormattedAll()" />
+            <div id="formatted_price_depo" class="formatted-display"></div>
 
-            <button id="calculatorBtn"  onclick="calculateTotal()">Calculate</button>
+            <button id="calculatorBtn" onclick="calculateTotal()">Calculate</button>
         </div>
     </div>
 

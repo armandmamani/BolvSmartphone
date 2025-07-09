@@ -453,3 +453,24 @@ function calculateTotal() {
   document.getElementById("result_title").textContent = `Apartamenti ${apt.id}`;
   document.getElementById("detailed_result").style.display = "block";
 }
+function updateFormattedAll() {
+    const fields = [
+        { input: 'price_net', display: 'formatted_price_net' },
+        { input: 'price_common', display: 'formatted_price_common' },
+        { input: 'price_terrace', display: 'formatted_price_terrace' },
+        { input: 'price_plot', display: 'formatted_price_plot' },
+        { input: 'price_parking', display: 'formatted_price_parking' },
+        { input: 'price_pool', display: 'formatted_price_pool' },
+        { input: 'price_depo', display: 'formatted_price_depo' },
+    ];
+
+    fields.forEach(field => {
+        const inputEl = document.getElementById(field.input);
+        const value = parseFloat(inputEl.value);
+        const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " €/m²" : '';
+        document.getElementById(field.display).textContent = formatted;
+    });
+}
+
+// Call once on page load to initialize
+window.addEventListener("DOMContentLoaded", updateFormattedAll);

@@ -743,22 +743,30 @@ th {
 }
 
 label {
-    width: 50%;
+    width: 45%;
     display: inline-block;
     margin-top: 10px;
     font: 700 18px arial, verdana;
 }
 
 input[type="number"], input[type="text"] {
-    width: 30%;
+    width: 25%;
     display: inline-block;
-    padding: 8px;
+    padding: 2px;
     text-align: right;
     font: 500 18px arial, verdana;
-    margin-top: 5px;
+    margin-top: 10px;
     box-sizing: border-box;
 }
-
+.formatted-display {
+    width: 25%;
+    display: inline-block;
+    padding: 2px;
+    text-align: right;
+    font: 500 16px arial, verdana;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
 .result {
     position: fixed;
     top: 0;
@@ -770,7 +778,7 @@ input[type="number"], input[type="text"] {
     overflow-y: auto;
     font-family: monospace;
     max-width: 400px;
-    width:100vw;
+    width: 100vw;
     white-space: pre-line;
     z-index: 1001;
     display: none;
