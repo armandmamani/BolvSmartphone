@@ -730,11 +730,11 @@ th {
     display: none;
     position: absolute;
     margin-top: 20px;
+    margin-right: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
-    max-width: 500px;
-    width: 90%;
+    max-width: 450px;
     z-index: 1000;
 }
 
@@ -768,8 +768,7 @@ input[type="number"], input[type="text"] {
     padding: 20px;
     overflow-y: auto;
     font-family: monospace;
-    max-width: 600px;
-    width: 100%;
+    max-width: 400px;
     white-space: pre-wrap;
     z-index: 1001;
     display: none;
@@ -798,11 +797,17 @@ input[type="number"], input[type="text"] {
 }
 
 #result_table {
-    width: 450px;
-    font-size: 18px;
+    display:block;
+    max-width: 450px;
+    font-size: 16px;
     border-collapse: collapse;
-    margin-top: 20px;
+    font-size: 16px;
 }
+    #result_table th, #result_table td {
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
 #calculation {
     display: flex;
     position: fixed;
