@@ -811,8 +811,9 @@ input[type="number"], input[type="text"] {
 #calculation {
     display: flex;
     position: fixed;
+    z-index: 1000;
     top: 15px;
-    left:10px;
+    left: 10px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
