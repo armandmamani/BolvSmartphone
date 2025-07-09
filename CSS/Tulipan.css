@@ -769,6 +769,7 @@ input[type="number"], input[type="text"] {
     overflow-y: auto;
     font-family: monospace;
     max-width: 400px;
+    width:100vw;
     white-space: pre-wrap;
     z-index: 1001;
     display: none;
@@ -785,11 +786,10 @@ input[type="number"], input[type="text"] {
 }
 #result_title {
     text-align: center;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: bold;
     font-family: 'Apple Garamond', 'Arial Rounded MT';
     color: #4d0404;
-    margin-bottom: 10px;
 }
 #result_content {
     font-size: 18px;
@@ -807,6 +807,7 @@ input[type="number"], input[type="text"] {
         box-sizing: border-box;
         border: 1px solid #ddd;
         padding: 8px;
+        width: 95vw;
     }
 #calculation {
     display: flex;
