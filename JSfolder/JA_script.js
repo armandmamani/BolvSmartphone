@@ -290,6 +290,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.style.fontWeight = "bold";
 
             }
+           if (apartment.shenime === "Klienti") {
+                button.style.color = "#CC22CC";
+                button.style.fontWeight = "bold";
+}
 
             // Add click event listener
             button.addEventListener("click", function () {
