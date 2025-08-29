@@ -88,9 +88,7 @@ body {
 /* Global Styles */
 
 h1 {
-    position: fixed;
     top: 4vh;
-    left: 35vw;
     display: inline-block;
     font-size: 5vh;
     color: #4d0404;
@@ -109,7 +107,28 @@ h1 {
         transform: translateY(0);
     }
 }
-
+#projektiBtn {
+    position: fixed;
+    top: 8vh;
+    left: 2vw;
+    z-index: 5;
+    width: 140px;
+    height: 40px;
+    background: rgb(255,27,0);
+    background: linear-gradient(0deg, rgba(205,27,50,1) 0%, rgba(201,75,52,1) 100%);
+    color: #fce9e9;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+    transition: all 0.3s ease;
+}
 .sidenav {
     height: 90%;
     width: 100vw;
@@ -894,14 +913,10 @@ input[type="number"], input[type="text"] {
 
 #calculationG7B {
     display: flex;
-    position: fixed;
     z-index: 1002;
-    top: 10px;
-    left: 2vw;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
     background-color: #707070;
     color: #fce9e9;
     font-size: 16px;
