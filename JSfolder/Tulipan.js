@@ -399,7 +399,7 @@ function populateApartments() {
     } else if (sector === "B") {
         maxApartments = 8;
     } else if (sector === "C") {
-        maxApartments = 7;
+        maxApartments = 8;
     }
 
     // Populate apartments with encoded value
