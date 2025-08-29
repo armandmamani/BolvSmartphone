@@ -410,6 +410,11 @@ function populateApartments() {
         apartmentSelect.appendChild(opt);
     }
     }
+    function closeResult() {
+      document.getElementById("detailed_result").style.display = "none";
+            document.getElementById("priceForm").style.display = "none";
+
+    }
 
 function calculateTotal() {
     const apartmentID = document.getElementById("apartment_select").value;
