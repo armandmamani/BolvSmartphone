@@ -351,5 +351,144 @@ planContainer.addEventListener("click", (event) => {
     })
 });
 
+document.getElementById("calculationG7B").addEventListener("click", function () {
+    document.getElementById("priceForm").style.display = "block";
+});
+
+function populateBuildings() {
+    const sector = document.getElementById("sector_select").value;
+    const buildingSelect = document.getElementById("buildingselect");
+    const apartmentSelect = document.getElementById("apartment_select");
+
+    // Clear selects
+    buildingSelect.innerHTML = '<option value="">-- Zgjidh --</option>';
+    apartmentSelect.innerHTML = '<option value="">-- Zgjidh --</option>';
+
+    let maxBuildings = 0;
+
+    if (sector === "A") {
+        maxBuildings = 11;
+    } else if (sector === "B") {
+        maxBuildings = 7;
+    } else if (sector === "C") {
+        maxBuildings = 8;
+    }
+
+    // Populate buildings
+    for (let i = 1; i <= maxBuildings; i++) {
+        let opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = "Godina " + i;
+        buildingSelect.appendChild(opt);
+    }
+}
+
+function populateApartments() {
+    const sector = document.getElementById("sector_select").value;
+    const building = document.getElementById("buildingselect").value;
+    const apartmentSelect = document.getElementById("apartment_select");
+    // Reset apartments
+    apartmentSelect.innerHTML = '<option value="">-- Zgjidh --</option>';
+
+    if (!sector || !building) return; // only populate if both chosen
+
+    let maxApartments = 0;
+
+    if (sector === "A") {
+        maxApartments = 5;
+    } else if (sector === "B") {
+        maxApartments = 8;
+    } else if (sector === "C") {
+        maxApartments = 7;
+    }
+
+    // Populate apartments with encoded value
+    for (let i = 1; i <= maxApartments; i++) {
+        let opt = document.createElement("option");
+        opt.value = `${sector}${building}H${sector}${i}`;  // ex: A3HA5
+        opt.textContent = "Apartamenti " + i;
+        apartmentSelect.appendChild(opt);
+    }
+    }
+
+function calculateTotal() {
+    const apartmentID = document.getElementById("apartment_select").value;
+    const apt = apartmentDetails.find(a => a.id === apartmentID);
+
+    if (!apt) {
+        alert("Please select a valid apartment.");
+        return;
+    }
+
+    const priceNet = parseFloat(document.getElementById("price_net").value) || 0;
+    const priceCommon = parseFloat(document.getElementById("price_common").value) || 0;
+    const priceTerrace = parseFloat(document.getElementById("price_terrace").value) || 0;
+    const pricePlot = parseFloat(document.getElementById("price_plot").value) || 0;
+    const priceParking = parseFloat(document.getElementById("price_parking").value) || 0;
+    const pricePool = parseFloat(document.getElementById("price_pool").value) || 0;
+    const priceDepo = parseFloat(document.getElementById("price_depo").value) || 0;
+
+
+    const items = [
+        { label: "Sipërfaqe Neto", qty: apt.NetArea, unit: priceNet },
+        { label: "Sipër.e përbashkët", qty: apt.ComonArea, unit: priceCommon },
+        { label: "Veranda", qty: apt.TerraceArea, unit: priceTerrace },
+        { label: "Oborri", qty: apt.GreenArea, unit: pricePlot },
+        { label: "Parkim", qty: 2, unit: priceParking },
+    ];
+
+    const tbody = document.getElementById("result_body");
+    tbody.innerHTML = "";
+
+    let total = 0;
+    items.forEach(item => {
+        const subtotal = item.qty * item.unit;
+        total += subtotal;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+      <td style="padding: 5px; border: 1px solid #ccc;">${item.label}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">${item.qty.toFixed(2)}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">€${item.unit.toLocaleString(undefined, { minimumFractionDigits: 0 })}</td>
+      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">€${subtotal.toLocaleString(undefined, { minimumFractionDigits: 0 })}</td>
+    `;
+        tbody.appendChild(row);
+    });
+
+    document.getElementById("total_cell").textContent = `€${total.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
+    document.getElementById("result_title").textContent = `Apartamenti ${apt.id}`;
+    document.getElementById("detailed_result").style.display = "block";
+}
+function updateFormattedAll() {
+    const fields = [
+        { input: 'price_net', display: 'formatted_price_net' },
+        { input: 'price_common', display: 'formatted_price_common' },
+        { input: 'price_terrace', display: 'formatted_price_terrace' },
+        { input: 'price_plot', display: 'formatted_price_plot' },
+        { input: 'price_depo', display: 'formatted_price_depo' },
+    ];
+
+    const field = [
+        { input: 'price_parking', display: 'formatted_price_parking' },
+        { input: 'price_pool', display: 'formatted_price_pool' },
+    ];
+
+    fields.forEach(field => {
+        const inputEl = document.getElementById(field.input);
+        const value = parseFloat(inputEl.value);
+        const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " €/m²" : '';
+        document.getElementById(field.display).textContent = formatted;
+    });
+    field.forEach(field => {
+        const inputEl = document.getElementById(field.input);
+        const value = parseFloat(inputEl.value);
+        const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " €" : '';
+        document.getElementById(field.display).textContent = formatted;
+    });
+
+}
+
+// Call once on page load to initialize
+window.addEventListener("DOMContentLoaded", updateFormattedAll);
 
 
