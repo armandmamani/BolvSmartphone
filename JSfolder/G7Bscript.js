@@ -57,7 +57,7 @@ function showApartmentDetails(apartmentId) {
     }
 }
 
-
+console.log("Apartment details loaded:", apartmentDetails);
 
 // --- Filter by Typology on dropdown change
 document.getElementById('typologyFilter').addEventListener('change', () => {
@@ -251,17 +251,14 @@ function calculateTotal() {
     const pricePool = parseFloat(document.getElementById("price_pool").value) || 0;
     const priceDepo = parseFloat(document.getElementById("price_depo").value) || 0;
 
-    const verandaTotal = apt.verandaArea + apt.greenTerraceArea + apt.usableTerrace;
-    const hasPool = apt.poolArea !== 0 ? 1 : 0;
 
     const items = [
         { label: "Sipërfaqe Neto", qty: apt.totalNetArea, unit: priceNet },
         { label: "Sipër.e përbashkët", qty: apt.commonArea, unit: priceCommon },
-        { label: "Veranda", qty: verandaTotal, unit: priceTerrace },
+        { label: "Veranda", qty: apt.verandaArea, unit: priceTerrace },
         { label: "Oborri", qty: apt.plotArea, unit: pricePlot },
         { label: "Depo", qty: apt.storeArea, unit: priceDepo },
         { label: "Parkim", qty: 1, unit: priceParking },
-        { label: "Pishine", qty: hasPool, unit: pricePool }
     ];
 
     const tbody = document.getElementById("result_body");
