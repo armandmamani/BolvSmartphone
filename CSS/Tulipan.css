@@ -749,7 +749,7 @@ th {
 #priceForm {
     display: none;
     position: absolute;
-    margin-top: 20px;
+    margin-top: 10vh;
     margin-right: 20px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -896,7 +896,7 @@ input[type="number"], input[type="text"] {
     top: 4vh;
     left: 5vw;
     display: flex;
-    z-index: 1002;
+    z-index: 100;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -920,3 +920,18 @@ input[type="number"], input[type="text"] {
         color: #4f0606;
         box-shadow: none;
     }
+
+#calculatorBtnG7B {
+    float: right;
+    margin-top: 20px;
+    background-color: #cc370e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: #000 2px 5px 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
