@@ -109,8 +109,8 @@ h1 {
 }
 #projektiBtn {
     position: fixed;
-    top: 8vh;
-    left: 2vw;
+    top: 4vh;
+    right: 5vw;
     z-index: 5;
     width: 140px;
     height: 40px;
@@ -890,28 +890,11 @@ input[type="number"], input[type="text"] {
     box-shadow: none;
 }
 
-#calculatorBtnG7B {
-    float: right;
-    margin-top: 2vh;
-    background-color: #cc370e;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: #000 2px 5px 10px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-    #calculatorBtnG7B:hover {
-        background-color: #facbcb;
-        color: #4f0606;
-        box-shadow: none;
-    }
 
 #calculationG7B {
+    position: fixed;
+    top: 4vh;
+    left: 5vw;
     display: flex;
     z-index: 1002;
     flex-direction: column;
