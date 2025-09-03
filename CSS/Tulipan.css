@@ -109,7 +109,7 @@ h1 {
 }
 #projektiBtn {
     position: fixed;
-    top: 4vh;
+    top: 7vh;
     right: 5vw;
     z-index: 5;
     width: 140px;
@@ -893,7 +893,7 @@ input[type="number"], input[type="text"] {
 
 #calculationG7B {
     position: fixed;
-    top: 4vh;
+    top: 7vh;
     left: 5vw;
     display: flex;
     z-index: 100;
