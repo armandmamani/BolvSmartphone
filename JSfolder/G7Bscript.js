@@ -28,7 +28,7 @@ const apartmentDetails = [
     { id: "B36", floor: "3", typology: "1+1", scale: "B", totalNetArea: 68.8, commonArea: 29.19, totalArea: 97.99, verandaArea: 0, plotArea: 225.63, storeArea: 17.25, statusi: "Per shitje", shenime: "0" },
     { id: "B42", floor: "4", typology: "2+1", scale: "B", totalNetArea: 93.9, commonArea: 39.83, totalArea: 133.73, verandaArea: 0, plotArea: 0, storeArea: 26.08, statusi: "Shitur", shenime: "Lori" },
     { id: "B43", floor: "4", typology: "2+1", scale: "B", totalNetArea: 91.64, commonArea: 38.87, totalArea: 130.51, verandaArea: 0, plotArea: 0, storeArea: 15.85, statusi: "Shitur", shenime: "Nexhmi Aliaj" },
-    { id: "B51", floor: "5", typology: "2+1", scale: "B", totalNetArea: 91.92, commonArea: 38.99, totalArea: 130.91, verandaArea: 2.62, plotArea: 0, storeArea: 30.36, statusi: "Rezervuar", shenime: "Shoku i shefit" },
+    { id: "B51", floor: "5", typology: "2+1", scale: "B", totalNetArea: 91.92, commonArea: 38.99, totalArea: 130.91, verandaArea: 2.62, plotArea: 0, storeArea: 30.36, statusi: "Shitur", shenime: "Shefi" },
     { id: "B52", floor: "5", typology: "2+1", scale: "B", totalNetArea: 88.61, commonArea: 37.59, totalArea: 126.2, verandaArea: 4.45, plotArea: 0, storeArea: 25.57, statusi: "Shitur", shenime: "Skender Bedalli" },
 
 ]
