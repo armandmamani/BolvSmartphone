@@ -3603,8 +3603,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Add event listeners to buttons with class 'ApBtn'
   document.querySelectorAll(".planBtn").forEach(button => {
     button.addEventListener("click", function() {
-      console.log("Button clicked:", button.id); // Log the button ID
-
       const apartmentId = button.id; // Extract apartment ID from button ID
       if (apartmentId) {
         showApartmentDetails(apartmentId);
