@@ -810,8 +810,17 @@ input[type="number"], input[type="text"] {
     font-size: 16px;
     padding: 10px;
     border: none;
-    margin-bottom: 10px;
-    width: 100%;
+    margin-bottom: 5px;
+    float: left;0e37cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: #000 2px 5px 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 #result_title {
     text-align: center;
@@ -914,6 +923,7 @@ input[type="number"], input[type="text"] {
     text-align: center;
     text-decoration: none;
     box-shadow: #000 2px 5px 10px;
+
 }
     #calculationG7B:hover {
         background-color: #ddd;
@@ -924,7 +934,7 @@ input[type="number"], input[type="text"] {
 #calculatorBtnG7B {
     float: right;
     margin-top: 20px;
-    background-color: #cc370e;
+    background-color: #0e37cc;
     color: white;
     padding: 10px 20px;
     border: none;
