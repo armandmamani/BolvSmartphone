@@ -167,7 +167,7 @@
     { id:"C8HC5", Tipology: "2+1", building: "C8", floor: 2, NetArea: 124.04, ComonArea: 20.04, TotalArea: 144.08, GreenArea: 0, TerraceArea: 0, ParkingNumber: "P04 01 - 11, 12", statusi :"Shitur", shenime :"ARDJAN BASHA"  },
     { id:"C8HC6", Tipology: "1+1", building: "C8", floor: 2, NetArea: 67.99, ComonArea: 10.98, TotalArea: 78.97, GreenArea: 0, TerraceArea: 0, ParkingNumber: "P04 01 - 16", statusi :"Shitur", shenime :"Behar Sinakolli"  },
     { id:"C8HC7", Tipology: "2+1", building: "C8", floor: 2, NetArea: 108.98, ComonArea: 17.61, TotalArea: 126.59, GreenArea: 70, TerraceArea: 0, ParkingNumber: "", statusi :"Shitur", shenime :"Klaudia Ballari"  },
-    { id:"C8HC8", Tipology: "3+1", building: "C8", floor: 3, NetArea: 247.4, ComonArea: 26, TotalArea: 273, GreenArea: 0, TerraceArea: 89.1, ParkingNumber: "", statusi :"Per shitje", shenime :""  },
+    { id:"C8HC8", Tipology: "3+1", building: "C8", floor: 3, NetArea: 247.4, ComonArea: 26, TotalArea: 273, GreenArea: 0, TerraceArea: 89.1, ParkingNumber: "", statusi :"Rezervuar", shenime :"Forbes"  },
 
 ];
 
