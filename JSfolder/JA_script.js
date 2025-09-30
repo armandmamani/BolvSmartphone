@@ -414,8 +414,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
-    shenime: "0"
+   statusi: "Rezervuar", shenime: "Sanders Eng"
   },
   {
     id: "VI19",
@@ -462,9 +461,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
-    shenime: "0"
-  },
+statusi: "Rezervuar", shenime: "Sanders Eng"  },
   {
     id: "VI22",
     sector: "Villa",
@@ -486,9 +483,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
-    shenime: "0"
-  },
+statusi: "Rezervuar", shenime: "Sanders Eng"  },
   {
     id: "VI23",
     sector: "Villa",
@@ -510,9 +505,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
-    shenime: "0"
-  }
+statusi: "Rezervuar", shenime: "Forbes"  }
 ];
 
 function showApartmentDetails(apartmentId) {
