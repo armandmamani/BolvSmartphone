@@ -956,9 +956,9 @@ select {
 .filterBtn {
     background-color: #8e5f25;
     display: inline-flex;
-    width: 80px;
+    width: 60px;
     color: white;
-    font-size: 14px;
+    font-size: 12px;
     padding: 10px;
     border: none;
     margin-right: 10px;
