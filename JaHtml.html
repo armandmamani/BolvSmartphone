@@ -24,96 +24,97 @@
             </div>
         </div>
 
-            <div id="apSelectForm">
-                <div class="form-section">
-                    <div class="selctorContainer">
-                        <label for="sector_select">Sektori:</label>
-                        <select id="sector_select" style="font:400 14px arial; padding: 5px; background-color: #eee;" onchange="populateApartments()">
-                            <option value="">-- Zgjidh --</option>
-                            <option value="A">Sektor A</option>
-                            <option value="B">Sektor B</option>
-                            <option value="C">Sektor C</option>
-                            <option value="D">Sektor D</option>
-                            <option value="E">Sektor E</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="apartment_select">Apartamenti:</label>
-                        <select id="apartment_select" style="font: 400 14px arial; padding: 5px; background-color: #eee;">
-                            <option value="">-- Zgjidh --</option>
-                        </select>
-                    </div>
-                    <div id="ApartSelectBtn">
-                        <button class="close-result dropbtn" onclick="closeResult()">Mbyll</button>
-                        <button class="close-result dropbtn" id="calculatorBtn" onclick="calculateTotal()">Llogarit</button>
-                    </div>
-                        </div>
-                <div class="result" id="detailed_result">
-                    <h2 id="result_title"></h2>
-                    <table id="result_table">
-                        <colgroup>
-                            <col style="width: 30%;">
-                            <col style="width: 20%;">
-                            <col style="width: 20%;">
-                            <col style="width: 30%;">
-                        </colgroup>
-                        <thead>
-                            <tr style="width: 100vw">
-                                <th style="text-align: left; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd;">Përshkr</th>
-                                <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Sip</th>
-                                <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Çmimi</th>
-                                <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Totali</th>
-                            </tr>
-                        </thead>
-                        <tbody id="result_body"> </tbody>
-                        <tfoot>
-                            <tr style="font-weight: bold; font-size: 20px; background-color: #e9ffe9;">
-                                <td colspan="3" style="text-align: right; padding: 10px; border: 1px solid #ccc;">TOTALI</td>
-                                <td id="total_cell" style="text-align: right; padding: 10px; border: 1px solid #ccc;font-size: 20px"></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <button class="close-result" onclick="closeResult()">Close</button>
+        <div id="apSelectForm">
+            <div class="filterContainer" id="priceForm">
+                <!-- PRICE FORM -->
 
+                <h3>Cmimet</h3>
+                <label>Sip. Neto (€/m²):</label>
+                <input type="number" id="price_net" value="2800" oninput="updateFormattedAll()" />
+                <div id="formatted_price_net" class="formatted-display"></div>
+
+                <label>Sip. Perb (€/m²):</label>
+                <input type="number" id="price_common" value="2800" oninput="updateFormattedAll()" />
+                <div id="formatted_price_common" class="formatted-display"></div>
+
+                <label>Veranda (€/m²):</label>
+                <input type="number" id="price_terrace" value="1400" oninput="updateFormattedAll()" />
+                <div id="formatted_price_terrace" class="formatted-display"></div>
+
+                <label>Oborri (€/m²):</label>
+                <input type="number" id="price_plot" value="200" oninput="updateFormattedAll()" />
+                <div id="formatted_price_plot" class="formatted-display"></div>
+
+                <label>Parking (€):</label>
+                <input type="number" id="price_parking" value="25000" oninput="updateFormattedAll()" />
+                <div id="formatted_price_parking" class="formatted-display"></div>
+
+                <label>Pishina (€):</label>
+                <input type="number" id="price_pool" value="35000" oninput="updateFormattedAll()" />
+                <div id="formatted_price_pool" class="formatted-display"></div>
+
+                <label>Depo (€/m²):</label>
+                <input type="number" id="price_depo" value="1200" oninput="updateFormattedAll()" />
+                <div id="formatted_price_depo" class="formatted-display"></div>
+            </div>
+            <div class="form-section">
+                <div class="selctorContainer">
+                    <label for="sector_select">Sektori:</label>
+                    <select id="sector_select" style="font:400 14px arial; padding: 5px; background-color: #eee;" onchange="populateApartments()">
+                        <option value="">-- Zgjidh --</option>
+                        <option value="A">Sektor A</option>
+                        <option value="B">Sektor B</option>
+                        <option value="C">Sektor C</option>
+                        <option value="D">Sektor D</option>
+                        <option value="E">Sektor E</option>
+                    </select>
                 </div>
-
+                <div>
+                    <label for="apartment_select">Apartamenti:</label>
+                    <select id="apartment_select" style="font: 400 14px arial; padding: 5px; background-color: #eee;">
+                        <option value="">-- Zgjidh --</option>
+                    </select>
+                </div>
+                <div id="ApartSelectBtn">
+                    <button class="close-result dropbtn" onclick="closeResult()">Mbyll</button>
+                    <button class="close-result dropbtn" id="calculatorBtn" onclick="calculateTotal()">Llogarit</button>
+                </div>
+            </div>
+            <div class="result" id="detailed_result">
+                <h2 id="result_title"></h2>
+                <table id="result_table">
+                    <colgroup>
+                        <col style="width: 30%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 30%;">
+                    </colgroup>
+                    <thead>
+                        <tr style="width: 100vw">
+                            <th style="text-align: left; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd;">Përshkr</th>
+                            <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Sip</th>
+                            <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Çmimi</th>
+                            <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Totali</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result_body"> </tbody>
+                    <tfoot>
+                        <tr style="font-weight: bold; font-size: 20px; background-color: #e9ffe9;">
+                            <td colspan="3" style="text-align: right; padding: 10px; border: 1px solid #ccc;">TOTALI</td>
+                            <td id="total_cell" style="text-align: right; padding: 10px; border: 1px solid #ccc;font-size: 20px"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button class="close-result" onclick="closeResult()">Close</button>
 
             </div>
+
+
+        </div>
             <!-- FILTER FORM -->
             <div class="filterContainer" id="filterForm">
                 <div id="pricesForm">
-                    <div class="filterContainer" id="priceForm">
-                        <!-- PRICE FORM -->
-
-                        <h3>Cmimet</h3>
-                        <label>Sip. Neto (€/m²):</label>
-                        <input type="number" id="price_net" value="2800" oninput="updateFormattedAll()" />
-                        <div id="formatted_price_net" class="formatted-display"></div>
-
-                        <label>Sip. Perb (€/m²):</label>
-                        <input type="number" id="price_common" value="2800" oninput="updateFormattedAll()" />
-                        <div id="formatted_price_common" class="formatted-display"></div>
-
-                        <label>Veranda (€/m²):</label>
-                        <input type="number" id="price_terrace" value="1400" oninput="updateFormattedAll()" />
-                        <div id="formatted_price_terrace" class="formatted-display"></div>
-
-                        <label>Oborri (€/m²):</label>
-                        <input type="number" id="price_plot" value="200" oninput="updateFormattedAll()" />
-                        <div id="formatted_price_plot" class="formatted-display"></div>
-
-                        <label>Parking (€):</label>
-                        <input type="number" id="price_parking" value="25000" oninput="updateFormattedAll()" />
-                        <div id="formatted_price_parking" class="formatted-display"></div>
-
-                        <label>Pishina (€):</label>
-                        <input type="number" id="price_pool" value="35000" oninput="updateFormattedAll()" />
-                        <div id="formatted_price_pool" class="formatted-display"></div>
-
-                        <label>Depo (€/m²):</label>
-                        <input type="number" id="price_depo" value="1200" oninput="updateFormattedAll()" />
-                        <div id="formatted_price_depo" class="formatted-display"></div>
-                    </div>
+                  
                     <div class="filterContainer" id="priceForm">
 
                         <h3>Kriteret</h3>

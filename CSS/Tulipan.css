@@ -834,13 +834,12 @@ th {
     display: none;
     position: absolute;
     top: 5vh;
-    left: 10vh;
-    right: 20px;
+    right: 0;
     padding: 20px;
     text-align: left;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
-    max-width: 350px;
+    max-width: 450px;
     z-index: 1000;
 }
 
