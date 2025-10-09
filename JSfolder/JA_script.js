@@ -198,7 +198,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
+    statusi: "Per Shitje",
     shenime: "0"
   },
   {
@@ -222,7 +222,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
+    statusi: "Per Shitje",
     shenime: "0"
   },
   {
@@ -270,7 +270,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
+    statusi: "Per Shitje",
     shenime: "0"
   },
   {
@@ -318,7 +318,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
+    statusi: "Per Shitje",
     shenime: "0"
   },
   {
@@ -342,7 +342,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
+    statusi: "Per Shitje",
     shenime: "0"
   },
   {
@@ -366,7 +366,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
+    statusi: "Per Shitje",
     shenime: "0"
   },
   {
@@ -390,7 +390,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
+    statusi: "Per Shitje",
     shenime: "0"
   },
   {
@@ -437,7 +437,7 @@ const apartmentDetails = [
     usableTerrace: 0,
     storeArea: 8.72,
     parking: 1,
-    statusi: "Per shitje",
+    statusi: "Per Shitje",
     shenime: "0"
   },
   {
@@ -542,55 +542,60 @@ function showApartmentDetails(apartmentId) {
   }
 }
 
-// --- Filter by Typology on dropdown change
 
-document.getElementById("typologyFilter").addEventListener("change", () => {
-  const selectedTypology = document.getElementById("typologyFilter").value;
 
-  apartmentDetails.forEach(apartment => {
-    const btn = document.getElementById(apartment.id);
-    if (!btn) return;
+// --- Calculate Apartment Price ---
+function calculatePrice(ap) {
+  const priceNet = parseFloat(document.getElementById("price_net").value);
+  const priceCommon = parseFloat(document.getElementById("price_common").value);
+  const priceTerrace = parseFloat(document.getElementById("price_terrace").value);
+  const pricePlot = parseFloat(document.getElementById("price_plot").value);
+  const priceParking = parseFloat(document.getElementById("price_parking").value);
+  const pricePool = parseFloat(document.getElementById("price_pool").value);
+  const priceDepo = parseFloat(document.getElementById("price_depo").value);
 
-    if (!selectedTypology || apartment.typology === selectedTypology) {
-      btn.style.display = "inline-block";
-    } else {
-      btn.style.display = "none";
-    }
-  });
-});
+  let totalPrice =
+    ap.netArea * priceNet +
+    ap.commonArea * priceCommon +
+    ap.verandaArea * priceTerrace +
+    ap.plotArea * pricePlot +
+    ap.storeArea * priceDepo;
 
-// --- Filter by Area on button click
-function filterByArea() {
-  const maxArea = parseFloat(document.getElementById("areaFilter").value);
-  const input = document.getElementById("areaFilter");
-  const value = input.value.trim();
-  if (value === "") return; // Do nothing if no value
+  if (ap.poolArea > 0) totalPrice += pricePool;
+  if (ap.aptParking) totalPrice += priceParking;
 
-  apartmentDetails.forEach(apartment => {
-    const btn = document.getElementById(apartment.id);
-    if (!btn) return;
+  return totalPrice;
+}
 
-    if (!isNaN(maxArea) && apartment.totalArea <= maxArea) {
-      btn.style.display = "inline-block";
-    } else {
-      btn.style.display = "none";
-    }
+// --- Apply Filter ---
+function applyFilter() {
+  const avail = document.getElementById("filter_availability").value;
+  const typo = document.getElementById("filter_typology").value;
+  const hasPool = document.getElementById("filter_pool").value;
+  const minArea = parseFloat(document.getElementById("filter_minArea").value) || 0;
+  const maxArea = parseFloat(document.getElementById("filter_maxArea").value) || Infinity;
+  const minPrice = parseFloat(document.getElementById("filter_minPrice").value) || 0;
+  const maxPrice = parseFloat(document.getElementById("filter_maxPrice").value) || Infinity;
+
+  apartmentDetails.forEach(ap => {
+    const price = calculatePrice(ap);
+    const show =
+      (avail === "" || ap.statusi === avail) &&
+      (typo === "" || ap.typology === typo) &&
+      (hasPool === "" || (hasPool === "yes" && ap.poolArea > 0) || (hasPool === "no" && ap.poolArea === 0)) &&
+      ap.totalArea >= minArea && ap.totalArea <= maxArea &&
+      price >= minPrice && price <= maxPrice;
+    document.getElementById(ap.id).classList.toggle("hidden", !show);
+          console.log(ap.id, price);
+    document.getElementById("filterForm").style.display = "none";
   });
 }
 
-// --- Reset all buttons when clicking inside area textbox
-document.getElementById("areaFilter").addEventListener("click", () => {
-  const input = document.getElementById("areaFilter");
-  const value = input.value.trim();
-
-  if (value === "") return; // Do nothing if no value
-
-  // Reset visibility of all apartment buttons
-  apartmentDetails.forEach(apartment => {
-    const btn = document.getElementById(apartment.id);
-    if (btn) btn.style.display = "inline-block";
-  });
-});
+// --- Reset Filter ---
+function resetFilter() {
+  document.querySelectorAll("#filterForm select, #filterForm input").forEach(el => el.value = "");
+  document.querySelectorAll(".planBtn").forEach(btn => btn.classList.remove("hidden"));
+}
 
 document.addEventListener("DOMContentLoaded", function() {
   // Add event listeners to buttons with class 'ApBtn'
@@ -707,8 +712,22 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 document.getElementById("calculation").addEventListener("click", function() {
-  document.getElementById("priceForm").style.display = "block";
+ const form =  document.getElementById("filterForm");
+  if (form.style.display === "block") {
+  form.style.display = "none";
+} else {
+  form.style.display = "block";
+}
+
+
+
 });
+
+document.getElementById("AptSelectBtn").addEventListener("click", function() {
+  document.getElementById("apSelectForm").style.display = "block";
+});
+
+
 
 function populateApartments() {
   const sector = document.getElementById("sector_select").value;
@@ -726,13 +745,15 @@ function populateApartments() {
 
 function closeResult() {
   document.getElementById("detailed_result").style.display = "none";
-  document.getElementById("priceForm").style.display = "none";
+  document.getElementById("apSelectForm").style.display = "none";
+  document.getElementById("filterForm").style.display = "none";
+
 }
 
 function calculateTotal() {
   const apartmentID = document.getElementById("apartment_select").value;
   const apt = apartmentDetails.find(a => a.id === apartmentID);
-
+  console.log(apt);
   if (!apt) {
     alert("Please select a valid apartment.");
     return;
@@ -798,6 +819,8 @@ function calculateTotal() {
   )}`;
   document.getElementById("result_title").textContent = `Apartamenti ${apt.id}`;
   document.getElementById("detailed_result").style.display = "block";
+    console.log( document.getElementById("detailed_result").style.display);
+
 }
 function updateFormattedAll() {
   const fields = [

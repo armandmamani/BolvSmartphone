@@ -96,6 +96,13 @@ h1 {
     padding: 10px;
 }
 
+h4 {
+    font-size: 1.5vh;
+    color: #4d0404;
+    text-align: left;
+    padding: 10px;
+}
+
 @keyframes slideDown {
     from {
         opacity:0;
@@ -288,18 +295,26 @@ h1 {
         width: 100%;
         transition: 800ms ease all;
     }
+
+.filterContainer {
+    display: block;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    max-width: 450px;
+    margin-top: 20px;
+}
+
 #filter-container {
-    display: inline-flex;
-    width: 100%;
-    height: 40px;
+    display: inline-block;
+    width: 50%;
     background: transparent;
     transition: all 0.3s ease;
     box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
     border: none;
 }
-#typologyFilter {
-    display: block;
+#typologyFilter, #poolFilter {
+    display: flex;
     background-image: linear-gradient(to top, var(--button-gradient));
     color: #000;
     font-size: 14px;
@@ -310,10 +325,11 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     text-decoration: none;
+    width: 30vw;
 }
 option {
     background-color: transparent;
-    color: #000;
+    color: #222;
     font-size: 14px;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
@@ -726,7 +742,22 @@ th {
 .hidden {
     display: none !important;
 }
-
+#detailed_result {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(c, c, c, 0.8);
+    padding: 20px;
+    overflow-y: auto;
+    font-family: monospace;
+    max-width: 600px;
+    width: 100vw;
+    white-space: pre-line;
+    z-index: 10000;
+}
 #fullscreenContainer {
     position: fixed;
     top: 0;
@@ -746,7 +777,8 @@ th {
     height: auto;
     object-fit: contain;
 }
-#priceForm {
+
+#filterForm {
     display: none;
     position: absolute;
     margin-top: 10vh;
@@ -755,6 +787,31 @@ th {
     border: 1px solid #ccc;
     background-color: #f9f9f9;
     max-width: 450px;
+    z-index: 1000;
+}
+
+#priceForm {
+    margin-top: 3vh;
+    margin-right: 20px;
+    padding: 20px;
+    border:2px solid #ccc;
+    background-color: #f9f9f9;
+    max-width: 450px;
+    z-index: 1000;
+}
+
+
+#apSelectForm {
+    display: none;
+    position: absolute;
+    margin-top: 10vh;
+    margin-left: 10vh;
+    margin-right: 20px;
+    padding: 20px;
+    text-align: left;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    max-width: 350px;
     z-index: 1000;
 }
 
@@ -805,23 +862,47 @@ input[type="number"], input[type="text"] {
 }
 
 .close-result {
-    background-color: #d32f2f;
+    background-color: #999;
+    display: inline-flex;
+    width: 80px;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     padding: 10px;
     border: none;
-    margin-bottom: 5px;
-    float: left;0e37cc;
-    color: white;
-    padding: 10px 20px;
-    border: none;
+    float: left;
+    position: relative;
+    top: 20px;
     border-radius: 5px;
     box-shadow: #000 2px 5px 10px;
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
 }
+
+.filterBtn {
+    background-color: #8e5f25;
+    display: inline-flex;
+    width: 80px;
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+    border: none;
+    margin-right: 10px;
+    float: right;
+    position: relative;
+    top: 20px;
+    border-radius: 5px;
+    box-shadow: #000 2px 5px 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+#filterBtn {
+    background-color: #741734;
+}
+
+
 #result_title {
     text-align: center;
     font-size: 36px;
@@ -878,6 +959,40 @@ input[type="number"], input[type="text"] {
         color: #4f0606;
         box-shadow: none;
     }
+#AptSelectBtn {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    top: 10px;
+    left: 180px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    background-color: #707070;
+    color: #fce9e9;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    border-radius: 5px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    width: 130px;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: #000 2px 5px 10px;
+
+
+
+}
+
+#AptSelectBtn:hover {
+    background-color: #ddd;
+    color: #4f0606;
+    box-shadow: none;
+}
 
 #calculatorBtn {
     float: right;

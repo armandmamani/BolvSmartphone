@@ -12,9 +12,13 @@
 <body>
 
     <div class="dropdown">
-        <button id="calculation" class="dropbtn">Open Calculator</button>
+        <button id="calculation" class="dropbtn">Open Filter</button>
+        <button id="AptSelectBtn" class="dropbtn">Calculator</button>
     </div>
-    <div id="priceForm">
+
+
+
+    <div id="apSelectForm">
         <div class="form-section">
             <label for="sector_select">Sektori:</label>
             <select id="sector_select" style="font:400 18px arial; padding: 5px; background-color: #eee" onchange="populateApartments()">
@@ -30,66 +34,129 @@
             <select id="apartment_select" style="font: 400 18px arial; padding: 5px; background-color: #eee">
                 <option value="">-- Zgjidh --</option>
             </select>
-
-            <label>Sip. Neto (€/m²):</label>
-            <input type="number" id="price_net" value="2800" oninput="updateFormattedAll()" />
-            <div id="formatted_price_net" class="formatted-display"></div>
-
-            <label>Sip. Perb (€/m²):</label>
-            <input type="number" id="price_common" value="2800" oninput="updateFormattedAll()" />
-            <div id="formatted_price_common" class="formatted-display"></div>
-
-            <label>Veranda (€/m²):</label>
-            <input type="number" id="price_terrace" value="1400" oninput="updateFormattedAll()" />
-            <div id="formatted_price_terrace" class="formatted-display"></div>
-
-            <label>Oborri (€/m²):</label>
-            <input type="number" id="price_plot" value="200" oninput="updateFormattedAll()" />
-            <div id="formatted_price_plot" class="formatted-display"></div>
-
-            <label>Parking (€):</label>
-            <input type="number" id="price_parking" value="25000" oninput="updateFormattedAll()" />
-            <div id="formatted_price_parking" class="formatted-display"></div>
-
-            <label>Pishina (€):</label>
-            <input type="number" id="price_pool" value="35000" oninput="updateFormattedAll()" />
-            <div id="formatted_price_pool" class="formatted-display"></div>
-
-            <label>Depo (€/m²):</label>
-            <input type="number" id="price_depo" value="1200" oninput="updateFormattedAll()" />
-            <div id="formatted_price_depo" class="formatted-display"></div>
-
             <button id="calculatorBtn" onclick="calculateTotal()">Calculate</button>
+            <button class="close-result" onclick="closeResult()">Close</button>
+
         </div>
+        <div class="result" id="detailed_result">
+            <h2 id="result_title"></h2>
+            <table id="result_table">
+                <colgroup>
+                    <col style="width: 30%;">
+                    <col style="width: 20%;">
+                    <col style="width: 20%;">
+                    <col style="width: 30%;">
+                </colgroup>
+                <thead>
+                    <tr style="width: 100vw">
+                        <th style="text-align: left; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd;">Përshkr</th>
+                        <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Sip</th>
+                        <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Çmimi</th>
+                        <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Totali</th>
+                    </tr>
+                </thead>
+                <tbody id="result_body"> </tbody>
+                <tfoot>
+                    <tr style="font-weight: bold; font-size: 20px; background-color: #e9ffe9;">
+                        <td colspan="3" style="text-align: right; padding: 10px; border: 1px solid #ccc;">TOTALI</td>
+                        <td id="total_cell" style="text-align: right; padding: 10px; border: 1px solid #ccc;font-size: 20px"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button class="close-result" onclick="closeResult()">Close</button>
+
+        </div>
+
+
     </div>
+    <!-- FILTER FORM -->
+    <div class="filterContainer" id="filterForm">
+        <div id="pricesForm">
+            <div class="filterContainer" id="priceForm">
+                <!-- PRICE FORM -->
 
-    <div class="result" id="detailed_result">
-        <h2 id="result_title"></h2>
-        <table id="result_table">
-            <colgroup>
-                <col style="width: 30%;">
-                <col style="width: 20%;">
-                <col style="width: 20%;">
-                <col style="width: 30%;">
-            </colgroup>
-            <thead>
-                <tr style="width: 100vw">
-                    <th style="text-align: left; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd;">Përshkr</th>
-                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Sip</th>
-                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Çmimi</th>
-                    <th style="text-align: right; padding: 10px; border: 1px solid #888; font-size: 16px; color: #555; background-color: #ddd; ">Totali</th>
-                </tr>
-            </thead>
-            <tbody id="result_body"> </tbody>
-            <tfoot>
-                <tr style="font-weight: bold; font-size: 20px; background-color: #e9ffe9;">
-                    <td colspan="3" style="text-align: right; padding: 10px; border: 1px solid #ccc;">TOTALI</td>
-                    <td id="total_cell" style="text-align: right; padding: 10px; border: 1px solid #ccc;font-size: 20px"></td>
-                </tr>
-            </tfoot>
-        </table>
-        <button class="close-result" onclick="closeResult()">Close</button>
+                <h1>Cmimet</h1><br />
+                <label>Sip. Neto (€/m²):</label>
+                <input type="number" id="price_net" value="2800" oninput="updateFormattedAll()" />
+                <div id="formatted_price_net" class="formatted-display"></div>
 
+                <label>Sip. Perb (€/m²):</label>
+                <input type="number" id="price_common" value="2800" oninput="updateFormattedAll()" />
+                <div id="formatted_price_common" class="formatted-display"></div>
+
+                <label>Veranda (€/m²):</label>
+                <input type="number" id="price_terrace" value="1400" oninput="updateFormattedAll()" />
+                <div id="formatted_price_terrace" class="formatted-display"></div>
+
+                <label>Oborri (€/m²):</label>
+                <input type="number" id="price_plot" value="200" oninput="updateFormattedAll()" />
+                <div id="formatted_price_plot" class="formatted-display"></div>
+
+                <label>Parking (€):</label>
+                <input type="number" id="price_parking" value="25000" oninput="updateFormattedAll()" />
+                <div id="formatted_price_parking" class="formatted-display"></div>
+
+                <label>Pishina (€):</label>
+                <input type="number" id="price_pool" value="35000" oninput="updateFormattedAll()" />
+                <div id="formatted_price_pool" class="formatted-display"></div>
+
+                <label>Depo (€/m²):</label>
+                <input type="number" id="price_depo" value="1200" oninput="updateFormattedAll()" />
+                <div id="formatted_price_depo" class="formatted-display"></div>
+            </div>
+            <h2>Apartment Filter</h2>
+
+
+
+            <h3>Filter Criteria</h3>
+
+            <div class="filter-section">
+                <label>Availability:</label>
+                <select id="filter_availability">
+                    <option value="">All</option>
+                    <option value="Per Shitje">Per shitje</option>
+                    <option value="Rezervuar">Rezervuar</option>
+                    <option value="Shitur">Shitur</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <label>Typology:</label>
+                <select id="filter_typology">
+                    <option value="">All</option>
+                    <option value="AP 1+1">AP 1+1</option>
+                    <option value="AP 2+1">AP 2+1</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <label>Has Pool:</label>
+                <select id="filter_pool">
+                    <option value="">All</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <label>Min Area (m²):</label>
+                <input type="number" id="filter_minArea" placeholder="0">
+                <label>Max Area (m²):</label>
+                <input type="number" id="filter_maxArea" placeholder="200">
+            </div>
+
+            <div class="filter-section">
+                <label>Min Price (€):</label>
+                <input type="number" id="filter_minPrice" placeholder="0">
+                <label>Max Price (€):</label>
+                <input type="number" id="filter_maxPrice" placeholder="999999">
+            </div>
+
+            <button id="filterBtn" class="filterBtn" onclick="applyFilter()">Filter</button>
+            <button class="filterBtn" onclick="resetFilter()">Reset</button>
+            <button class="close-result" onclick="closeResult()">Close</button>
+
+        </div>
     </div>
 
 
@@ -98,20 +165,6 @@
     </div>
 
     <div class="sidenav">
-        <div id="filter-container">
-            <!-- Typology Filter -->
-            <!-- Typology Dropdown -->
-            <select id="typologyFilter">
-                <option value="">Te gjitha tipologjite</option>
-                <option value="1+1">Apartamente 1+1</option>
-                <option value="2+1">Apartamente 2+1</option>
-            </select>
-
-            <!-- Area Filter -->
-            <input type="number" id="areaFilter" placeholder="Siperfaqe maksimale (m²)">
-            <button id="filtAreaBtn" onclick="filterByArea()">Filter</button>
-
-        </div>
         <div class="tipolBlock">
             <div class="containerJA">
                 <button class="tipBtn" id="tipBtnA" onclick="showTableA">SEKTORI A</button>
@@ -292,6 +345,10 @@
                 <div class="divB7">
                     <button class="planBtn" id="CB35">CB35</button>
                 </div>
+                <div class="divB7">
+                    <button class="planBtn" id="CB36">CB36</button>
+                </div>
+
                 <div class="divB7">
                     <button class="planBtn" id="CB37">CB37</button>
                 </div>
