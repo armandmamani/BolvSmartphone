@@ -535,8 +535,9 @@ function showApartmentDetails(apartmentId) {
     document.getElementById("aptplotArea").textContent = details.plotArea;
     document.getElementById("aptstoreArea").textContent = details.storeArea;
     document.getElementById("aptParking").textContent = details.aptParking;
-
     document.getElementById("aptStatus").textContent = details.statusi;
+    document.getElementById("aptNotes").textContent = details.shenime;
+
     //  document.getElementById('areaFloor0').textContent = details.Kat0Area;
     //  document.getElementById('areaFloor1').textContent = details.Kati1Area;
   }

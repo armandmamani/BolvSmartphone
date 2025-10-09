@@ -16,34 +16,38 @@
 
         <div id="topBtnContainer">
             <div class="dropdown">
-                <button id="calculation" class="dropbtn">Open Filter</button>
+                <button id="calculation" class="dropbtn">Filter</button>
             </div>
             <div class="dropdown">
 
-                <button id="AptSelectBtn" class="dropbtn">Calculator</button>
+                <button id="AptSelectBtn" class="dropbtn">Llogarit</button>
             </div>
         </div>
 
             <div id="apSelectForm">
                 <div class="form-section">
-                    <label for="sector_select">Sektori:</label>
-                    <select id="sector_select" style="font:400 18px arial; padding: 5px; background-color: #eee" onchange="populateApartments()">
-                        <option value="">-- Zgjidh --</option>
-                        <option value="A">Sector A</option>
-                        <option value="B">Sector B</option>
-                        <option value="C">Sector C</option>
-                        <option value="D">Sector D</option>
-                        <option value="E">Sector E</option>
-                    </select>
-
-                    <label for="apartment_select">Apartamenti:</label>
-                    <select id="apartment_select" style="font: 400 18px arial; padding: 5px; background-color: #eee">
-                        <option value="">-- Zgjidh --</option>
-                    </select>
-                    <button id="calculatorBtn" onclick="calculateTotal()">Calculate</button>
-                    <button class="close-result" onclick="closeResult()">Close</button>
-
-                </div>
+                    <div class="selctorContainer">
+                        <label for="sector_select">Sektori:</label>
+                        <select id="sector_select" style="font:400 14px arial; padding: 5px; background-color: #eee;" onchange="populateApartments()">
+                            <option value="">-- Zgjidh --</option>
+                            <option value="A">Sektor A</option>
+                            <option value="B">Sektor B</option>
+                            <option value="C">Sektor C</option>
+                            <option value="D">Sektor D</option>
+                            <option value="E">Sektor E</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="apartment_select">Apartamenti:</label>
+                        <select id="apartment_select" style="font: 400 14px arial; padding: 5px; background-color: #eee;">
+                            <option value="">-- Zgjidh --</option>
+                        </select>
+                    </div>
+                    <div id="ApartSelectBtn">
+                        <button class="close-result dropbtn" onclick="closeResult()">Mbyll</button>
+                        <button class="close-result dropbtn" id="calculatorBtn" onclick="calculateTotal()">Llogarit</button>
+                    </div>
+                        </div>
                 <div class="result" id="detailed_result">
                     <h2 id="result_title"></h2>
                     <table id="result_table">
@@ -112,47 +116,49 @@
                     </div>
                     <div class="filterContainer" id="priceForm">
 
-                        <h3>Filter Criteria</h3>
+                        <h3>Kriteret</h3>
                         <div class="filter-section">
-                            <label>Availability:</label>
+                            <label>Disponueshmeria:</label>
                             <select id="filter_availability">
-                                <option value="">All</option>
-                                <option value="Per Shitje">Per shitje</option>
+                                <option value="">Te gjitha</option>
+                                <option value="Per Shitje">Disponueshem</option>
                                 <option value="Rezervuar">Rezervuar</option>
                                 <option value="Shitur">Shitur</option>
                             </select>
                         </div>
 
                         <div class="filter-section">
-                            <label>Typology:</label>
+                            <label>Tipologjia:</label>
                             <select id="filter_typology">
-                                <option value="">All</option>
+                                <option value="">Te gjitha</option>
                                 <option value="AP 1+1">AP 1+1</option>
                                 <option value="AP 2+1">AP 2+1</option>
                             </select>
                         </div>
 
                         <div class="filter-section">
-                            <label>Has Pool:</label>
+                            <label>Pishina</label>
                             <select id="filter_pool">
-                                <option value="">All</option>
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                                <option value="">Te gjitha</option>
+                                <option value="yes">Me pishine</option>
+                                <option value="no">Pa pishine</option>
                             </select>
                         </div>
 
                         <div class="filter-section">
-                            <label>Min Area (m²):</label>
-                            <input class="long_number" type="number" id="filter_minArea" placeholder="0">
-                            <label>Max Area (m²):</label>
-                            <input class="long_number" type="number" id="filter_maxArea" placeholder="200">
+                            <h5>Siperfaqja</h5>
+                            <label>Nga Min (m²):</label>
+                            <input type="number" id="filter_minArea" placeholder="0"><span>(m²)</span>
+                            <label>Ne Max (m²):</label>
+                            <input type="number" id="filter_maxArea" placeholder="200"><span>(m²)</span>
                         </div>
 
                         <div class="filter-section">
-                            <label>Min Price (€):</label>
-                            <input class="long_number" type="number" id="filter_minPrice" placeholder="0">
-                            <label>Max Price (€):</label>
-                            <input class="long_number" type="number" id="filter_maxPrice" placeholder="999999">
+                            <h5>Vlera</h5>
+                            <label>Nga (€):</label>
+                            <input class="long_number" type="number" id="filter_minPrice" placeholder="0"><span>(€)</span>
+                            <label>Ne (€):</label>
+                            <input class="long_number" type="number" id="filter_maxPrice" placeholder="999999"><span>(€)</span>
                         </div>
 
                         <button id="filterBtn" class="filterBtn" onclick="applyFilter()">Filter</button>
@@ -817,6 +823,10 @@
                             <tr>
                                 <td class="aparttId">Statusi</td>
                                 <td class="vleraSip" id="aptStatus"></td>
+                            </tr>
+                            <tr>
+                                <td class="aparttId">Shenime</td>
+                                <td class="vleraSip" id="aptNotes"></td>
                             </tr>
 
                         </tbody>
