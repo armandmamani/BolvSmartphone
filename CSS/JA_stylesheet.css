@@ -152,7 +152,7 @@ h4 {
     outline: none;
     transition: all 0.3s ease;
 }
-.sidenav {
+#sidenav {
     margin-top: 60vh;
     width: 100%;
     max-height: 40vh; /* or 90vh or whatever fits your layout */
@@ -1032,9 +1032,14 @@ width: 100%;
     }
 
 #headerContainer {
-background-image: linear-gradient(to bottom, #fff 10%, #ccc 90%);
-height:15vh;
-
+    background-image: linear-gradient(to bottom, #fff 10%, #ccc 90%);
+    height: 15vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease;
 }
 
 #topBtnContainer {

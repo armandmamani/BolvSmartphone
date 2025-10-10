@@ -857,6 +857,89 @@ function updateFormattedAll() {
 })();
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('headerContainer');
+  const sidenav = document.getElementById('sidenav');
+
+  if (!header) {
+    console.warn('#headerContainer not found — header hide/show will not run.');
+    return;
+  }
+
+  // performance / smoothing
+  header.style.willChange = 'transform';
+  const THRESHOLD = 6; // px change required to trigger hide/show
+  let lastPos = null; // last reference top position (for bounding rect) or last scrollTop for internal
+  let ticking = false;
+
+  function hideHeader() {
+    header.style.transform = 'translateY(-100%)';
+  }
+  function showHeader() {
+    header.style.transform = 'translateY(0)';
+  }
+
+  // Handle page scroll: check sidenav position relative to viewport
+  function handleWindowScroll() {
+    if (!sidenav) return; // nothing to compare
+    const rect = sidenav.getBoundingClientRect();
+    const top = rect.top;
+
+    if (lastPos === null) lastPos = top;
+    const delta = top - lastPos;
+
+    if (Math.abs(delta) > THRESHOLD) {
+      if (top < lastPos) { // sidenav moved up (top decreased) => user scrolled down the page
+        hideHeader();
+      } else { // sidenav moved down => user scrolled up the page
+        showHeader();
+      }
+      lastPos = top;
+    }
+  }
+
+  // For internal sidenav scrolling (when sidenav has overflow and is actually scrolled)
+  function attachInternalSidenavHandler() {
+    if (!sidenav) return;
+    if (sidenav.scrollHeight <= sidenav.clientHeight) return; // not scrollable internally
+
+    let lastInternal = sidenav.scrollTop;
+    sidenav.addEventListener('scroll', () => {
+      const cur = sidenav.scrollTop;
+      if (Math.abs(cur - lastInternal) > THRESHOLD) {
+        if (cur > lastInternal) hideHeader(); else showHeader();
+        lastInternal = cur;
+      }
+    }, { passive: true });
+  }
+
+  // Throttled window scroll handler using rAF
+  function onWindowScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      handleWindowScroll();
+      ticking = false;
+    });
+  }
+
+  // Init lastPos and attach listeners
+  // set initial lastPos to the current bounding top (if sidenav exists),
+  // otherwise use window scroll position
+  requestAnimationFrame(() => {
+    lastPos = sidenav ? sidenav.getBoundingClientRect().top : (window.pageYOffset || document.documentElement.scrollTop);
+  });
+
+  window.addEventListener('scroll', onWindowScroll, { passive: true });
+  attachInternalSidenavHandler();
+
+  // Optional: if you open/close sidenav dynamically, re-calc lastPos after open
+  // Example: if you have a button that toggles sidenav visibility, call:
+  // requestAnimationFrame(() => { lastPos = sidenav.getBoundingClientRect().top; });
+});
+
+
+
 
 // Call once on page load to initialize
 window.addEventListener("DOMContentLoaded", updateFormattedAll);
