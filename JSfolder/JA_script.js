@@ -569,12 +569,14 @@ function calculatePrice(ap) {
 }
 
 // --- Apply Filter ---
+document.querySelectorAll(".filterSelector").forEach(el => {
+  el.addEventListener("change", applyFilter);
+});
+
 function applyFilter() {
   const avail = document.getElementById("filter_availability").value;
   const typo = document.getElementById("filter_typology").value;
   const hasPool = document.getElementById("filter_pool").value;
-  const minArea = parseFloat(document.getElementById("filter_minArea").value) || 0;
-  const maxArea = parseFloat(document.getElementById("filter_maxArea").value) || Infinity;
   const minPrice = parseFloat(document.getElementById("filter_minPrice").value) || 0;
   const maxPrice = parseFloat(document.getElementById("filter_maxPrice").value) || Infinity;
 
@@ -584,11 +586,8 @@ function applyFilter() {
       (avail === "" || ap.statusi === avail) &&
       (typo === "" || ap.typology === typo) &&
       (hasPool === "" || (hasPool === "yes" && ap.poolArea > 0) || (hasPool === "no" && ap.poolArea === 0)) &&
-      ap.totalArea >= minArea && ap.totalArea <= maxArea &&
       price >= minPrice && price <= maxPrice;
     document.getElementById(ap.id).classList.toggle("hidden", !show);
-          console.log(ap.id, price);
-    document.getElementById("filterForm").style.display = "none";
   });
 }
 
@@ -712,17 +711,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-document.getElementById("calculation").addEventListener("click", function() {
- const form =  document.getElementById("filterForm");
-  if (form.style.display === "block") {
-  form.style.display = "none";
-} else {
-  form.style.display = "block";
-}
-
-
-
-});
 
 document.getElementById("AptSelectBtn").addEventListener("click", function() {
   document.getElementById("apSelectForm").style.display = "block";
@@ -747,7 +735,6 @@ function populateApartments() {
 function closeResult() {
   document.getElementById("detailed_result").style.display = "none";
   document.getElementById("apSelectForm").style.display = "none";
-  document.getElementById("filterForm").style.display = "none";
 
 }
 
