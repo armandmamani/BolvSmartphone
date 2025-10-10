@@ -543,9 +543,7 @@ function showApartmentDetails(apartmentId) {
   }
 }
 
-window.onload = function () {
-  window.scrollTo(0, 0);
-};
+
 
 // --- Calculate Apartment Price ---
 function calculatePrice(ap) {
@@ -841,6 +839,24 @@ function updateFormattedAll() {
     document.getElementById(field.display).textContent = formatted;
   });
 }
+
+
+
+(function(){
+  const el = document.getElementById('sidenav');
+  if (!el) { console.error('Element #sidenav not found'); return; }
+  const cs = window.getComputedStyle(el);
+  console.log('display:', cs.display, 'overflowY:', cs.overflowY);
+  console.log('clientHeight:', el.clientHeight, 'scrollHeight:', el.scrollHeight, 'scrollTop(before):', el.scrollTop);
+  // Try to scroll it
+  el.scrollTop = 0;
+  try { el.scrollTo(0,0); } catch(e) {}
+  // Also try scrolling first child into view if there is one
+  if (el.firstElementChild) el.firstElementChild.scrollIntoView({block:'start', behavior:'auto'});
+  console.log('scrollTop(after):', el.scrollTop);
+})();
+
+
 
 // Call once on page load to initialize
 window.addEventListener("DOMContentLoaded", updateFormattedAll);

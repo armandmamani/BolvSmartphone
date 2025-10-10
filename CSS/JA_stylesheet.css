@@ -154,11 +154,13 @@ h4 {
 }
 .sidenav {
     margin-top: 45vh;
-    width: 100vw;
+    width: 100%;
+    max-height: 55vh; /* or 90vh or whatever fits your layout */
     text-align: center;
     background-color: #f9a9a9;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     display: grid;
 }
 
