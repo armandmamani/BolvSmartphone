@@ -15,11 +15,79 @@
 
         <a id="returnBtn" href="index.html">&larr; Projekti</a>
 
-        <div id="topBtnContainer">
-            <div style="padding-left: 10%">
+        <div class="filterContainer" id="filterForm">
+            <div class="header">
+                <h3>PERZGJIDH KRITERET</h3>
+            </div>
+            <div class="filter-section">
+                <select class="filterSelector" id="filter_availability">
+                    <option value="">Disponueshem</option>
+                    <option value="Per Shitje">Disponueshem</option>
+                    <option value="Rezervuar">Rezervuar</option>
+                    <option value="Shitur">Shitur</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <select class="filterSelector" id="filter_typology">
+                    <option value="">Tipologjia</option>
+                    <option value="AP 1+1">AP 1+1</option>
+                    <option value="AP 2+1">AP 2+1</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <select class="filterSelector" id="filter_pool">
+                    <option value="">Pishina</option>
+                    <option value="yes">Me pishine</option>
+                    <option value="no">Pa pishine</option>
+                </select>
+            </div>
+            <div class="filter-section">
+            </div>
+
+            <div class="item">
+                <h3>Cmimi</h3>
+            </div>
+
+            <div class="filter-section">
+
+                <select class="filterSelector" id="filter_minPrice">
+                    <option value="">Nga</option>
+                    <option value="300000">300000</option>
+                    <option value="350000">350000</option>
+                    <option value="400000">400000</option>
+                    <option value="450000">450000</option>
+                    <option value="500000">500000</option>
+                    <option value="550000">550000</option>
+                    <option value="600000">600000</option>
+
+                </select>
+            </div>
+            <div class="filter-section">
+
+                <select class="filterSelector" id="filter_maxPrice">
+                    <option value="">Deri</option>
+                    <option value="300000">300000</option>
+                    <option value="350000">350000</option>
+                    <option value="400000">400000</option>
+                    <option value="450000">450000</option>
+                    <option value="500000">500000</option>
+                    <option value="550000">550000</option>
+                    <option value="600000">600000</option>
+
+                </select>
+            </div>
+
+            <div class="filterBtnContainer">
+                <button class="filterBtn" onclick="resetFilter()">Hiq Filtrat</button>
+            </div>
+            <div style="padding-left: 10%; grid-column: 1 / span 2;">
 
                 <button id="AptSelectBtn" class="dropbtn">Llogarit Cmimin e apartamentit</button>
             </div>
+
+
         </div>
 
     </div>
@@ -110,76 +178,6 @@
 
     </div>
     <!-- FILTER FORM -->
-    <div class="filterContainer" id="filterForm">
-        <div class="header">
-            <h3>Perzgjidh kriteret ketu</h3>
-        </div>
-             <div class="filter-section">
-                <select class="filterSelector" id="filter_availability">
-                    <option value="">Disponueshem</option>
-                    <option value="Per Shitje">Disponueshem</option>
-                    <option value="Rezervuar">Rezervuar</option>
-                    <option value="Shitur">Shitur</option>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <select class="filterSelector" id="filter_typology">
-                    <option value="">Tipologjia</option>
-                    <option value="AP 1+1">AP 1+1</option>
-                    <option value="AP 2+1">AP 2+1</option>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <select class="filterSelector" id="filter_pool">
-                    <option value="">Pishina</option>
-                    <option value="yes">Me pishine</option>
-                    <option value="no">Pa pishine</option>
-                </select>
-            </div>
-            <div class="filter-section">
-            </div>
-
-        <div class="item">
-            <h3>Cmimi</h3>
-        </div>
-
-            <div class="filter-section">
-
-                <select class="filterSelector" id="filter_minPrice">
-                    <option value="">Nga</option>
-                    <option value="300000">300000</option>
-                    <option value="350000">350000</option>
-                    <option value="400000">400000</option>
-                    <option value="450000">450000</option>
-                    <option value="500000">500000</option>
-                    <option value="550000">550000</option>
-                    <option value="600000">600000</option>
-
-                </select>
-            </div>
-            <div class="filter-section">
-
-                <select class="filterSelector" id="filter_maxPrice">
-                    <option value="">Deri</option>
-                    <option value="300000">300000</option>
-                    <option value="350000">350000</option>
-                    <option value="400000">400000</option>
-                    <option value="450000">450000</option>
-                    <option value="500000">500000</option>
-                    <option value="550000">550000</option>
-                    <option value="600000">600000</option>
-
-                </select>
-            </div>
-
-            <div class="filterBtnContainer">
-                <button class="filterBtn" onclick="resetFilter()">Hiq Filtrat</button>
-            </div>
-
-
-    </div>
 
 
 

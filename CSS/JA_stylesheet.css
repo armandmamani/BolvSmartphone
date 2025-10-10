@@ -306,8 +306,7 @@ h4 {
     }
 
 .filterContainer {
-    position: fixed;
-    top: 16vh;
+    margin-top: 7vh;
     width: 100%;
     display: block;
     border: 2px solid #ccc;
@@ -757,7 +756,7 @@ th {
 
 #returnBtn {
     position: fixed;
-    top: 1vh;
+    top: 2vh;
     left: 3vw;
     z-index: 5;
     width: 150px;
@@ -992,9 +991,8 @@ width: 100%;
     font-size: 16px;
     font-weight: 600;
     padding: 5px;
-    border: none;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    border: 3PX solid #0d0958;
+    margin: 10px;
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
@@ -1070,12 +1068,10 @@ height:15vh;
         box-shadow: none;
     }
 #AptSelectBtn {
-    display: flex;
-    position: fixed;
-    top: 7vh;
+    display: block;
     align-items: center;
     justify-content: center;
-    background-color: #252020;
+    background-color: #851717;
     color: #fce9e9;
     font-size: 16px;
     font-family: 'Lato', sans-serif;
@@ -1086,6 +1082,7 @@ height:15vh;
     width: 80%;
     height: 40px;
     padding: 5px;
+    margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
     box-shadow: #000 2px 5px 10px;
