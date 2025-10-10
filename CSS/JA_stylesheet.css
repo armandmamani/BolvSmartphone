@@ -153,9 +153,9 @@ h4 {
     transition: all 0.3s ease;
 }
 .sidenav {
-    margin-top: 45vh;
+    margin-top: 50vh;
     width: 100%;
-    max-height: 55vh; /* or 90vh or whatever fits your layout */
+    max-height: 50vh; /* or 90vh or whatever fits your layout */
     text-align: center;
     background-color: #f9a9a9;
     overflow-x: auto;
