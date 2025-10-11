@@ -779,6 +779,7 @@ option {
 
 #display-image {
     width: 100%;
+    border-top: 2px solid #555;
 }
 
 #plan-table {
