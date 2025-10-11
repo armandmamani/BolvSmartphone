@@ -746,7 +746,7 @@ option {
 
 #shiturShkrimi, #rezervuarShkrimi {
     position: absolute;
-    top: 20vh;
+    bottom: 20vh;
     left: -10vw;
     transform: rotate(45deg);
     width: 100%;
@@ -934,7 +934,7 @@ th {
     margin-bottom: 15px;
     padding: 10px;
     border: solid 2px #999;
-    background-color: #f5d5d5;
+    background-color: #cfeffa;
 }
 
 label {
@@ -953,6 +953,12 @@ input[type="number"], input[type="text"] {
     margin-top: 10px;
     box-sizing: border-box;
 }
+
+input:hover {
+    background-color: #ddd;
+    color: #4f0606;
+}
+
 
 span {
     font: 500 14px arial, verdana;
@@ -1002,12 +1008,14 @@ width: 100%;
     display: none;
 }
 
-.close-result {
+
+#closeForm {
     background-color: #999;
-    display: inline-flex;
+    display: inline;
     width: 40%;
-    margin-top: 10px;
-    margin-left: 10px;
+    height: 40px;
+    float: left;
+    margin-left: 0;
     color: white;
     font-size: 14px;
     padding: 10px;
@@ -1019,18 +1027,20 @@ width: 100%;
     justify-content: center;
 }
 
+    #closeForm:hover {
+        background-color: #bbb;
+        color: #4f0606;
+        box-shadow: none;
+    }
+
 #ApartSelectBtn {
     display: inline-flex;
     width: 100%;
     color: white;
     font-size: 14px;
-    padding: 1px;
+    padding: 10px;
     border: none;
-    margin-right: 10px;
-    margin-top: 10px;
     cursor: pointer;
-    align-items: center;
-    justify-content: center;
 }
 
 
@@ -1115,12 +1125,9 @@ width: 100%;
     }
 #AptSelectBtn {
     display: block;
-    align-items: center;
-    justify-content: center;
     background-color: #851717;
     color: #fce9e9;
     margin-top: 1.2vh;
-    margin-right: 2vw;
     font-size: 14px;
     font-family: 'Lato', sans-serif;
     border-radius: 5px;
@@ -1143,8 +1150,11 @@ width: 100%;
 }
 
 #calculatorBtn {
+    background-color: #051665;
     float: right;
-    background-color: #cc370e;
+    width: 40%;
+    height: 40px;
+    margin-left: 20%;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -1155,11 +1165,11 @@ width: 100%;
     justify-content: center;
     z-index: 1000;
 }
-#calculatorBtn:hover {
-    background-color: #facbcb;
-    color: #4f0606;
-    box-shadow: none;
-}
+    #calculatorBtn:hover {
+        background-color: #91dcf5;
+        color: #051665;
+        box-shadow: none;
+    }
 
 .filterBtnContainer {
     display: block;
