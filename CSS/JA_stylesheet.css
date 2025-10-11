@@ -172,10 +172,40 @@ h4 {
     outline: none;
     transition: all 0.3s ease;
 }
+
+#projektiBtn:hover {
+    background-color: transparent;
+    color: #4f0606;
+    box-shadow: none;
+    animation: moveWindows 1s infinite;
+}
+
+@keyframes moveWindowsUp {
+    from {
+        margin-top: 0vh;
+    }
+
+    to {
+        margin-top: -30vh;
+    }
+
+}
+
+@keyframes moveWindowsDown {
+    from {
+        margin-top: -30vh;
+    }
+
+    to {
+        margin-top: 0vh;
+    }
+}
+
+
 #sidenav {
-    margin-top: 40vh;
+    margin-top: 30vh;
     width: 100%;
-    max-height: 60vh; /* or 90vh or whatever fits your layout */
+    max-height: 100vh; /* or 90vh or whatever fits your layout */
     text-align: center;
     background-color: #f9a9a9;
     overflow-x: auto;
@@ -721,11 +751,19 @@ option {
     height: 100%;
 
 }
+@keyframes fadeInHalf {
+    from {
+        opacity: 0;
+    }
 
+    to {
+        opacity: 0.5;
+    }
+}
 
 #shiturShkrimi, #rezervuarShkrimi {
     position: absolute;
-    top: 20vh;
+    bottom: 30vh;
     left: -10vw;
     transform: rotate(45deg);
     width: 100%;
@@ -735,7 +773,7 @@ option {
     font-size: 90px;
     font-weight: bolder;
     text-align: center;
-    animation: fadeIn 1s ease-out forwards;
+    animation: fadeInHalf 1s ease-out forwards;
 }
 
 
@@ -879,7 +917,6 @@ th {
 }
 .item {
     padding-left: 10px;
-
     text-align: left;
     border-bottom: 1px solid #ccc;
     grid-column: 1/span 2;
@@ -898,7 +935,7 @@ th {
 #apSelectForm {
     display: none;
     position: absolute;
-    top: 5vh;
+    top: 0;
     right: 0;
     width: 100%;
     padding: 20px;
@@ -1014,12 +1051,12 @@ width: 100%;
 .filterBtn {
     background-image: linear-gradient(#7ebcf7 3%, #d4ddfb 50%, #7ebcf7 97%);
     width: 90%;
-    height: 30px;
+    height: 40px;
     color: #090630;
     font-size: 16px;
     font-weight: 600;
     padding: 5px;
-    border: 3PX solid #0d0958;
+    border: 1PX solid #0d0958;
     margin: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -1106,16 +1143,18 @@ width: 100%;
     justify-content: center;
     background-color: #851717;
     color: #fce9e9;
-    font-size: 16px;
+    margin-top: 1.2vh;
+    margin-right: 2vw;
+    font-size: 14px;
     font-family: 'Lato', sans-serif;
     border-radius: 5px;
-    font-weight: 500;
+    font-weight: 400;
     border: none;
     cursor: pointer;
-    width: 80%;
+    width: 180px;
     height: 40px;
     padding: 5px;
-    margin-bottom: 20px;
+    float: right;
     text-align: center;
     text-decoration: none;
     box-shadow: #000 2px 5px 10px;

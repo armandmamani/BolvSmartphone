@@ -15,14 +15,18 @@
 
         <a id="returnBtn" href="index.html">&larr; Projekti</a>
 
+            <button id="AptSelectBtn" class="dropbtn">Llogarit Cmimin</button>
+
+        <!-- FILTER FORM -->
+
         <div class="filterContainer" id="filterForm">
             <div class="header">
-                <h3>PERZGJIDH KRITERET</h3>
+                <h3 style="color:darkblue">PERZGJIDH KRITERET</h3>
             </div>
             <div class="filter-section">
                 <select class="filterSelector" id="filter_availability">
-                    <option value="">Disponueshem</option>
-                    <option value="Per Shitje">Disponueshem</option>
+                    <option value="">Te gjitha</option>
+                    <option value="i lire">Disponueshem</option>
                     <option value="Rezervuar">Rezervuar</option>
                     <option value="Shitur">Shitur</option>
                 </select>
@@ -47,7 +51,7 @@
             </div>
 
             <div class="item">
-                <h3>Cmimi</h3>
+                <h3 style="color:darkblue">Cmimi</h3>
             </div>
 
             <div class="filter-section">
@@ -80,11 +84,7 @@
             </div>
 
             <div class="filterBtnContainer">
-                <button class="filterBtn" onclick="resetFilter()">Hiq Filtrat</button>
-            </div>
-            <div style="padding-left: 10%; grid-column: 1 / span 2;">
-
-                <button id="AptSelectBtn" class="dropbtn">Llogarit Cmimin e apartamentit</button>
+                <button class="filterBtn" onclick="resetFilter()">HIQ FILTRAT</button>
             </div>
 
 
@@ -177,7 +177,6 @@
 
 
     </div>
-    <!-- FILTER FORM -->
 
 
 

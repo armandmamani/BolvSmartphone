@@ -873,11 +873,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let ticking = false;
 
   function hideHeader() {
-    header.style.transform = 'translateY(-200%)';
+    header.style.animation = 'moveWindowsUp 1s ease';
+    header.style.marginTop = '-30vh';
+
   }
   function showHeader() {
-    header.style.transform = 'translateY(0)';
-  }
+    header.style.animation = 'moveWindowsDown 1s ease'; 
+    header.style.marginTop = '0vh';
+
+}
 
   // Handle page scroll: check sidenav position relative to viewport
   function handleWindowScroll() {
