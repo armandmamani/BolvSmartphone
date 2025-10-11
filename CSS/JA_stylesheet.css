@@ -96,6 +96,7 @@ h1 {
 
 h3 {
     font-size: 16px;
+    font-family: 'Roboto', sans-serif;
     color: #4d0404;
     text-align: center;
     padding: 1px;
@@ -228,7 +229,7 @@ h4 {
     border: 2px solid var(--button-border);
     box-shadow: var(--button-shadow-default);
     transition: all .2s ease;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: #3b0303;
@@ -365,8 +366,8 @@ select {
     height: 30px;
     display: inline-block;
     text-align: left;
-    font: 300 15px roboto, verdana;
-    color: var(--drab-dark-brown);
+    font: 400 15px Roboto, verdana;
+    color:#333;
     box-sizing: border-box;
     
 }
@@ -441,7 +442,7 @@ option {
     height: 40px;
     color: #fff;
     border-radius: 5px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 16px;
     background: transparent;
@@ -843,9 +844,9 @@ th {
     background: linear-gradient(0deg, rgba(205,27,50,1) 0%, rgba(201,75,52,1) 100%);
     color: white;
     font-size: 16px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    border: none;
+    border: 2px solid #fadcd5;
     cursor: pointer;
     padding: 10px;
     border-radius: 5px;
@@ -857,7 +858,7 @@ th {
 }
     #returnBtn:hover {
         background-color: transparent;
-        color: #4f0606;
+        color: #fadcd5;
         box-shadow: none;
     }
 
@@ -1141,9 +1142,9 @@ width: 100%;
     color: white;
     margin-top: 1vh;
     font-size: 14px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     border-radius: 5px;
-    font-weight: 400;
+    font-weight: 500;
     border: 1px solid var(--seaside-villa);
     cursor: pointer;
     width: 150px;
