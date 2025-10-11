@@ -762,7 +762,7 @@ option {
 
 
 #plan-container {
-    position: absolute;
+    position: fixed;
     display: none;
     top: 10px;
     width: 100%;
@@ -918,7 +918,7 @@ th {
 
 #apSelectForm {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 100%;
