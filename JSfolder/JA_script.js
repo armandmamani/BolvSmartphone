@@ -873,7 +873,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let ticking = false;
 
   function hideHeader() {
-    header.style.transform = 'translateY(-100%)';
+    header.style.transform = 'translateY(-200%)';
   }
   function showHeader() {
     header.style.transform = 'translateY(0)';
