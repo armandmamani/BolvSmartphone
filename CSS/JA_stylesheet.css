@@ -767,9 +767,14 @@ option {
     top: 10px;
     width: 100%;
     height: auto;
+    background-color: var(--seaside-villa);
     animation: fadeIn 1s ease-out forwards;
     z-index: 1000;
     overflow-y: hidden;
+    align-content: center;
+    align-items:  center;
+    justify-content:center;
+    justify-items: center;
 }
 
 #display-image {
@@ -778,10 +783,10 @@ option {
 
 #plan-table {
     top: 10px;
-    width: 100%;
+    width: 60%;
     font-size: 18px;
     height: auto;
-    padding: 20px;
+    padding: 10px;
     background-color: var(--seaside-villa);
     animation: fadeIn 1s ease-out forwards;
     z-index: 10;
@@ -794,7 +799,8 @@ option {
     width: 70%;
     font-size: 14px;
     font-weight: 500;
-    padding: 2px;
+    padding: 1px;
+    text-align: right;
 }
 
 
@@ -803,7 +809,7 @@ option {
     font-size: 14px;
     text-align: right;
     width: 30%;
-    padding: 2px;
+    padding: 1px;
 }
 
 th {
