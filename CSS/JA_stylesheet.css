@@ -745,8 +745,8 @@ option {
 }
 
 #shiturShkrimi, #rezervuarShkrimi {
-    position: absolute;
-    bottom: 20vh;
+    position: fixed;
+    bottom: 50vh;
     left: -10vw;
     transform: rotate(45deg);
     width: 100%;
@@ -761,7 +761,7 @@ option {
 
 
 #plan-container {
-    position: fixed;
+    position: absolute;
     display: none;
     top: 10px;
     width: 100%;
