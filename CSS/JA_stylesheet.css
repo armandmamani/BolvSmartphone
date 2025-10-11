@@ -345,7 +345,7 @@ h4 {
     width: 100%;
     display: block;
     border: 2px solid #ccc;
-    background-color: #f9f9f9;
+    background-color: transparent;
     max-width: 450px;
     animation: slideDown 0.5s ease-out;
 }
@@ -355,7 +355,7 @@ h4 {
     grid-template-columns: 1fr 1fr;
     gap: 3px;
     border: 1px solid #ccc;
-    background-image: radial-gradient(#eee 50%0, #ccc 90%);
+    background-color: #e4f6fc;
     max-width: 450px;
 }
 
@@ -1035,14 +1035,14 @@ width: 100%;
 
 
 .filterBtn {
-    background-image: linear-gradient(#7ebcf7 3%, #d4ddfb 50%, #7ebcf7 97%);
-    width: 90%;
-    height: 30px;
+    background-image: linear-gradient(#9becfe 5%, #d4ddfb 50%, #9becfe 95%);
+    width: 80%;
+    height: 40px;
     color: #090630;
     font-size: 16px;
     font-weight: 600;
     padding: 5px;
-    border: 3PX solid #0d0958;
+    border: 1PX solid #0d0958;
     margin: 10px;
     border-radius: 5px;
     cursor: pointer;
