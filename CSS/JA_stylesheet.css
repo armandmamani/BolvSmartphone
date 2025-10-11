@@ -14,7 +14,7 @@ body {
     font-size: 20px;
     display: block;
     color: #384637;
-    max-width: 600px;
+    max-width: 450px;
     align-content: center;
     text-align: center;
     margin: 0;
@@ -144,6 +144,7 @@ h4 {
 
 #headerContainer {
     background-image: linear-gradient(to bottom, #fff 10%, #ccc 90%);
+    max-width: 450px;
     height: 30vh;
     position: fixed;
     top: 0;
@@ -824,8 +825,8 @@ th {
 
 #returnBtn {
     position: fixed;
-    top: 1.2vh;
-    left: 3vw;
+    top: 1vh;
+    left: 10vw;
     z-index: 5;
     width: 130px;
     height: 40px;
@@ -1127,7 +1128,7 @@ width: 100%;
     display: block;
     background-color: #851717;
     color: #fce9e9;
-    margin-top: 1.2vh;
+    margin-top: 1vh;
     font-size: 14px;
     font-family: 'Lato', sans-serif;
     border-radius: 5px;
