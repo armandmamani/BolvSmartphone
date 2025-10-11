@@ -883,6 +883,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }
 
+  function rollUpSidenav() {
+    sidenav.style.animation = 'moveWindowsUp 1s ease';
+    header.style.marginTop = '0vh';
+
+  }
+  function rollDownSidenav() {
+    header.style.animation = 'moveWindowsDown 1s ease'; 
+    header.style.marginTop = '30vh';
+
+}
+
+
   // Handle page scroll: check sidenav position relative to viewport
   function handleWindowScroll() {
     if (!sidenav) return; // nothing to compare
