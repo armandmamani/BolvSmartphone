@@ -21,12 +21,12 @@
 
         <div class="filterContainer" id="filterForm">
             <div class="header">
-                <h3 style="color:darkblue">PERZGJIDH KRITERET</h3>
+                <h3 style="color: var(--drab-dark-brown)">PERZGJIDH KRITERET</h3>
             </div>
             <div class="filter-section">
                 <select class="filterSelector" id="filter_availability">
                     <option value="">Te gjitha</option>
-                    <option value="i lire">Disponueshem</option>
+                    <option value="Per Shitje">I lire</option>
                     <option value="Rezervuar">Rezervuar</option>
                     <option value="Shitur">Shitur</option>
                 </select>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="item">
-                <h3 style="color:darkblue">Cmimi</h3>
+                <h3 style="color: var(--drab-dark-brown)">Cmimi</h3>
             </div>
 
             <div class="filter-section">
@@ -126,6 +126,8 @@
             <label>Depo (€/m²):</label>
             <input type="number" id="price_depo" value="1200" oninput="updateFormattedAll()" />
             <div id="formatted_price_depo" class="formatted-display"></div>
+            
+            
             <div class="form-section">
                 <div class="selctorContainer">
                     <select id="sector_select" style="font:400 14px arial; padding: 5px; background-color: #eee;" onchange="populateApartments()">
@@ -143,7 +145,7 @@
                     </select>
                 </div>
                 <div id="ApartSelectBtn">
-                    <button id="closeForm" onclick="closeResult()">Mbyll</button>
+                    <button Class="closeForm" onclick="closeResult()">Mbyll</button>
                     <button id="calculatorBtn" onclick="calculateTotal()">Llogarit</button>
                 </div>
             </div>
@@ -174,7 +176,7 @@
                     </tr>
                 </tfoot>
             </table>
-            <button class="close-result" onclick="closeResult()">Close</button>
+            <button Class="closeForm" onclick="closeResult()">Close</button>
         </div>
     </div>
 

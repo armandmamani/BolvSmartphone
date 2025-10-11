@@ -356,7 +356,7 @@ h4 {
     grid-template-columns: 1fr 1fr;
     gap: 3px;
     border: 1px solid #ccc;
-    background-color: #e4f6fc;
+    background-color: var(--merino);
     max-width: 450px;
 }
 
@@ -366,7 +366,9 @@ select {
     display: inline-block;
     text-align: left;
     font: 300 15px roboto, verdana;
+    color: var(--drab-dark-brown);
     box-sizing: border-box;
+    
 }
 
     select:hover {
@@ -839,7 +841,7 @@ th {
     height: 40px;
     background: rgb(255,27,0);
     background: linear-gradient(0deg, rgba(205,27,50,1) 0%, rgba(201,75,52,1) 100%);
-    color: #fce9e9;
+    color: white;
     font-size: 16px;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
@@ -942,7 +944,7 @@ th {
     margin-bottom: 15px;
     padding: 10px;
     border: solid 2px #999;
-    background-color: #cfeffa;
+    background-color: var(--desert-sand);
 }
 
 label {
@@ -1017,7 +1019,7 @@ width: 100%;
 }
 
 
-#closeForm {
+.closeForm {
     background-color: #999;
     display: inline;
     width: 40%;
@@ -1053,23 +1055,25 @@ width: 100%;
 
 
 .filterBtn {
-    background-image: linear-gradient(#9becfe 5%, #d4ddfb 50%, #9becfe 95%);
+    background-image: linear-gradient(var(--desert-sand) 5%, var(--drab-dark-brown) 50%, var(--desert-sand) 95%);
     width: 80%;
     height: 40px;
-    color: #090630;
+    color: white;
     font-size: 16px;
     font-weight: 600;
     padding: 5px;
-    border: 1PX solid #0d0958;
+    border: 1PX solid var(--seaside-villa);
     margin: 10px;
     border-radius: 5px;
+    box-shadow: #000 2px 2px 5px;
     cursor: pointer;
     align-items: center;
     justify-content: center;
 }
     .filterBtn:hover {
         background-color: #bbb;
-        color: #4f0606;
+        color: wheat;
+        box-shadow: none;
     }
 
 #result_title {
@@ -1133,32 +1137,33 @@ width: 100%;
     }
 #AptSelectBtn {
     display: block;
-    background-color: #851717;
-    color: #fce9e9;
+    background-image: linear-gradient(#214b37, var(--myrtle-green) 50%,#214b37);
+    color: white;
     margin-top: 1vh;
     font-size: 14px;
     font-family: 'Lato', sans-serif;
     border-radius: 5px;
     font-weight: 400;
-    border: none;
+    border: 1px solid var(--seaside-villa);
     cursor: pointer;
     width: 150px;
     height: 40px;
     padding: 5px;
     float: right;
+    margin-right: 15px;
     text-align: center;
     text-decoration: none;
-    box-shadow: #000 2px 5px 10px;
+    box-shadow: #000 2px 2px 5px;
 }
 
 #AptSelectBtn:hover {
     background-color: #ddd;
-    color: #4f0606;
+    color: #9cf7bf;
     box-shadow: none;
 }
 
 #calculatorBtn {
-    background-color: #051665;
+    background-color: var(--myrtle-green);
     float: right;
     width: 40%;
     height: 40px;

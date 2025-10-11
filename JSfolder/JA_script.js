@@ -564,7 +564,11 @@ function calculatePrice(ap) {
 
   if (ap.poolArea > 0) totalPrice += pricePool;
   if (ap.aptParking) totalPrice += priceParking;
+  if (ap.sector === "Villa" && ap.totalArea < 170) totalPrice = 800000; // Extra charge for individual villas
+  if (ap.sector === "Villa" && ap.totalArea > 180) totalPrice = 900000; // Extra charge for individual villas
+  if (ap.sector === "Villa" && ap.totalArea > 170 && ap.totalArea < 180) totalPrice = 850000; // Extra charge for individual villas
 
+  
   return totalPrice;
 }
 
@@ -579,9 +583,10 @@ function applyFilter() {
   const hasPool = document.getElementById("filter_pool").value;
   const minPrice = parseFloat(document.getElementById("filter_minPrice").value) || 0;
   const maxPrice = parseFloat(document.getElementById("filter_maxPrice").value) || Infinity;
-
   apartmentDetails.forEach(ap => {
     const price = calculatePrice(ap);
+      console.log(price)
+
     const show =
       (avail === "" || ap.statusi === avail) &&
       (typo === "" || ap.typology === typo) &&
