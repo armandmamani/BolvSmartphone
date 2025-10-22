@@ -11,174 +11,174 @@
 </head>
 <body>
     <a id="projektiBtn" class="dropbtn" href="index.html">&larr; Projekti</a>
+    <div class="header">
+        <h1>
+            KASHAR CENTER
+        </h1>
+        <div class="filterContainer" id="filterForm">
+            <div id="TabHeader1">
+                <h3 style="color: var(--accent-white)">FILTER</h3>
+            </div>
+            <div id="TabHeader2">
+                <h3 style="color: var(--accent-white)">PERZGJIDH</h3>
+            </div>
+            <div id="filterSelect">
+            <div class="filter-section">
+                <select class="filterSelector" id="filter_availability">
+                    <option value="">Te gjitha</option>
+                    <option value="Per Shitje">I lire</option>
+                    <option value="Rezervuar">Rezervuar</option>
+                    <option value="Shitur">Shitur</option>
+                </select>
+            </div>
 
-    <h1>
-        KASHAR CENTER
-    </h1>
-    <div class="filterContainer" id="filterForm">
-        <div class="header">
-            <h3 style="color: var(--drab-dark-brown)">PERZGJIDH KRITERET</h3>
-        </div>
-        <div class="filter-section">
-            <select class="filterSelector" id="filter_availability">
-                <option value="">Te gjitha</option>
-                <option value="Per Shitje">I lire</option>
-                <option value="Rezervuar">Rezervuar</option>
-                <option value="Shitur">Shitur</option>
-            </select>
-        </div>
+            <div class="filter-section">
+                <select class="filterSelector" id="filter_typology">
+                    <option value="">Tipologjia</option>
+                    <option value="AP 1+1">Apartament 1+1</option>
+                    <option value="AP 2+1">Apartament 2+1</option>
+                    <option value="AP 3+1">Apartament 3+1</option>
 
-        <div class="filter-section">
-            <select class="filterSelector" id="filter_typology">
-                <option value="">Tipologjia</option>
-                <option value="AP 1+1">Apartament 1+1</option>
-                <option value="AP 2+1">Apartament 2+1</option>
-                <option value="AP 3+1">Apartament 3+1</option>
+                </select>
+            </div>
+            <div id="priceFilter">
+                <div class="item">
+                    <p style="color: var(--accent-white)">Çmimi</p>
+                </div>
 
-            </select>
-        </div>
+                <div class="filter-section">
 
-        <div class="filter-section">
-        </div>
+                    <select class="filterSelector" id="filter_minPrice">
+                        <option value="">Nga</option>
+                        <option value="70000">70.000 €</option>
+                        <option value="80000">80.000 €</option>
+                        <option value="90000">90.000 €</option>
+                        <option value="100000">100.000 €</option>
+                        <option value="110000">110.000 €</option>
+                        <option value="120000">120.000 €</option>
+                        <option value="130000">130.000 €</option>
 
-        <div class="item">
-            <h3 style="color: var(--drab-dark-brown)">Çmimi</h3>
-        </div>
+                    </select>
+                </div>
+                <div class="filter-section">
 
-        <div class="filter-section">
+                    <select class="filterSelector" id="filter_maxPrice">
+                        <option value="">Deri</option>
+                        <option value="80000">80.000 €</option>
+                        <option value="90000">90.000 €</option>
+                        <option value="100000">100.000 €</option>
+                        <option value="110000">110.000 €</option>
+                        <option value="120000">120.000 €</option>
+                        <option value="130000">130.000 €</option>
+                        <option value="140000">140.000 €</option>
 
-            <select class="filterSelector" id="filter_minPrice">
-                <option value="">Nga</option>
-                <option value="70000">70.000 €</option>
-                <option value="80000">80.000 €</option>
-                <option value="90000">90.000 €</option>
-                <option value="100000">100.000 €</option>
-                <option value="110000">110.000 €</option>
-                <option value="120000">120.000 €</option>
-                <option value="130000">130.000 €</option>
-
-            </select>
-        </div>
-        <div class="filter-section">
-
-            <select class="filterSelector" id="filter_maxPrice">
-                <option value="">Deri</option>
-                <option value="80000">80.000 €</option>
-                <option value="90000">90.000 €</option>
-                <option value="100000">100.000 €</option>
-                <option value="110000">110.000 €</option>
-                <option value="120000">120.000 €</option>
-                <option value="130000">130.000 €</option>
-                <option value="140000">140.000 €</option>
-
-            </select>
-        </div>
-
-        <div class="filterBtnContainer">
+                    </select>
+                </div>
+            </div>
             <button class="filterBtn" onclick="resetFilter()">HIQ FILTRAT</button>
         </div>
+            <div id="selectAp">
 
 
-    </div>
+                <div class="selector">
+                    <select id="buildingSelect">
+                        <option value="">GODINA</option>
+                        <option value="A">Godina A</option>
+                        <option value="B">Godina B</option>
+                        <option value="C">Godina C</option>
+                        <option value="D">Godina D</option>
+                        <option value="E">Godina E</option>
+                    </select>
 
-    <div class="selector">
-        <select id="buildingSelect">
-            <option value="">GODINA</option>
-            <option value="A">Godina A</option>
-            <option value="B">Godina B</option>
-            <option value="C">Godina C</option>
-            <option value="D">Godina D</option>
-            <option value="E">Godina E</option>
-        </select>
+                </div>
 
-    </div>
+                <div class="selector">
+                    <select id="floorSelect">
+                        <option value="">KATI</option>
+                        <option value="1">Kati 1</option>
+                        <option value="2">Kati 2</option>
+                        <option value="3">Kati 3</option>
+                        <option value="4">Kati 4</option>
+                        <option value="5">Kati 5</option>
+                        <option value="6">Kati 6</option>
+                        <option value="7">Kati 7</option>
+                        <option value="8">Kati 8</option>
+                        <option value="9">Kati 9</option>
 
-    <div class="selector">
-        <select id="floorSelect">
-            <option value="">KATI</option>
-            <option value="1">Kati 1</option>
-            <option value="2">Kati 2</option>
-            <option value="3">Kati 3</option>
-            <option value="4">Kati 4</option>
-            <option value="5">Kati 5</option>
-            <option value="6">Kati 6</option>
-            <option value="7">Kati 7</option>
-            <option value="8">Kati 8</option>
-            <option value="9">Kati 9</option>
+                    </select>
+                </div>
 
-        </select>
-    </div>
-
-    <div class="selector">
-        <select id="scaleSelect">
-            <option value="">SHKALLA</option>
-            <option value="1">Shkalla 1</option>
-            <option value="2">Shkalla 2</option>
-            <option value="3">Shkalla 3</option>
-        </select>
-    </div>
+                <div class="selector">
+                    <select id="scaleSelect">
+                        <option value="">SHKALLA</option>
+                        <option value="1">Shkalla 1</option>
+                        <option value="2">Shkalla 2</option>
+                        <option value="3">Shkalla 3</option>
+                    </select>
+                </div>
 
 
-    <div class="selector">
-        <select id="apartmentSelect">
-            <option value="">APARTAMENTI</option>
-            <option value="A">Apartamenti A</option>
-            <option value="B">Apartamenti B</option>
-            <option value="C">Apartamenti C</option>
-            <option value="D">Apartamenti D</option>
-            <option value="E">Apartamenti E</option>
-            <option value="F">Apartamenti F</option>
-            <option value="G">Apartamenti G</option>
-            <option value="H">Apartamenti H</option>
-            <option value="I">Apartamenti I</option>
+                <div class="selector">
+                    <select id="apartmentSelect">
+                        <option value="">APARTAMENTI</option>
+                        <option value="A">Apartamenti A</option>
+                        <option value="B">Apartamenti B</option>
+                        <option value="C">Apartamenti C</option>
+                        <option value="D">Apartamenti D</option>
+                        <option value="E">Apartamenti E</option>
+                        <option value="F">Apartamenti F</option>
+                        <option value="G">Apartamenti G</option>
+                        <option value="H">Apartamenti H</option>
+                        <option value="I">Apartamenti I</option>
 
-        </select>
-    </div>
-    <div id="apartmentDetails"></div>
+                    </select>
+                </div>
 
-    <table id="apartmentValue" border="1">
-        <thead>
-            <tr>
-                <th id="category">Category</th>
-                <th id="area">Area (m²)</th>
-                <th id="price">Price/m² (€)</th>
-                <th id="value">Total (€)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="rowNet">
-                <td>Net Area</td>
-                <td id="netAreaCell"></td>
-                <td><input type="number" class="price" id="netPrice" value="1000"></td>
-                <td id="netTotal"></td>
-            </tr>
-            <tr id="rowCommon">
-                <td>Common Area</td>
-                <td id="commonAreaCell"></td>
-                <td><input type="number" class="price" id="commonPrice" value="500"></td>
-                <td id="commonTotal"></td>
-            </tr>
-            <tr id="rowParking">
-                <td>Parking</td>
-                <td id="parkingAreaCell"></td>
-                <td><input type="number" id="parkingPrice" value="15000"></td>
-                <td id="parkingTotal"></td>
-            </tr>
-            <tr id="rowTotal">
-                <th style=" color: var(--accent-white); font-size: 1rem; background: var(--drab-dark-green); " colspan="3">Total Apartment Value</th>
-                <th id="grandTotal"></th>
-            </tr>
-        </tbody>
-    </table>
+            </div>
+
+        </div>
+
+        </div>
+
+        <div id="apartmentDetails"></div>
+
+        <table id="apartmentValue" border="1">
+            <thead>
+                <tr>
+                    <th id="category">Category</th>
+                    <th id="area">Area (m²)</th>
+                    <th id="price">Price/m² (€)</th>
+                    <th id="value">Total (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="rowNet">
+                    <td>Net Area</td>
+                    <td id="netAreaCell"></td>
+                    <td><input type="number" class="price" id="netPrice" value="1000"></td>
+                    <td id="netTotal"></td>
+                </tr>
+                <tr id="rowCommon">
+                    <td>Common Area</td>
+                    <td id="commonAreaCell"></td>
+                    <td><input type="number" class="price" id="commonPrice" value="500"></td>
+                    <td id="commonTotal"></td>
+                </tr>
+                <tr id="rowParking">
+                    <td>Parking</td>
+                    <td id="parkingAreaCell"></td>
+                    <td><input type="number" id="parkingPrice" value="15000"></td>
+                    <td id="parkingTotal"></td>
+                </tr>
+                <tr id="rowTotal">
+                    <th style=" color: var(--accent-white); font-size: 1rem; background: var(--drab-dark-green); " colspan="3">Total Apartment Value</th>
+                    <th id="grandTotal"></th>
+                </tr>
+            </tbody>
+        </table>
 
 
 
-
-
-    <div class="header">
-
-
-    </div>
 
     <div id="tablePlan-container">
     </div>

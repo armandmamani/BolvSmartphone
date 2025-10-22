@@ -11,8 +11,6 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     display: block;
-    color: #384637;
-    background: #f8f9f9;
     max-width: 600px;
     align-content: center;
     text-align: center;
@@ -70,28 +68,89 @@ body {
 
 /* Sidebar right */
 
-.sidebar {
-    background: linear-gradient(to bottom, var(--drab-dark-green) 20%, var(--jeshile-gri) 92%, var(--gri-e-mbyllur) 95%, var(--gri-e-hapur) 100%);
-    color: var(--accent-white);
-    border-right: 3px solid var(--jeshile-gri);
-    padding: 20px;
+#filterForm {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+        "header1 header2"
+        "menu content";
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    padding: 15px;
+    background-color: var(--e-gjelber-grigio);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: fadein 1s;
 }
 
-    .sidebar h2 {
-        margin-bottom: 20px;
-    }
-
+#TabHeader1, #TabHeader2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-white);
+    background: linear-gradient(var(--drab-dark-green) 60%, var(--e-gjelber-grigio));
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+#TabHeader1 {
+    grid-area: header1;
+}
+#TabHeader2 {
+    grid-area: header2;
+}
 
 option {
     color: black;
     font-weight: normal;
-    background-color: var(--gri-e-hapur);
+    background-color: var(--accent-white);
 }
 
     option:hover {
         background-color: var(--myrtle-green);
         color: white;
     }
+
+#filterSelect {
+    grid-area: menu;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+ .filter-section {
+        font-size: 14px;
+        font-weight: bold;
+        color: var(--drab-dark-green);
+        text-align: left;
+        width: 100%;
+    }
+.filterSelector {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--gri-e-hapur);
+}
+
+#priceFilter {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    border-top: 2px solid var(--jeshile-gri);
+    border-bottom: 2px solid var(--jeshile-gri);
+    border-radius: 10px;
+    background-color: var(--drab-dark-green);
+    padding: 0 10px;
+}
+
+.item {
+    grid-column: 1 / span 2;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    height: 40px;
+}
 
 
 .selector select {
@@ -506,7 +565,7 @@ apartmentDetails {
 #table-plan {
     display: none;
     position: absolute;
-    top: 35vh;
+    top: 70vh;
     background-color: var(--jeshile-gri);
     width: 100%;
     border: 15px solid var(--jeshile-gri);
