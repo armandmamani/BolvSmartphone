@@ -1,6 +1,6 @@
+﻿
 
-
-const apartmentDetails = [ 
+const defaultApartmentDetails  = [ 
     { id: "A1HA1", Tipology: "1 + 1", building: "A1", floor: 0, NetArea: 72.48, ComonArea: 14.33, TotalArea: 86.81, GreenArea: 50.7, TerraceArea: 0, ParkingNumber: "BLLOKUAR", statusi: "Shitur", shenime: "TEKNOFIRE" },
     { id: "A1HA2", Tipology: "2 + 1", building: "A1", floor: 0, NetArea: 100.92, ComonArea: 19.95, TotalArea: 120.87, GreenArea: 81.4, TerraceArea: 25.9, ParkingNumber: "BLLOKUAR", statusi: "Shitur", shenime: "TEKNOFIRE" },
     { id: "A1HA3", Tipology: "1 + 1", building: "A1", floor: 1, NetArea: 76, ComonArea: 15.03, TotalArea: 91.03, GreenArea: 0, TerraceArea: 0, ParkingNumber: "BLLOKUAR", statusi: "Shitur", shenime: "TEKNOFIRE" },
@@ -173,327 +173,430 @@ const apartmentDetails = [
 
 ]
 
-function showApartmentDetails(apartmentId) {
-    
-     const   details = apartmentDetails.find(apartment => apartment.id === apartmentId);
-    // Find the apartment details by ID
-    if (details) {
-        // Populate the details table
-        document.getElementById('aptId').textContent = details.id;
-        document.getElementById('aptTypology').textContent = details.Tipology;
-        document.getElementById('aptFloor').textContent = details.floor;
-        document.getElementById('aptBuilding').textContent = details.building;
-        document.getElementById('aptNetArea').textContent = details.NetArea;
-        document.getElementById('aptCommonArea').textContent = details.ComonArea;
-        document.getElementById('aptTotalArea').textContent = details.TotalArea;
-        document.getElementById('aptTerraceArea').textContent = details.TerraceArea;
-        document.getElementById('aptplotArea').textContent = details.GreenArea;
-        document.getElementById('parkingNumber').textContent = details.ParkingNumber;
-        document.getElementById('status').textContent = details.statusi;
+// === COMMON ELEMENTS ===
+const buildingSelect = document.getElementById("buildingSelect");
+const floorSelect = document.getElementById("floorSelect");
+const scaleSelect = document.getElementById("scaleSelect");
+const apartmentSelect = document.getElementById("apartmentSelect");
+const apartmentDetails = document.getElementById("apartmentDetails");
+const tablePlanContainer = document.getElementById("table-plan");
+const header = document.getElementById("floorHeader");
+const apartmentDetailsDiv = document.getElementById("apartmentDetails");
+const apartmentValueTable = document.getElementById("apartmentValue");
 
-    }
+
+// === 🏢 FUNCTION: Show Building ===
+function showBuilding(selectedBuilding) {
+  if (!selectedBuilding) return;
+
+  // 1️⃣ Update dropdown
+  buildingSelect.value = selectedBuilding;
+
+  // 2️⃣ Hide all building divs
+  document.querySelectorAll(".building").forEach(div => (div.style.display = "none"));
+
+  // 3️⃣ Show the selected building
+
+  // 4️⃣ Reset floors and table
+  floorSelect.value = "";
+  tablePlanContainer.style.display = "none";
+  header.textContent = `GODINA ${selectedBuilding}`;
 }
-// --- Filter by Typology on dropdown change
-document.getElementById('typologyFilter').addEventListener('change', () => {
-  const selectedTypology = document.getElementById('typologyFilter').value;
 
-  apartmentDetails.forEach(apartment => {
-    const btn = document.getElementById(apartment.id);
-    if (!btn) return;
-    console.log(apartment.id, selectedTypology, apartment.Tipology);
-    if (!selectedTypology || apartment.Tipology === selectedTypology) {
-      btn.style.display = 'inline-block';
-    } else {
-      btn.style.display = 'none';
+// === 🏢 BUILDING SELECTOR BEHAVIOR ===
+buildingSelect.addEventListener("change", () => {
+  const selectedBuilding = buildingSelect.value;
+  showBuilding(selectedBuilding);
+});
+
+// === 🅰️ BUILDING LETTER CLICK HANDLER ===
+document.querySelectorAll("[id^='buildingLetter']").forEach(letter => {
+  letter.addEventListener("click", () => {
+    const selectedBuilding = letter.id.replace("buildingLetter", ""); // e.g. A, B, C...
+    showBuilding(selectedBuilding);
+  });
+});
+
+// === 🏗️ FUNCTION: Show Floor ===
+function showFloor(selectedBuilding, selectedFloor) {
+  if (!selectedBuilding || !selectedFloor) return;
+
+  // Update dropdown
+  floorSelect.value = selectedFloor;
+
+  // Show header
+  header.textContent = `GODINA ${selectedBuilding} - KATI ${selectedFloor}`;
+  tablePlanContainer.style.display = "block";
+
+  // Generate the table layout
+  generateTableLayout(selectedBuilding);
+
+  // Populate apartments
+  populateApartments(selectedBuilding, selectedFloor);
+}
+
+// === 🖼️ FLOOR IMAGE CLICK HANDLER ===
+document.querySelectorAll(".floor").forEach(img => {
+  img.addEventListener("click", () => {
+    const id = img.id.replace("kati", ""); // e.g. "9A" → floor 9, building A
+    const floor = id.match(/\d+/)?.[0];
+    const building = id.match(/[A-Z]/)?.[0];
+    if (building && floor) {
+      showFloor(building, floor);
+      document.getElementById("tablePlan-container").style.display = "block";
     }
   });
 });
 
-// --- Filter by Area on button click
-function filterByArea() {
-  const maxArea = parseFloat(document.getElementById('areaFilter').value);
-      const input = document.getElementById('areaFilter');
-    const value = input.value.trim();
-    if (value==='') return; // Do nothing if no value
+// === BUILDING CONFIGURATION MAP ===
 
 
-  apartmentDetails.forEach(apartment => {
-    const btn = document.getElementById(apartment.id);
-    if (!btn) return;
+const buildingLayouts = {
+  A: [
+    { scale: 1, layout: 1 },
+    { scale: 2, layout: 1 },
+  ],
+  B: [
+    { scale: 1, layout: 1 },
+    { scale: 2, layout: 1 },
+    { scale: 3, layout: 1 },
+  ],
+  C: [
+    { scale: 1, layout: 2 },
+    { scale: 2, layout: 1 },
+  ],
+  D: [{ scale: 1, layout: 3 }],
+  E: [
+    { scale: 1, layout: 4 },
+    { scale: 2, layout: 2 },
+  ],
+};
 
-    if (!isNaN(maxArea) && apartment.totalArea <= maxArea) {
-      btn.style.display = 'inline-block';
-    } else {
-      btn.style.display = 'none';
-    }
+const layoutApartments = {
+  1: ["A", "B", "C", "D", "E", "F", "G"],
+  2: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+  3: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+  4: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+};
+
+
+// === BUILDING CHANGE HANDLER ===
+buildingSelect.addEventListener("change", () => {
+  const building = buildingSelect.value;
+  resetSelect(scaleSelect, "SHKALLA");
+  resetSelect(apartmentSelect, "APARTAMENTI");
+  apartmentDetails.innerHTML = "";
+
+  if (!building || !buildingLayouts[building]) return;
+
+  // Get the available scales for that building
+  const scales = buildingLayouts[building].map((s) => s.scale.toString());
+
+  // Show only existing scales
+  Array.from(scaleSelect.options).forEach((opt) => {
+    if (opt.value === "") return;
+    opt.style.display = scales.includes(opt.value) ? "block" : "none";
   });
-}
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Add event listeners to buttons with class 'ApBtn'
-    document.querySelectorAll(".planBtn").forEach(button => {
-        button.addEventListener("click", function () {
-            const apartmentId = button.id; // Extract apartment ID from button ID
-            if (apartmentId) {
-                showApartmentDetails(apartmentId);
-            }
-        });
-    });
-
-
-
-    const shiturText = document.getElementById("shiturShkrimi");
-    const rezervuarText = document.getElementById("rezervuarShkrimi");
-
-    apartmentDetails.forEach(apartment => {
-        const button = document.getElementById(apartment.id); // Get the button by ID
-        if (button) {
-            // Apply initial colors
-            if (apartment.statusi === "Shitur") {
-                button.style.backgroundImage = "linear-gradient(to top, #FFB9B9 0%, #ff9999 80%, #FDFDFD 100%)";
-                button.style.color = "#A80000";
-                button.style.fontWeight = "bold";
-            } else if (apartment.statusi === "Rezervuar") {
-                button.style.backgroundImage = "linear-gradient(to top, #FFEBD1 0%, #ffC170 80%, #FDFDFD 100%)";
-                button.style.color = "red";
-                button.style.fontWeight = "bold";
-            }
-
-            // Add click event listener
-            button.addEventListener("click", function () {
-                if (apartment.statusi === "Shitur") {
-                    shiturText.classList.remove("hidden");
-                    rezervuarText.classList.add("hidden");
-                } else if (apartment.statusi === "Rezervuar") {
-                    rezervuarText.classList.remove("hidden");
-                    shiturText.classList.add("hidden");
-                } else {
-                    shiturText.classList.add("hidden");
-                    rezervuarText.classList.add("hidden");
-                }
-            });
-        }
-    });
-})
-
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = [
-        { btn: "tipBtnA", table: "tableA", hero: "hero-A" },
-        { btn: "tipBtnB", table: "tableB", hero: "hero-B" },
-        { btn: "tipBtnC", table: "tableC", hero: "hero-C" }
-    ];
-    const displayImage = document.getElementById("display-image");
-const fullscreenContainer = document.getElementById("fullscreenContainer");
-const fullscreenImage = document.getElementById("fullscreenImage");
-const planContainer = document.getElementById("plan-container");
-
-// ?? Buttons that trigger the image
-document.querySelectorAll("button").forEach(button => {
-    button.addEventListener("click", () => {
-        // Extract photo name from button.id
-        const match = button.id.match(/H[A-Z0-9]+$/);
-        if (!match) return;
-
-        const planName = match[0];
-        const imageSrc = `Planet_tulipan/${planName}.webp`;
-
-        // Display the image in main view
-        displayImage.src = imageSrc;
-
-        // Show the container if it was hidden
-        planContainer.style.display = "block";
-    });
 });
 
-// ?? Click on display image ? open fullscreen
-displayImage.addEventListener("click", () => {
-    fullscreenImage.src = displayImage.src;
-    fullscreenContainer.classList.remove("hidden");
+// === SCALE CHANGE HANDLER ===
+scaleSelect.addEventListener("change", () => {
+  const building = buildingSelect.value;
+  const scale = parseInt(scaleSelect.value, 10);
+  resetSelect(apartmentSelect, "APARTAMENTI");
+  apartmentDetails.innerHTML = "";
 
-    // Request full screen (works best on mobile)
-    if (fullscreenContainer.requestFullscreen) {
-        fullscreenContainer.requestFullscreen();
-    } else if (fullscreenContainer.webkitRequestFullscreen) {
-        fullscreenContainer.webkitRequestFullscreen(); // Safari
-    } else if (fullscreenContainer.msRequestFullscreen) {
-        fullscreenContainer.msRequestFullscreen(); // IE
-    }
+  if (!building || !scale || !buildingLayouts[building]) return;
+
+  // Find layout for this scale
+  const scaleData = buildingLayouts[building].find((s) => s.scale === scale);
+  if (!scaleData) return;
+
+  const layout = scaleData.layout;
+  const apartments = layoutApartments[layout] || [];
+
+  // Show only apartments existing in that layout
+  Array.from(apartmentSelect.options).forEach((opt) => {
+    if (opt.value === "") return;
+    opt.style.display = apartments.includes(opt.value) ? "block" : "none";
+  });
 });
 
-// ?? Click on fullscreen image ? close fullscreen
-fullscreenImage.addEventListener("click", () => {
-    fullscreenContainer.classList.add("hidden");
+// === APARTMENT CHANGE HANDLER ===
+apartmentSelect.addEventListener("change", showApartmentDetalis);
 
-    // Exit full screen
-    if (document.fullscreenElement) {
-        document.exitFullscreen();
-    } else if (document.webkitFullscreenElement) {
-        document.webkitExitFullscreen();
-    } else if (document.msFullscreenElement) {
-        document.msExitFullscreen();
-    }
+// === 🖱️ EVENT: Click Apartment in Layout ===
+document.getElementById("table-plan").addEventListener("click", function (e) {
+  const cell = e.target.closest("td");
+  if (!cell || !cell.dataset.apartment) return; // Ignore empty cells or merged ones
+
+  const building = cell.dataset.building;
+  const scale = cell.dataset.scale;
+  const floor = cell.dataset.floor;
+  const apartment = cell.dataset.apartment;
+
+
+  // Update dropdowns
+  document.getElementById("scaleSelect").value = scale;
+  document.getElementById("apartmentSelect").value = apartment;
+
+  // Find and display apartment details
+  const apt = defaultApartmentDetails.find(
+    (a) =>
+      a.building === building &&
+      a.scale == scale &&
+      a.floor == floor &&
+      a.apartment == apartment
+  );
+
+  if (apt) {
+    showApartmentDetalis(apt);
+  } else {
+    console.warn("Apartment not found for:", { building, scale, floor, apartment });
+  }
 });
-window.addEventListener("orientationchange", () => {
-    // Force redraw/resizing (if needed)
-    if (document.fullscreenElement) {
-        fullscreenImage.style.maxWidth = window.innerWidth + "px";
-        fullscreenImage.style.maxHeight = window.innerHeight + "px";
-    }
-});
-
-// ?? Click outside image in plan-container ? hide container
-planContainer.addEventListener("click", (event) => {
-    if (!event.target.closest("#display-image")) 
-        planContainer.style.display = "none";
-        document.getElementById("shiturShkrimi").classList.add("hidden");
-        document.getElementById("rezervuarShkrimi").classList.add("hidden");
-    })
-});
-
-document.getElementById("calculationG7B").addEventListener("click", function () {
-    document.getElementById("priceForm").style.display = "block";
-});
-
-function populateBuildings() {
-    const sector = document.getElementById("sector_select").value;
-    const scaleselect = document.getElementById("scaleselect");
-    const apartmentSelect = document.getElementById("apartment_select");
-
-    // Clear selects
-    scaleselect.innerHTML = '<option value="">-- Zgjidh --</option>';
-    apartmentSelect.innerHTML = '<option value="">-- Zgjidh --</option>';
-
-    let maxBuildings = 0;
-
-    if (sector === "A") {
-        maxBuildings = 11;
-    } else if (sector === "B") {
-        maxBuildings = 7;
-    } else if (sector === "C") {
-        maxBuildings = 8;
-    }
-
-    // Populate buildings
-    for (let i = 1; i <= maxBuildings; i++) {
-        let opt = document.createElement("option");
-        opt.value = i;
-        opt.textContent = "Godina " + i;
-        scaleselect.appendChild(opt);
-    }
-}
-
-function populateApartments() {
-    const sector = document.getElementById("sector_select").value;
-    const building = document.getElementById("scaleselect").value;
-    const apartmentSelect = document.getElementById("apartment_select");
-    // Reset apartments
-    apartmentSelect.innerHTML = '<option value="">-- Zgjidh --</option>';
-
-    if (!sector || !building) return; // only populate if both chosen
-
-    let maxApartments = 0;
-
-    if (sector === "A") {
-        maxApartments = 5;
-    } else if (sector === "B") {
-        maxApartments = 8;
-    } else if (sector === "C") {
-        maxApartments = 8;
-    }
-
-    // Populate apartments with encoded value
-    for (let i = 1; i <= maxApartments; i++) {
-        let opt = document.createElement("option");
-        opt.value = `${sector}${building}H${sector}${i}`;  // ex: A3HA5
-        opt.textContent = "Apartamenti " + i;
-        apartmentSelect.appendChild(opt);
-    }
-    }
-    function closeResult() {
-      document.getElementById("detailed_result").style.display = "none";
-            document.getElementById("priceForm").style.display = "none";
-
-    }
-
-function calculateTotal() {
-    const apartmentID = document.getElementById("apartment_select").value;
-    const apt = apartmentDetails.find(a => a.id === apartmentID);
-
-    if (!apt) {
-        alert("Please select a valid apartment.");
-        return;
-    }
-
-    const priceNet = parseFloat(document.getElementById("price_net").value) || 0;
-    const priceCommon = parseFloat(document.getElementById("price_common").value) || 0;
-    const priceTerrace = parseFloat(document.getElementById("price_terrace").value) || 0;
-    const pricePlot = parseFloat(document.getElementById("price_plot").value) || 0;
-    const priceParking = parseFloat(document.getElementById("price_parking").value) || 0;
-    const pricePool = parseFloat(document.getElementById("price_pool").value) || 0;
-    const priceDepo = parseFloat(document.getElementById("price_depo").value) || 0;
 
 
-    const items = [
-        { label: "Sip�rfaqe Neto", qty: apt.NetArea, unit: priceNet },
-        { label: "Sip�r.e p�rbashk�t", qty: apt.ComonArea, unit: priceCommon },
-        { label: "Veranda", qty: apt.TerraceArea, unit: priceTerrace },
-        { label: "Oborri", qty: apt.GreenArea, unit: pricePlot },
-        { label: "Parkim", qty: 2, unit: priceParking },
-    ];
+// === FUNCTION: Show Apartment Details ===
 
-    const tbody = document.getElementById("result_body");
-    tbody.innerHTML = "";
+function showApartmentDetalis () {
+  const apartmentLetter = apartmentSelect.value;
+        selectedBuilding = buildingSelect.value;
+        selectedScale = scaleSelect.value;
+        selectedFloor = floorSelect.value;
+  if (!selectedBuilding || !selectedScale || !apartmentLetter) return;
+  // Build the apartment ID (e.g., D23G)
+  const aptId = `${selectedBuilding}${selectedScale}${selectedFloor}${apartmentLetter}`;
 
-    let total = 0;
-    items.forEach(item => {
-        const subtotal = item.qty * item.unit;
-        total += subtotal;
+  // Find the apartment object from the array
+  const details = defaultApartmentDetails.find((apt) => apt.id === aptId);
+  // Clear previous details
+  apartmentDetailsDiv.innerHTML = "";
 
-        const row = document.createElement("tr");
-        row.innerHTML = `
-      <td style="padding: 5px; border: 1px solid #ccc;">${item.label}</td>
-      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">${item.qty.toFixed(2)}</td>
-      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">�${item.unit.toLocaleString(undefined, { minimumFractionDigits: 0 })}</td>
-      <td style="text-align: right; padding: 5px; border: 1px solid #ccc;">�${subtotal.toLocaleString(undefined, { minimumFractionDigits: 0 })}</td>
+  if (details) {
+    // Create details table
+    apartmentDetailsDiv.innerHTML = `
+      <h4 style="text-align: center">Apartamenti<br/><strong>${aptId}</strong></h4>
+      <table class="apt-details">
+        <tr><th>Tipologjia</th><td>${details.Tipology || "-"}</td></tr>
+        <tr><th>Siperfaqe neto</th><td>${details.totalNetArea ?? 0} m²</td></tr>
+        <tr><th>Siperfaqe e përbashkët</th><td>${details.commonArea ?? 0} m²</td></tr>
+        <tr style="font-size: 20px"><th>Siperfaqe totale</th><td><strong>${details.totalArea ?? 0} m²</strong></td></tr>
+        <tr><th>Parkim</th><td>${details.ParkingNumber || "0"}</td></tr>
+        <tr><th>Statusi</th><td>${details.statusi || "—"}</td></tr>
+        <tr><th>Shënime</th><td><em>${details.shenime || "—"}</em></td></tr>
+      </table>
     `;
-        tbody.appendChild(row);
-    });
-
-    document.getElementById("total_cell").textContent = `�${total.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
-    document.getElementById("result_title").textContent = `Apartamenti ${apt.id}`;
-    document.getElementById("detailed_result").style.display = "block";
-}
-function updateFormattedAll() {
-    const fields = [
-        { input: 'price_net', display: 'formatted_price_net' },
-        { input: 'price_common', display: 'formatted_price_common' },
-        { input: 'price_terrace', display: 'formatted_price_terrace' },
-        { input: 'price_plot', display: 'formatted_price_plot' },
-        { input: 'price_depo', display: 'formatted_price_depo' },
-    ];
-
-    const field = [
-        { input: 'price_parking', display: 'formatted_price_parking' },
-        { input: 'price_pool', display: 'formatted_price_pool' },
-    ];
-
-    fields.forEach(field => {
-        const inputEl = document.getElementById(field.input);
-        const value = parseFloat(inputEl.value);
-        const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " �/m�" : '';
-        document.getElementById(field.display).textContent = formatted;
-    });
-    field.forEach(field => {
-        const inputEl = document.getElementById(field.input);
-        const value = parseFloat(inputEl.value);
-        const formatted = !isNaN(value) ? value.toLocaleString('en-US') + " �" : '';
-        document.getElementById(field.display).textContent = formatted;
-    });
+  } else {
+    apartmentDetailsDiv.innerHTML = `<p>Nuk u gjetën të dhëna për apartamentin ${apartmentLetter}.</p>`;
+  }
+  window.currentApartment = details; // store current selection globally
+  updateApartmentValue(details);     // refresh value table
+  apartmentValueTable.style.display = "block";
 
 }
 
-// Call once on page load to initialize
-window.addEventListener("DOMContentLoaded", updateFormattedAll);
+// === UTILITY FUNCTION TO RESET A SELECT ===
+function resetSelect(selectEl, placeholder) {
+  selectEl.value = "";
+  Array.from(selectEl.options).forEach((opt) => (opt.style.display = "block"));
+  selectEl.options[0].textContent = placeholder;
+}
 
+// === Show apartments on hover ===
+apartmentSelect.addEventListener("mouseover", (e) => {
+  const hoveredOption = e.target;
+  if (hoveredOption.tagName === "OPTION" && hoveredOption.dataset.apartments) {
+    const tooltip = document.createElement("div");
+    tooltip.className = "tooltip";
+    tooltip.textContent = `Apartments: ${hoveredOption.dataset.apartments}`;
+    document.body.appendChild(tooltip);
 
+    const rect = hoveredOption.getBoundingClientRect();
+    tooltip.style.left = `${rect.left + window.scrollX + 10}px`;
+    tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
+
+    hoveredOption.addEventListener(
+      "mouseleave",
+      () => {
+        tooltip.remove();
+      },
+      { once: true }
+    );
+  }
+});
+
+// === 🧱 FLOOR DROPDOWN HANDLER ===
+floorSelect.addEventListener("change", () => {
+  const selectedBuilding = buildingSelect.value;
+  const selectedFloor = floorSelect.value;
+  showFloor(selectedBuilding, selectedFloor);
+  document.getElementById("tablePlan-container").style.display = "block";
+
+});
+
+// === 📐 FUNCTION: Generate Table Layout (example logic) ===
+function generateTableLayout(building) {
+const tablePlan = document.getElementById("table-plan");
+  const selectedBuilding = buildingSelect.value;
+  const selectedFloor = floorSelect.value;
+
+  tablePlan.innerHTML = "";
+
+  // Get layout configuration for this building
+  const layouts = buildingLayouts[selectedBuilding];
+  if (!layouts) {
+    console.warn(`No layouts defined for building ${selectedBuilding}`);
+    return;
+  }
+
+  // Create a flex container to show all scales side-by-side
+  const container = document.createElement("div");
+  container.className = "scale-container";
+
+  // For each scale in the building, clone and append the right layout
+  layouts.forEach(({ scale, layout }) => {
+    const template = document.getElementById(`layout${layout}-template`);
+    if (!template) return;
+
+    const clone = template.content.cloneNode(true);
+    const table = clone.querySelector("table");
+    table.dataset.scale = scale;
+
+    // Add scale header
+    const scaleHeader = document.createElement("h3");
+    scaleHeader.textContent = `Shkalla ${scale}`;
+    scaleHeader.style.textAlign = "center";
+
+    const wrapper = document.createElement("div");
+      wrapper.className = "table-container";
+
+    wrapper.appendChild(scaleHeader);
+    wrapper.appendChild(table);
+
+    container.appendChild(wrapper);
+  });
+
+  // Append all tables to main table-plan
+  tablePlan.appendChild(container);
+
+  // Populate apartments for this building/floor
+  populateApartments(selectedBuilding, selectedFloor);
+};
+// === 🏠 FUNCTION: Populate Apartments ===
+function populateApartments(building, floor) {
+  const tables = document.querySelectorAll("#table-plan table");
+  if (!tables.length) {
+    console.warn("No layout tables present to populate.");
+    return;
+  }
+
+  // Filter apartments by building + floor
+  const floorApartments = defaultApartmentDetails.filter(
+    (apt) => apt.building === building && apt.floor == floor
+  );
+
+  // Loop through each apartment
+  floorApartments.forEach((apt) => {
+    // Find the table matching the correct scale
+    const table = [...tables].find((t) => t.dataset.scale == apt.scale);
+    if (!table) return;
+
+    // Find the table cell whose text matches the apartment letter (A, B, C...)
+    const tdList = table.querySelectorAll("td");
+    const target = [...tdList].find(
+      (td) => td.textContent.trim() === apt.apartment
+    );
+
+    if (!target) return;
+
+    target.dataset.building = apt.building;
+    target.dataset.scale = apt.scale;
+    target.dataset.floor = apt.floor;
+    target.dataset.apartment = apt.apartment;
+    target.dataset.aptId = apt.id;
+
+    // === Apply status-based color & content ===
+    if (apt.statusi === "Shitur") {
+      target.style.backgroundColor = "#FC8F8F";
+      target.style.color = "#64242F";
+      target.innerHTML = `<strong>${apt.id}</strong><br>${apt.statusi}`;
+    } else {
+      target.style.backgroundColor =
+        apt.statusi === "Rezervuar" ? "#FFBD24" : "#e6e6e6";
+      target.innerHTML = `
+        <strong>${apt.id}</strong><br>
+        ${apt.Tipology}<br>
+        ${apt.totalArea} m²<br>
+        <em>${apt.statusi}</em>
+      `;
+    }
+  });
+}
+
+    // === 💰 FUNCTION: Update Apartment Value Table ===
+function updateApartmentValue(apt) {
+  if (!apt) return;
+
+  // Get DOM elements
+  const netAreaCell = document.getElementById("netAreaCell");
+  const commonAreaCell = document.getElementById("commonAreaCell");
+  const parkingAreaCell = document.getElementById("parkingAreaCell");
+
+  const netPriceInput = document.getElementById("netPrice");
+  const commonPriceInput = document.getElementById("commonPrice");
+  const parkingPriceInput = document.getElementById("parkingPrice");
+
+  const netTotal = document.getElementById("netTotal");
+  const commonTotal = document.getElementById("commonTotal");
+  const parkingTotal = document.getElementById("parkingTotal");
+  const grandTotal = document.getElementById("grandTotal");
+
+  // Fill in area values from the apartment
+
+ // document.getElementById("apartmentInfo").textContent = apt.id;
+
+  netAreaCell.textContent = apt.totalNetArea.toFixed(2);
+  commonAreaCell.textContent = apt.commonArea.toFixed(2);
+  parkingAreaCell.textContent = apt.parking ? "1" : "0";
+
+  console.log("Updating values for apartment:", apt.id, netAreaCell.textContent);
+
+  // Calculate totals
+  const netVal = apt.totalNetArea * parseFloat(netPriceInput.value || 0);
+  const commonVal = apt.commonArea * parseFloat(commonPriceInput.value || 0);
+  const parkingVal = (apt.parking ? 1 : 0) * parseFloat(parkingPriceInput.value || 0);
+  const totalVal = netVal + commonVal + parkingVal;
+
+  // Display results
+  netTotal.textContent = netVal.toLocaleString("en-US", { minimumFractionDigits: 0 });
+  commonTotal.textContent = commonVal.toLocaleString("en-US", { minimumFractionDigits: 0 });
+  parkingTotal.textContent = parkingVal.toLocaleString("en-US", { minimumFractionDigits: 0 });
+  grandTotal.textContent = totalVal.toLocaleString("en-US", { minimumFractionDigits: 0 });
+}
+
+// Recalculate totals automatically when any price changes
+["netPrice", "commonPrice", "parkingPrice"].forEach((id) => {
+  document.getElementById(id).addEventListener("input", () => {
+    if (window.currentApartment) {
+      updateApartmentValue(window.currentApartment);
+    }
+  });
+});
+ // click outside to hide (keeps behavior class-based; removes inline style issues)
+  document.addEventListener("click", (e) => {
+    const isInsideBuilding = e.target.closest(".building");
+    const isInsideTable = e.target.closest("#table-plan");
+    const isInsideselectors = e.target.closest(".selector");
+    const tableContainer = document.getElementById("tablePlan-container");
+    const isInsideletter =  e.target.closest(".buildingLetter");
+    if (!isInsideBuilding && !isInsideTable && !isInsideselectors && !isInsideletter)  {
+      // hide table-plan by clearing content or hiding container
+
+      tablePlanContainer.innerHTML = "";
+      tablePlanContainer.style.display = "none";
+      tableContainer.style.display = "none";
+      document.querySelectorAll(".building").forEach(div => (div.style.display = "none"));
+
+    }
+  });
