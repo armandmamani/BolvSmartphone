@@ -565,7 +565,7 @@ apartmentDetails {
 #table-plan {
     display: none;
     position: absolute;
-    top: 70vh;
+    top: 90vh;
     background-color: var(--jeshile-gri);
     width: 100%;
     border: 15px solid var(--jeshile-gri);
