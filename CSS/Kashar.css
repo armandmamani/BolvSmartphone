@@ -587,10 +587,10 @@ apartmentDetails {
 /* Each scale box */
 .scale-container {
     display: flex; /* ensure flex container */
-    flex-direction: row; /* scales side by side */
+    flex-direction: column; /* scales side by side */
     align-items: flex-start; /* aligns top of tables */
     gap: 15px; /* spacing between scales */
-    width: 100%;
+    width: 95%;
 }
 
 .table-container {
@@ -616,6 +616,7 @@ apartmentDetails {
 .layout {
     border-collapse: collapse;
     background: transparent;
+    background-size: cover;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1px solid #ccc;
@@ -643,7 +644,7 @@ apartmentDetails {
 
     .layout .merged {
         background-image: url(Kashar_images/Korridori.jpg);
-        background-size: contain;
+        background-size: cover;
         cursor: default;
         transform: none;
     }
@@ -656,8 +657,7 @@ apartmentDetails {
 
     .layout .empty {
         background-image: url(Kashar_images/Shkallet_A.jpg);
-        background-size: contain;
-        background-repeat: no-repeat;
+        background-size: cover;
         cursor: default;
         opacity: 0.5;
         transform: none;
@@ -668,15 +668,10 @@ apartmentDetails {
             box-shadow: none;
         }
 
-
-
-
-
-/*-----    Right Panel: Apartment Details  --------*/
-
-.details-panel {
-    background: linear-gradient(to bottom, var(--drab-dark-green) 20%, var(--jeshile-gri) 92%, var(--gri-e-mbyllur) 95%, var(--gri-e-hapur) 100%);
-    color: var(--drab-dark-greene);
-    border-left: 3px solid var(--drab-dark-green);
-    overflow-y: auto;
+#fullscreenContainer {
+    display: none;
+    position: fixed;
+    top: 0
 }
+
+
