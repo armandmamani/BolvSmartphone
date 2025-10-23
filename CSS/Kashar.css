@@ -15,7 +15,7 @@ body {
     align-content: center;
     text-align: center;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     overflow-y: auto; /* Prevents horizontal scroll if content overflows slightly */
     overflow-x: hidden; /* Prevents horizontal scroll if content overflows slightly */
 }
@@ -69,7 +69,7 @@ body {
 /* Sidebar right */
 
 #filterForm {
-    width: 100%;
+    width: 95%;
     display: block;
     padding: 15px;
     background-color: var(--e-gjelber-grigio);
@@ -159,9 +159,35 @@ option {
     background-color: var(--jeshile-gri);
 }
 
-.select {
-    padding: 5px;
+select,
+option {
+    color: #000 !important;
+    background-color: #fff !important;
+    padding-left: 1rem;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    -webkit-appearance: none; /* Removes iOS native style */
+    -moz-appearance: none;
+    appearance: none;
 }
+
+/* To ensure the dropdown arrow looks clean on iPhone */
+select {
+    padding-right: 2rem;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 0.8rem;
+    border: 1px solid #ccc;
+}
+
+    /* Optional: Improve tap target and transitions */
+    select:focus {
+        border-color: #ff8800;
+        outline: none;
+        box-shadow: 0 0 6px rgba(255, 136, 0, 0.4);
+        transition: 0.2s ease;
+    }
+
 
 apartmentDetails {
     width: 100%;
