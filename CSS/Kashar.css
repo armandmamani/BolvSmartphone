@@ -46,7 +46,7 @@ body {
 }
 
 
-@keyframes fadein {
+@keyframes fadeIn {
     from {
         opacity: 0;
     }
@@ -54,6 +54,24 @@ body {
     to {
         opacity: 1;
     }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+.fade-in {
+    animation: fadeIn 1s forwards ease;
+}
+
+.fade-out {
+    animation: fadeOut 1s forwards ease;
 }
 
 @keyframes float {
@@ -64,6 +82,34 @@ body {
     to {
         transform: translateY(0px);
     }
+}
+
+@keyframes leftToRight  {
+    from {
+        transform: translateX(-50px);
+    }
+
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes rigthToleft {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50px);
+    }
+}
+
+.enterLeft {
+    animation: leftToRight 1s forwards ease;
+}
+
+.exitLeft {
+    animation: rigthToleft 1s forwards ease;
 }
 
 /* Sidebar right */
@@ -106,33 +152,35 @@ header {
     background-color: var(--background-color-beaver)
 }
 
+
 #filterText {
     position: absolute;
+    width: fit-content;
+    margin:2px;
     left: 0;
-    top: 5vh;
-    writing-mode: vertical-rl; /* or vertical-lr for opposite direction */
-    text-orientation: upright; /* keeps letters upright */
-    font-size: 0.7rem;
-    font-weight: 500;
+    top: 32vh;
+    font-size: 1rem;
+    font-weight: 300;
     letter-spacing: 2px;
     color: var(--accent-white);
     background: rgba(0, 0, 0, 0.2);
-    padding: 10px 5px;
-    border-radius: 10px;
+    border-radius: 3px;
     border: 1px solid var(--jeshile-gri);
-    text-transform: uppercase;
     cursor: default;
 }
 
 #filterForm {
-    width: 95%;
+    position: absolute;
+    left: 0;
+    top: 15vh;
+    width: 100%;
+    margin-top: 20px;
     display: none;
     padding: 5px;
     background-color: var(--e-gjelber-grigio);
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    animation: fadein 1s;
 }
 
  #TabHeader2 {
@@ -590,24 +638,6 @@ apartmentDetails {
 
 /* ---- Floor plans ------*/
 
-#floorHeader {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-#tablePlan-container {
-    display: none;
-    position: absolute;
-    width: 72%;
-    height: 100%;
-    background-color: var(--e-gjelber-gri);
-    opacity: 0.8;
-    z-index: 200;
-    animation: fadein 0.5s;
-}
-
-
-
 
 #building-table {
     width: 100%;
@@ -617,9 +647,11 @@ apartmentDetails {
 
 #floorHeader {
     text-align: center;
-    font: bold 44px Roboto;
-    color: var(--drab-dark-green);
+    font: bold 22px Roboto;
+    color: var(--accent-white);
     padding: 15px 0;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 .apTabSubHeader {
@@ -671,7 +703,8 @@ apartmentDetails {
 #table-plan {
     display: none;
     position: absolute;
-    top: 90vh;
+    left: 0;
+    top: 40vh;
     background-color: var(--jeshile-gri);
     width: 100%;
     border: 15px solid var(--jeshile-gri);

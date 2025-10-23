@@ -635,7 +635,7 @@ const floorSelect = document.getElementById("floorSelect");
 const scaleSelect = document.getElementById("scaleSelect");
 const apartmentSelect = document.getElementById("apartmentSelect");
 const apartmentDetails = document.getElementById("apartmentDetails");
-const tablePlanContainer = document.getElementById("table-plan");
+const tablePlan = document.getElementById("table-plan");
 const header = document.getElementById("floorHeader");
 const apartmentDetailsDiv = document.getElementById("apartmentDetails");
 const apartmentValueTable = document.getElementById("apartmentValue");
@@ -650,7 +650,8 @@ function showFloor(selectedBuilding, selectedFloor) {
 
   // Show header
   header.textContent = `GODINA ${selectedBuilding} - KATI ${selectedFloor}`;
-  tablePlanContainer.style.display = "block";
+    header.style.display = "block";
+  tablePlan.style.display = "block";
 
   // Generate the table layout
   generateTableLayout(selectedBuilding);
@@ -738,11 +739,9 @@ scaleSelect.addEventListener("change", () => {
 apartmentSelect.addEventListener("change", showApartmentDetalis);
 
 // === 🖱️ EVENT: Click Apartment in Layout ===
-document.getElementById("table-plan").addEventListener("click", function (e) {
+tablePlan.addEventListener("click", function (e) {
   const cell = e.target.closest("td");
-  console.log("Clicked cell:", cell.dataset);
   if (!cell || !cell.dataset.apartment) return; // Ignore empty cells or merged ones
-
   const building = cell.dataset.building;
   const scale = cell.dataset.scale;
   const floor = cell.dataset.floor;
@@ -764,6 +763,7 @@ console.log({ building, scale, floor, apartment });
 
   if (apt) {
     showApartmentDetalis(apt);
+
   } else {
     console.warn("Apartment not found for:", { building, scale, floor, apartment });
   }
@@ -784,8 +784,11 @@ function showApartmentDetalis () {
   // Find the apartment object from the array
   const details = defaultApartmentDetails.find((apt) => apt.id === aptId);
   // Clear previous details
-  apartmentDetailsDiv.innerHTML = "";
+    fadeOut(tablePlan)
+    tablePlan.style.display = "none";
+    header.style.display = "none";
 
+  apartmentDetailsDiv.innerHTML = "";
   if (details) {
     // Create details table
     apartmentDetailsDiv.innerHTML = `
@@ -816,41 +819,16 @@ function resetSelect(selectEl, placeholder) {
   selectEl.options[0].textContent = placeholder;
 }
 
-// === Show apartments on hover ===
-apartmentSelect.addEventListener("mouseover", (e) => {
-  const hoveredOption = e.target;
-  if (hoveredOption.tagName === "OPTION" && hoveredOption.dataset.apartments) {
-    const tooltip = document.createElement("div");
-    tooltip.className = "tooltip";
-    tooltip.textContent = `Apartments: ${hoveredOption.dataset.apartments}`;
-    document.body.appendChild(tooltip);
-
-    const rect = hoveredOption.getBoundingClientRect();
-    tooltip.style.left = `${rect.left + window.scrollX + 10}px`;
-    tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
-
-    hoveredOption.addEventListener(
-      "mouseleave",
-      () => {
-        tooltip.remove();
-      },
-      { once: true }
-    );
-  }
-});
 
 // === 🧱 FLOOR DROPDOWN HANDLER ===
 floorSelect.addEventListener("change", () => {
   const selectedBuilding = buildingSelect.value;
   const selectedFloor = floorSelect.value;
   showFloor(selectedBuilding, selectedFloor);
-  document.getElementById("tablePlan-container").style.display = "block";
-
 });
 
 // === 📐 FUNCTION: Generate Table Layout (example logic) ===
 function generateTableLayout(building) {
-const tablePlan = document.getElementById("table-plan");
   const selectedBuilding = buildingSelect.value;
   const selectedFloor = floorSelect.value;
 
@@ -1001,15 +979,60 @@ function updateApartmentValue(apt) {
     const isInsideBuilding = e.target.closest(".building");
     const isInsideTable = e.target.closest("#table-plan");
     const isInsideselectors = e.target.closest(".selector");
-    const tableContainer = document.getElementById("tablePlan-container");
     const isInsideletter =  e.target.closest(".buildingLetter");
     if (!isInsideBuilding && !isInsideTable && !isInsideselectors && !isInsideletter)  {
       // hide table-plan by clearing content or hiding container
-
-      tablePlanContainer.innerHTML = "";
-      tablePlanContainer.style.display = "none";
-      tableContainer.style.display = "none";
       document.querySelectorAll(".building").forEach(div => (div.style.display = "none"));
 
     }
   });
+
+const filterForm = document.getElementById("filterForm");
+const filterText = document.getElementById("filterText");
+
+// Fade in/out helper
+function fadeIn(el) {
+  el.style.display = "block";
+  el.classList.remove("fade-out");
+  el.classList.add("fade-in");
+}
+  function enterLeft (el) {
+    el.classList.add("enterLeft");
+    el.classList.remove("exitLeft");
+
+  }
+
+    function exitLeft (el) {
+    el.classList.add("exitLeft");
+    el.classList.remove("enterLeft");
+
+  }
+function fadeOut(el) {
+  el.classList.remove("fade-in");
+  el.classList.add("fade-out");
+
+  // hide only after animation ends
+  el.addEventListener(
+    "animationend",
+    () => {
+      el.style.display = "none";
+    },
+    { once: true }
+  );
+}
+
+// When hover on filterText → show form, hide text
+filterText.addEventListener("mouseover", () => {
+  fadeIn(filterForm);
+  exitLeft(filterText);
+});
+
+// When click outside → show text, hide form
+document.addEventListener("click", (e) => {
+    const isInsideForm = e.target.closest("#filterForm");
+  if (!isInsideForm) {
+    fadeOut(filterForm);
+    enterLeft(filterText);
+
+  }
+});

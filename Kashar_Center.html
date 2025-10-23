@@ -17,73 +17,16 @@
         <a class="menuBtn" href="JaHtmlhtml">JA</a>
     </header>
     <div class="header">
-        <h2 style="margin: 15px">
+        <h2 style="margin: 20px">
             KASHAR CENTER
         </h2>
-    <div id="filterText">
-        <p>filter</p>
-    </div>
-        <div class="filterContainer" id="filterForm">
-            <div id="filterSelect">
-                <div class="filter-section">
-                    <select class="filterSelector" id="filter_availability">
-                        <option value="">Te gjitha</option>
-                        <option value="Per Shitje">I lire</option>
-                        <option value="Rezervuar">Rezervuar</option>
-                        <option value="Shitur">Shitur</option>
-                    </select>
-                </div>
-
-                <div class="filter-section">
-                    <select class="filterSelector" id="filter_typology">
-                        <option value="">Tipologjia</option>
-                        <option value="AP 1+1">Apartament 1+1</option>
-                        <option value="AP 2+1">Apartament 2+1</option>
-                        <option value="AP 3+1">Apartament 3+1</option>
-
-                    </select>
-                </div>
-                <div id="priceFilter">
-                    <div class="item">
-                        <p style="color: var(--drab-dark-green); margin-top: 5px">Çmimi</p>
-                    </div>
-
-                    <div class="filter-section">
-
-                        <select class="filterSelector" id="filter_minPrice">
-                            <option value="">Nga</option>
-                            <option value="70000">70.000 €</option>
-                            <option value="80000">80.000 €</option>
-                            <option value="90000">90.000 €</option>
-                            <option value="100000">100.000 €</option>
-                            <option value="110000">110.000 €</option>
-                            <option value="120000">120.000 €</option>
-                            <option value="130000">130.000 €</option>
-
-                        </select>
-                    </div>
-                    <div class="filter-section">
-
-                        <select class="filterSelector" id="filter_maxPrice">
-                            <option value="">Deri</option>
-                            <option value="80000">80.000 €</option>
-                            <option value="90000">90.000 €</option>
-                            <option value="100000">100.000 €</option>
-                            <option value="110000">110.000 €</option>
-                            <option value="120000">120.000 €</option>
-                            <option value="130000">130.000 €</option>
-                            <option value="140000">140.000 €</option>
-
-                        </select>
-                    </div>
-                </div>
-                <button id="filterBtn" onclick="resetFilter()">HIQ FILTRAT</button>
-            </div>
+        <div id="filterText">
+            <p style="margin:3px">filter</p>
         </div>
 
         <div id="selectAp">
             <div id="TabHeader2">
-                <h3 style="color: var(--accent-white); margin:5px">PERZGJIDH</h3>
+                <h4 style="color: var(--accent-white); margin:5px">PERZGJIDH</h4>
             </div>
 
             <div id="selectorContainer">
@@ -143,54 +86,106 @@
             </div>
         </div>
 
+        <div class="filterContainer" id="filterForm">
+            <div id="filterSelect">
+                <div class="filter-section">
+                    <select class="filterSelector" id="filter_availability">
+                        <option value="">Te gjitha</option>
+                        <option value="Per Shitje">I lire</option>
+                        <option value="Rezervuar">Rezervuar</option>
+                        <option value="Shitur">Shitur</option>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <select class="filterSelector" id="filter_typology">
+                        <option value="">Tipologjia</option>
+                        <option value="AP 1+1">Apartament 1+1</option>
+                        <option value="AP 2+1">Apartament 2+1</option>
+                        <option value="AP 3+1">Apartament 3+1</option>
+
+                    </select>
+                </div>
+                <div id="priceFilter">
+                    <div class="item">
+                        <p style="color: var(--drab-dark-green); margin-top: 5px">Çmimi</p>
+                    </div>
+
+                    <div class="filter-section">
+
+                        <select class="filterSelector" id="filter_minPrice">
+                            <option value="">Nga</option>
+                            <option value="70000">70.000 €</option>
+                            <option value="80000">80.000 €</option>
+                            <option value="90000">90.000 €</option>
+                            <option value="100000">100.000 €</option>
+                            <option value="110000">110.000 €</option>
+                            <option value="120000">120.000 €</option>
+                            <option value="130000">130.000 €</option>
+
+                        </select>
+                    </div>
+                    <div class="filter-section">
+
+                        <select class="filterSelector" id="filter_maxPrice">
+                            <option value="">Deri</option>
+                            <option value="80000">80.000 €</option>
+                            <option value="90000">90.000 €</option>
+                            <option value="100000">100.000 €</option>
+                            <option value="110000">110.000 €</option>
+                            <option value="120000">120.000 €</option>
+                            <option value="130000">130.000 €</option>
+                            <option value="140000">140.000 €</option>
+
+                        </select>
+                    </div>
+                </div>
+                <button id="filterBtn" onclick="resetFilter()">HIQ FILTRAT</button>
+            </div>
+        </div>
 
     </div>
 
-        <div id="apartmentDetails"></div>
+    <div id="apartmentDetails"></div>
 
-        <table id="apartmentValue" border="1">
-            <thead>
-                <tr>
-                    <th id="category">Category</th>
-                    <th id="area">Area (m²)</th>
-                    <th id="price">Price/m² (€)</th>
-                    <th id="value">Total (€)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="rowNet">
-                    <td>Net Area</td>
-                    <td id="netAreaCell"></td>
-                    <td><input type="number" class="price" id="netPrice" value="1000"></td>
-                    <td id="netTotal"></td>
-                </tr>
-                <tr id="rowCommon">
-                    <td>Common Area</td>
-                    <td id="commonAreaCell"></td>
-                    <td><input type="number" class="price" id="commonPrice" value="500"></td>
-                    <td id="commonTotal"></td>
-                </tr>
-                <tr id="rowParking">
-                    <td>Parking</td>
-                    <td id="parkingAreaCell"></td>
-                    <td><input type="number" id="parkingPrice" value="15000"></td>
-                    <td id="parkingTotal"></td>
-                </tr>
-                <tr id="rowTotal">
-                    <th style=" color: var(--accent-white); font-size: 1rem; background: var(--drab-dark-green); " colspan="3">Total Apartment Value</th>
-                    <th id="grandTotal"></th>
-                </tr>
-            </tbody>
-        </table>
+    <table id="apartmentValue" border="1">
+        <thead>
+            <tr>
+                <th id="category">Category</th>
+                <th id="area">Area (m²)</th>
+                <th id="price">Price/m² (€)</th>
+                <th id="value">Total (€)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="rowNet">
+                <td>Net Area</td>
+                <td id="netAreaCell"></td>
+                <td><input type="number" class="price" id="netPrice" value="1000"></td>
+                <td id="netTotal"></td>
+            </tr>
+            <tr id="rowCommon">
+                <td>Common Area</td>
+                <td id="commonAreaCell"></td>
+                <td><input type="number" class="price" id="commonPrice" value="500"></td>
+                <td id="commonTotal"></td>
+            </tr>
+            <tr id="rowParking">
+                <td>Parking</td>
+                <td id="parkingAreaCell"></td>
+                <td><input type="number" id="parkingPrice" value="15000"></td>
+                <td id="parkingTotal"></td>
+            </tr>
+            <tr id="rowTotal">
+                <th style=" color: var(--accent-white); font-size: 1rem; background: var(--drab-dark-green); " colspan="3">Total Apartment Value</th>
+                <th id="grandTotal"></th>
+            </tr>
+        </tbody>
+    </table>
 
-
-
-
-    <div id="tablePlan-container">
-    </div>
+    <div id="floorHeader"></div>
 
     <div id="table-plan"></div>
-    <div id="floorHeader"></div>
 
     <!-- Template: Layout 1 -->
     <template id="layout1-template">
