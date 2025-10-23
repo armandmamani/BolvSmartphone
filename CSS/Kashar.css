@@ -72,7 +72,7 @@ header {
     top: 0;
     right: 0;
     width: 100%;
-    height: 50px;
+    height: 40px;
     background-color: var(--drab-dark-green);
     box-sizing: border-box;
     z-index: 999;
@@ -121,7 +121,7 @@ header {
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--accent-white);
-    background: linear-gradient(var(--drab-dark-green) 60%, var(--e-gjelber-grigio));
+    background:none;
     margin-bottom: 10px;
     text-align: center;
     border-radius: 10px;
@@ -203,7 +203,18 @@ option {
 
 /* Selector section*/
 
- .selector select {
+#selectorContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+    animation: fadein 1s;
+}
+
+
+.selector select {
     width: 100%;
     font-size: 16px;
     padding: 8px;
