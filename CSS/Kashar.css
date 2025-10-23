@@ -67,17 +67,52 @@ body {
 }
 
 /* Sidebar right */
-
-#filterForm {
-    width: 95%;
-    display: block;
-    padding: 15px;
-    background-color: var(--e-gjelber-grigio);
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+header {
+    position: static;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    background-color: var(--drab-dark-green);
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 999;
     animation: fadein 1s;
 }
+.menuBtn {
+    background-color: var(--jeshile-gri);
+    color: var(--drab-dark-brown);
+    border: none;
+    width: 80px;
+    height: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(250, 250, 250, 0.5);
+    z-index: 1000;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    .menuBtn:hover {
+        background-color: var(--e-gjelber-gri);
+        color: var(--accent-white);
+        box-shadow: 0 5px 15px rgba(136, 255, 0, 0.6);
+        transition: 0.3s;
+    }
+
+
+    #filterForm {
+        width: 95%;
+        display: block;
+        padding: 5px;
+        background-color: var(--e-gjelber-grigio);
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        animation: fadein 1s;
+    }
 
 #TabHeader1, #TabHeader2 {
     font-size: 1.2rem;
@@ -116,10 +151,10 @@ option {
         color: var(--drab-dark-green);
         text-align: left;
         width: 100%;
-        height: 40px;
+        height: 30px;
     }
 .filterSelector {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     text-align: left;
     width: 100%;
@@ -142,18 +177,18 @@ option {
 
 .item {
     width: 100%;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
-    height: 40px;
+    height: 30px;
 }
 
 
 .selector select {
     width: 100%;
-    font-size: 20px;
+    font-size: 16px;
     padding: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: none;
     border-radius: 5px;
     background-color: var(--jeshile-gri);
