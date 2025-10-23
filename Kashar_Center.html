@@ -19,126 +19,127 @@
             <div id="TabHeader1">
                 <h3 style="color: var(--accent-white)">FILTER</h3>
             </div>
+            <div id="filterSelect">
+                <div class="filter-section">
+                    <select class="filterSelector" id="filter_availability">
+                        <option value="">Te gjitha</option>
+                        <option value="Per Shitje">I lire</option>
+                        <option value="Rezervuar">Rezervuar</option>
+                        <option value="Shitur">Shitur</option>
+                    </select>
+                </div>
+
+                <div class="filter-section">
+                    <select class="filterSelector" id="filter_typology">
+                        <option value="">Tipologjia</option>
+                        <option value="AP 1+1">Apartament 1+1</option>
+                        <option value="AP 2+1">Apartament 2+1</option>
+                        <option value="AP 3+1">Apartament 3+1</option>
+
+                    </select>
+                </div>
+                <div id="priceFilter">
+                    <div class="item">
+                        <p style="color: var(--accent-white)">Çmimi</p>
+                    </div>
+
+                    <div class="filter-section">
+
+                        <select class="filterSelector" id="filter_minPrice">
+                            <option value="">Nga</option>
+                            <option value="70000">70.000 €</option>
+                            <option value="80000">80.000 €</option>
+                            <option value="90000">90.000 €</option>
+                            <option value="100000">100.000 €</option>
+                            <option value="110000">110.000 €</option>
+                            <option value="120000">120.000 €</option>
+                            <option value="130000">130.000 €</option>
+
+                        </select>
+                    </div>
+                    <div class="filter-section">
+
+                        <select class="filterSelector" id="filter_maxPrice">
+                            <option value="">Deri</option>
+                            <option value="80000">80.000 €</option>
+                            <option value="90000">90.000 €</option>
+                            <option value="100000">100.000 €</option>
+                            <option value="110000">110.000 €</option>
+                            <option value="120000">120.000 €</option>
+                            <option value="130000">130.000 €</option>
+                            <option value="140000">140.000 €</option>
+
+                        </select>
+                    </div>
+                </div>
+                <button class="filterBtn" onclick="resetFilter()">HIQ FILTRAT</button>
+            </div>
+        </div>
+
+        <div id="selectAp">
             <div id="TabHeader2">
                 <h3 style="color: var(--accent-white)">PERZGJIDH</h3>
             </div>
-            <div id="filterSelect">
-            <div class="filter-section">
-                <select class="filterSelector" id="filter_availability">
-                    <option value="">Te gjitha</option>
-                    <option value="Per Shitje">I lire</option>
-                    <option value="Rezervuar">Rezervuar</option>
-                    <option value="Shitur">Shitur</option>
+
+
+            <div class="selector">
+                <select id="buildingSelect">
+                    <option value="">GODINA</option>
+                    <option value="A">Godina A</option>
+                    <option value="B">Godina B</option>
+                    <option value="C">Godina C</option>
+                    <option value="D">Godina D</option>
+                    <option value="E">Godina E</option>
+                </select>
+
+            </div>
+
+            <div class="selector">
+                <select id="floorSelect">
+                    <option value="">KATI</option>
+                    <option value="1">Kati 1</option>
+                    <option value="2">Kati 2</option>
+                    <option value="3">Kati 3</option>
+                    <option value="4">Kati 4</option>
+                    <option value="5">Kati 5</option>
+                    <option value="6">Kati 6</option>
+                    <option value="7">Kati 7</option>
+                    <option value="8">Kati 8</option>
+                    <option value="9">Kati 9</option>
+
                 </select>
             </div>
 
-            <div class="filter-section">
-                <select class="filterSelector" id="filter_typology">
-                    <option value="">Tipologjia</option>
-                    <option value="AP 1+1">Apartament 1+1</option>
-                    <option value="AP 2+1">Apartament 2+1</option>
-                    <option value="AP 3+1">Apartament 3+1</option>
+            <div class="selector">
+                <select id="scaleSelect">
+                    <option value="">SHKALLA</option>
+                    <option value="1">Shkalla 1</option>
+                    <option value="2">Shkalla 2</option>
+                    <option value="3">Shkalla 3</option>
+                </select>
+            </div>
+
+
+            <div class="selector">
+                <select id="apartmentSelect">
+                    <option value="">APARTAMENTI</option>
+                    <option value="A">Apartamenti A</option>
+                    <option value="B">Apartamenti B</option>
+                    <option value="C">Apartamenti C</option>
+                    <option value="D">Apartamenti D</option>
+                    <option value="E">Apartamenti E</option>
+                    <option value="F">Apartamenti F</option>
+                    <option value="G">Apartamenti G</option>
+                    <option value="H">Apartamenti H</option>
+                    <option value="I">Apartamenti I</option>
 
                 </select>
             </div>
-            <div id="priceFilter">
-                <div class="item">
-                    <p style="color: var(--accent-white)">Çmimi</p>
-                </div>
-
-                <div class="filter-section">
-
-                    <select class="filterSelector" id="filter_minPrice">
-                        <option value="">Nga</option>
-                        <option value="70000">70.000 €</option>
-                        <option value="80000">80.000 €</option>
-                        <option value="90000">90.000 €</option>
-                        <option value="100000">100.000 €</option>
-                        <option value="110000">110.000 €</option>
-                        <option value="120000">120.000 €</option>
-                        <option value="130000">130.000 €</option>
-
-                    </select>
-                </div>
-                <div class="filter-section">
-
-                    <select class="filterSelector" id="filter_maxPrice">
-                        <option value="">Deri</option>
-                        <option value="80000">80.000 €</option>
-                        <option value="90000">90.000 €</option>
-                        <option value="100000">100.000 €</option>
-                        <option value="110000">110.000 €</option>
-                        <option value="120000">120.000 €</option>
-                        <option value="130000">130.000 €</option>
-                        <option value="140000">140.000 €</option>
-
-                    </select>
-                </div>
-            </div>
-            <button class="filterBtn" onclick="resetFilter()">HIQ FILTRAT</button>
-        </div>
-            <div id="selectAp">
-
-
-                <div class="selector">
-                    <select id="buildingSelect">
-                        <option value="">GODINA</option>
-                        <option value="A">Godina A</option>
-                        <option value="B">Godina B</option>
-                        <option value="C">Godina C</option>
-                        <option value="D">Godina D</option>
-                        <option value="E">Godina E</option>
-                    </select>
-
-                </div>
-
-                <div class="selector">
-                    <select id="floorSelect">
-                        <option value="">KATI</option>
-                        <option value="1">Kati 1</option>
-                        <option value="2">Kati 2</option>
-                        <option value="3">Kati 3</option>
-                        <option value="4">Kati 4</option>
-                        <option value="5">Kati 5</option>
-                        <option value="6">Kati 6</option>
-                        <option value="7">Kati 7</option>
-                        <option value="8">Kati 8</option>
-                        <option value="9">Kati 9</option>
-
-                    </select>
-                </div>
-
-                <div class="selector">
-                    <select id="scaleSelect">
-                        <option value="">SHKALLA</option>
-                        <option value="1">Shkalla 1</option>
-                        <option value="2">Shkalla 2</option>
-                        <option value="3">Shkalla 3</option>
-                    </select>
-                </div>
-
-
-                <div class="selector">
-                    <select id="apartmentSelect">
-                        <option value="">APARTAMENTI</option>
-                        <option value="A">Apartamenti A</option>
-                        <option value="B">Apartamenti B</option>
-                        <option value="C">Apartamenti C</option>
-                        <option value="D">Apartamenti D</option>
-                        <option value="E">Apartamenti E</option>
-                        <option value="F">Apartamenti F</option>
-                        <option value="G">Apartamenti G</option>
-                        <option value="H">Apartamenti H</option>
-                        <option value="I">Apartamenti I</option>
-
-                    </select>
-                </div>
-
-            </div>
 
         </div>
 
-        </div>
+
+    </div>
 
         <div id="apartmentDetails"></div>
 

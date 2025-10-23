@@ -70,12 +70,7 @@ body {
 
 #filterForm {
     width: 100%;
-    display: grid;
-    grid-template-areas:
-        "header1 header2"
-        "menu content";
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
+    display: block;
     padding: 15px;
     background-color: var(--e-gjelber-grigio);
     border-radius: 10px;
@@ -112,7 +107,6 @@ option {
     }
 
 #filterSelect {
-    grid-area: menu;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -134,7 +128,7 @@ option {
 #priceFilter {
     grid-column: 1 / span 2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     border-top: 2px solid var(--jeshile-gri);
     border-bottom: 2px solid var(--jeshile-gri);
@@ -144,7 +138,6 @@ option {
 }
 
 .item {
-    grid-column: 1 / span 2;
     width: 100%;
     font-size: 1rem;
     font-weight: bold;
