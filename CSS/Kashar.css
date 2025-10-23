@@ -113,15 +113,17 @@ option {
 }
 
  .filter-section {
-        font-size: 14px;
+        font-size: 18px;
         font-weight: bold;
         color: var(--drab-dark-green);
         text-align: left;
         width: 100%;
     }
 .filterSelector {
+    font-size: 18px;
+    font-weight: bold;
     width: 100%;
-    padding: 8px;
+    padding: 3px;
     background-color: var(--gri-e-hapur);
 }
 
