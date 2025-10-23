@@ -174,8 +174,8 @@ option {
     gap: 10px;
     border-top: 2px solid var(--jeshile-gri);
     border-bottom: 2px solid var(--jeshile-gri);
-    border-radius: 10px;
-    background-color: var(--drab-dark-green);
+    border-radius: 3px;
+    background-color: var(--jeshile-gri);
     padding: 0 10px;
 }
 
@@ -185,6 +185,7 @@ option {
     font-weight: bold;
     text-align: center;
     height: 30px;
+
 }
 
 
