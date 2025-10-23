@@ -39,7 +39,7 @@ body {
     --drab-dark-brown: #543622; /* Dark brown */
 
 
-    --background-color-beaver: #AC9682ff; /* Light Gray */
+    --background-color-beaver: #581f1f; /* Light Gray */
     --button-hover: #ffa500; /* Warm Glow */
     --seaside-villa: #e8d6cb;
     --merino: #f7efe8;
@@ -80,15 +80,15 @@ header {
     animation: fadein 1s;
 }
 .menuBtn {
-    background-color: var(--jeshile-gri);
-    color: var(--drab-dark-brown);
+    background-color: var(--e-gjelber-gri);
+    color: var(--jeshile-gri);
     border: none;
     width: 60px;
     height: 15px;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 5px 5px rgba(250, 250, 250, 0.5);
+    box-shadow: 2px 5px 5px rgba(250, 250, 250, 0.5);
     z-index: 1000;
     font-size: 14px;
     text-decoration: none;
@@ -98,21 +98,25 @@ header {
     .menuBtn:hover {
         background-color: var(--e-gjelber-gri);
         color: var(--accent-white);
-        box-shadow: 0 5px 15px rgba(136, 255, 0, 0.6);
+        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.6);
         transition: 0.3s;
     }
 
 
-    #filterForm {
-        width: 95%;
-        display: block;
-        padding: 5px;
-        background-color: var(--e-gjelber-grigio);
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        animation: fadein 1s;
-    }
+#homeBtn {
+    background-color: var(--background-color-beaver)
+}
+
+#filterForm {
+    width: 95%;
+    display: block;
+    padding: 5px;
+    background-color: var(--e-gjelber-grigio);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: fadein 1s;
+}
 
 #TabHeader1, #TabHeader2 {
     font-size: 1.2rem;
