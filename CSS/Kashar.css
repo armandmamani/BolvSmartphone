@@ -74,7 +74,6 @@ header {
     width: 100%;
     height: 50px;
     background-color: var(--drab-dark-green);
-    padding: 10px;
     box-sizing: border-box;
     z-index: 999;
     animation: fadein 1s;
@@ -118,7 +117,7 @@ header {
     animation: fadein 1s;
 }
 
-#TabHeader1, #TabHeader2 {
+ #TabHeader2 {
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--accent-white);
@@ -126,12 +125,6 @@ header {
     margin-bottom: 10px;
     text-align: center;
     border-radius: 10px;
-}
-#TabHeader1 {
-    grid-area: header1;
-}
-#TabHeader2 {
-    grid-area: header2;
 }
 
 option {
@@ -188,8 +181,29 @@ option {
 
 }
 
+#filterBtn {
+    grid-column: 1 / span 2;
+    background: linear-gradient(var(--gri-e-hapur), var(--background-color-beaver) 8%);
+    color: var(--accent-white);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    float: right;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
 
-.selector select {
+    #filterBtn:hover {
+        background-color: var(--highlight-orange-color);
+        box-shadow: 0 4px 15px rgba(255, 136, 0, 0.6);
+    }
+
+/* Selector section*/
+
+ .selector select {
     width: 100%;
     font-size: 16px;
     padding: 8px;
