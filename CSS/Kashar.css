@@ -83,14 +83,14 @@ header {
     background-color: var(--jeshile-gri);
     color: var(--drab-dark-brown);
     border: none;
-    width: 70px;
+    width: 60px;
     height: 15px;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 5px 5px rgba(250, 250, 250, 0.5);
     z-index: 1000;
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
     display: inline-block;
 }
