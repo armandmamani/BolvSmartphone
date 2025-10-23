@@ -131,7 +131,7 @@ option {
 #priceFilter {
     grid-column: 1 / span 2;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 20% 1fr 1fr;
     gap: 10px;
     border-top: 2px solid var(--jeshile-gri);
     border-bottom: 2px solid var(--jeshile-gri);
@@ -151,6 +151,7 @@ option {
 
 .selector select {
     width: 100%;
+    font-size: 20px;
     padding: 8px;
     margin-bottom: 15px;
     border: none;
