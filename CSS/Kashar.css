@@ -106,9 +106,27 @@ header {
     background-color: var(--background-color-beaver)
 }
 
+#filterText {
+    position: absolute;
+    left: 0;
+    top: 5vh;
+    writing-mode: vertical-rl; /* or vertical-lr for opposite direction */
+    text-orientation: upright; /* keeps letters upright */
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--accent-white);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: 1px solid var(--jeshile-gri);
+    text-transform: uppercase;
+    cursor: default;
+}
+
 #filterForm {
     width: 95%;
-    display: block;
+    display: none;
     padding: 5px;
     background-color: var(--e-gjelber-grigio);
     border-radius: 10px;
